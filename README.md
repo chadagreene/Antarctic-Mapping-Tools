@@ -1,7 +1,9 @@
+[![View Antarctic Mapping Tools on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/47638-antarctic-mapping-tools)
 # Antarctic Mapping Tools for MATLAB
 
-<p align="center"><img src="Documentation/amt_graphical_abstract.jpg" width="300"/></p>
 Functions for analyzing and mapping Antarctic geospatial datasets.
+
+<p align="center"><img src="Documentation/amt_graphical_abstract.jpg" width="300"/></p>
 
 View documentation online by clicking on the Examples tab in the [AMT File Exchange page](https://www.mathworks.com/matlabcentral/fileexchange/47638). 
 
