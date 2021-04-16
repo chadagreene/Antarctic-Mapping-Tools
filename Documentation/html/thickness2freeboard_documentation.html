@@ -1,0 +1,198 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>thickness2freeboard documentation</title><meta name="generator" content="MATLAB 9.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2018-10-29"><meta name="DC.source" content="thickness2freeboard_documentation.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>thickness2freeboard</tt> documentation</h1><!--introduction--><p><tt>thickness2freeboard</tt> is part of Antarctic Mapping Tools for Matlab (Greene et al., 2017). <a href="List_of_functions.html">Click here for a complete list of functions in AMT</a>.</p><p><tt>thickness2freeboard</tt> estimates freeboard height above sea level, from ice thickneess assuming hyrostatic equilibrium.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Example 1:</a></li><li><a href="#4">Example 2:</a></li><li><a href="#6">Example 3: A profile from laser altimetry</a></li><li><a href="#8">Citing AMT</a></li><li><a href="#9">Author Info</a></li></ul></div><h2 id="1">Syntax</h2><pre>F = thickness2freeboard(T)
+F = thickness2freeboard(...,'rhoi',iceDensity)
+F = thickness2freeboard(...,'rhow',waterDensity)
+F = thickness2freeboard(...,'rhos',snowDensity)
+F = thickness2freeboard(...,'Ts',snowThickness)</pre><h2 id="2">Description</h2><p><tt>F = thickness2freeboard(T)</tt> estimatesfreeboard height height above sea level F in meters above the geoid from ice thickness <tt>T</tt> in meters.</p><p><tt>F = thickness2freeboard(...,'rhoi',iceDensity)</tt> speccifies ice density in kg/m^3. Default ice density is 917 kg/m^3.</p><p><tt>F = thickness2freeboard(...,'rhow',waterDensity)</tt> specifies water density in kg/m^3. Default water density is 1027 kg/m^3.</p><p><tt>F = thickness2freeboard(...,'rhos',snowDensity)</tt> specifies snow density in kg/m^3. Default snow density is 350 kg/m^3, however the default snow thickness is 0 m, so the snow density value will only affect calculations if snow thickness is specified.</p><p><tt>F = thickness2freeboard(...,'Ts',snowThickness)</tt> specifies snow thickness in meters. Default snow thickness is 0 m.</p><h2 id="3">Example 1:</h2><p>An iceberg is 5 m thick and it's made of pure ice. How high is the iceberg's surface above sea level?</p><pre class="codeinput">F = thickness2freeboard(5)
+</pre><pre class="codeoutput">F =
+          0.54
+</pre><h2 id="4">Example 2:</h2><p>An iceberg is 4.83 m thick, including 40 cm of snow which has a density of 300 kg/m^3. How high is the iceberg's surface above sea level?</p><pre class="codeinput">F = thickness2freeboard(4.83,<span class="string">'Ts'</span>,0.4,<span class="string">'rhos'</span>,300)
+</pre><pre class="codeoutput">F =
+          0.80
+</pre><p>And you can go back the other way too:</p><pre class="codeinput">T = freeboard2thickness(0.8,<span class="string">'Ts'</span>,0.4,<span class="string">'rhos'</span>,300)
+</pre><pre class="codeoutput">T =
+          4.83
+</pre><h2 id="6">Example 3: A profile from laser altimetry</h2><p>Imagine this elevation profile measured by a laser altimeter:</p><pre class="codeinput">x = 0:1000;
+
+<span class="comment">% A random profile:</span>
+z = movmean(randn(size(x)),75);
+z(z&lt;0) = 0;
+
+plot(x,z,<span class="string">'r.'</span>)
+xlabel <span class="string">'distance along profile'</span>
+ylabel <span class="string">'elevation (m)'</span>
+box <span class="string">off</span>
+</pre><img vspace="5" hspace="5" src="thickness2freeboard_documentation_01.png" alt=""> <p>Where's the ice base? It's the surface minus the thickness:</p><pre class="codeinput">base = z - freeboard2thickness(z);
+
+hold <span class="string">on</span>
+
+<span class="comment">% Draw the ice:</span>
+patch([x,fliplr(x)],[base,fliplr(z)],<span class="string">'b'</span>,<span class="string">'facecolor'</span>,rgb(<span class="string">'ice blue'</span>))
+
+<span class="comment">% Draw the water:</span>
+yl = ylim; <span class="comment">% y limits of the axis</span>
+h = patch([xlim,fliplr(xlim)],[yl(1) yl(1) 0 0],<span class="string">'b'</span>,<span class="keyword">...</span>
+   <span class="string">'facecolor'</span>,rgb(<span class="string">'ocean blue'</span>));
+uistack(h,<span class="string">'bottom'</span>) <span class="comment">% sends "water" to the back</span>
+</pre><img vspace="5" hspace="5" src="thickness2freeboard_documentation_02.png" alt=""> <h2 id="8">Citing AMT</h2><p>If this function or any other part of Antarctic Mapping Tools is useful for you, please cite the paper that describes AMT.</p><p>Greene, C. A., Gwyther, D. E., &amp; Blankenship, D. D. Antarctic Mapping Tools for Matlab. <i>Computers &amp; Geosciences</i>. 104 (2017) pp.151-157. <a href="http://dx.doi.org/10.1016/j.cageo.2016.08.003">doi:10.1016/j.cageo.2016.08.003</a>.</p><h2 id="9">Author Info</h2><p>This function was written by <a href="http://www.chadagreene.com">Chad A. Greene</a> of the University of Texas Institute for Geophysics (UTIG), April 2017, for inclusion in the Antarctic Mapping Tools package.</p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |thickness2freeboard| documentation
+% |thickness2freeboard| is part of Antarctic Mapping Tools for Matlab (Greene et al., 2017). <List_of_functions.html 
+% Click here for a complete list of functions in AMT>. 
+% 
+% |thickness2freeboard| estimates freeboard height above sea level, from ice thickneess
+% assuming hyrostatic equilibrium. 
+% 
+%% Syntax 
+% 
+%  F = thickness2freeboard(T) 
+%  F = thickness2freeboard(...,'rhoi',iceDensity) 
+%  F = thickness2freeboard(...,'rhow',waterDensity) 
+%  F = thickness2freeboard(...,'rhos',snowDensity) 
+%  F = thickness2freeboard(...,'Ts',snowThickness) 
+%  
+%% Description 
+% 
+% |F = thickness2freeboard(T)| estimatesfreeboard height height above sea level F in
+% meters above the geoid from ice thickness |T| in meters. 
+% 
+% |F = thickness2freeboard(...,'rhoi',iceDensity)| speccifies ice density in kg/m^3. 
+% Default ice density is 917 kg/m^3. 
+% 
+% |F = thickness2freeboard(...,'rhow',waterDensity)| specifies water density in kg/m^3. 
+% Default water density is 1027 kg/m^3. 
+% 
+% |F = thickness2freeboard(...,'rhos',snowDensity)| specifies snow density in kg/m^3.
+% Default snow density is 350 kg/m^3, however the default snow thickness is 0 m, so
+% the snow density value will only affect calculations if snow thickness is specified.
+% 
+% |F = thickness2freeboard(...,'Ts',snowThickness)| specifies snow thickness in meters. 
+% Default snow thickness is 0 m. 
+%  
+%% Example 1: 
+% An iceberg is 5 m thick and it's made of pure ice. How high is the iceberg's surface 
+% above sea level?
+
+F = thickness2freeboard(5)
+
+%% Example 2: 
+% An iceberg is 4.83 m thick, including 40 cm of snow which has a density of 300 kg/m^3.  
+% How high is the iceberg's surface above sea level?
+ 
+F = thickness2freeboard(4.83,'Ts',0.4,'rhos',300)
+
+%% 
+% And you can go back the other way too: 
+
+T = freeboard2thickness(0.8,'Ts',0.4,'rhos',300)
+
+%% Example 3: A profile from laser altimetry 
+% Imagine this elevation profile measured by a laser altimeter: 
+
+x = 0:1000; 
+
+% A random profile: 
+z = movmean(randn(size(x)),75); 
+z(z<0) = 0; 
+
+plot(x,z,'r.')
+xlabel 'distance along profile' 
+ylabel 'elevation (m)' 
+box off
+
+%% 
+% Where's the ice base? It's the surface minus the thickness: 
+
+base = z - freeboard2thickness(z); 
+
+hold on
+
+% Draw the ice: 
+patch([x,fliplr(x)],[base,fliplr(z)],'b','facecolor',rgb('ice blue'))
+
+% Draw the water: 
+yl = ylim; % y limits of the axis
+h = patch([xlim,fliplr(xlim)],[yl(1) yl(1) 0 0],'b',...
+   'facecolor',rgb('ocean blue')); 
+uistack(h,'bottom') % sends "water" to the back
+
+%% Citing AMT
+% If this function or any other part of Antarctic Mapping Tools is useful for you, please
+% cite the paper that describes AMT.  
+% 
+% Greene, C. A., Gwyther, D. E., & Blankenship, D. D. Antarctic Mapping Tools for Matlab. 
+% _Computers & Geosciences_. 104 (2017) pp.151-157. <http://dx.doi.org/10.1016/j.cageo.2016.08.003 doi:10.1016/j.cageo.2016.08.003>.
+% 
+%% Author Info
+% This function was written by <http://www.chadagreene.com Chad A. Greene> of the University of Texas
+% Institute for Geophysics (UTIG), April 2017, for inclusion in the
+% Antarctic Mapping Tools package.
+##### SOURCE END #####
+--></body></html>

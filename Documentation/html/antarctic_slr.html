@@ -1,0 +1,528 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Antarctic Sea Level Rise</title><meta name="generator" content="MATLAB 9.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2018-10-29"><meta name="DC.source" content="antarctic_slr.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Antarctic Sea Level Rise</h1><!--introduction--><p>This tutorial describes some of the basic concepts in calculating Antarctica's potential contribution to sea level rise. It also shows how you can do it with Antarctic Mapping Tools for Matlab (Greene et al., 2017).</p><p><b>Key points in this tutorial:</b></p><div><ol><li>Not all Antarctic ice has the potential to affect sea levels.</li><li>Only ice that's currently above sea level can possibly cause increased sea levels.</li><li>Due to the fact that H2O changes density when it melts, and due to a significant volume occupied by air in Antarctica's snow/firn surface layer, some of the ice that is currently above sea level would not contribute to sea level rise if it melts.</li><li>Despite these caveats, Antarctica still holds enough ice to raise global sea levels by about 58 m (190 ft).</li><li>Remember when I said that not all ice in Antarctica can impact sea levels, and that we must only consider the ice that's currently above sea level? Well, there is one small correction to that statement, and its's related to how adding meltwater to the ocean affects the salinity and density of the ocean.</li></ol></div><p>Let me know if I've missed anything.</p><p>-Chad A. Greene.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Thwaites Glacier</a></li><li><a href="#2">Profile view</a></li><li><a href="#3">Height above flotation</a></li><li><a href="#6">Firn correction</a></li><li><a href="#10">Pan-Antarctic map of sea level potential</a></li><li><a href="#13">Calculate Antarctica's total SLR potential</a></li><li><a href="#14">Correcting for ocean salinity effects</a></li><li><a href="#16">More corrections</a></li><li><a href="#17">Citing this tutorial</a></li><li><a href="#18">Author Info</a></li></ul></div><h2 id="1">Thwaites Glacier</h2><p>Here's a profile of Thwaites Glacier. Use <tt>pspath</tt> to make a path at 100 m spacing and plot on a map as a thick red line:</p><pre class="codeinput"><span class="comment">% Create a path between two points:</span>
+[lat,lon] = pspath([-74.6 -77.2],[-106.7 -109],100);
+
+<span class="comment">% Make a map of the region:</span>
+mapzoomps <span class="string">'thwaites glacier'</span> <span class="comment">% zooms a map</span>
+measuresps(<span class="string">'speed'</span>,<span class="string">'alpha'</span>,0.75) <span class="comment">% speed as semitransparent color</span>
+measuresps(<span class="string">'vel'</span>,<span class="string">'k'</span>)        <span class="comment">% black velocity vectors</span>
+modismoaps(<span class="string">'contrast'</span>,<span class="string">'low'</span>) <span class="comment">% modismoa background image</span>
+plotps(lat,lon,<span class="string">'r-'</span>,<span class="string">'linewidth'</span>,2)
+antbounds(<span class="string">'gl'</span>)              <span class="comment">% plots a grounding line</span>
+antbounds(<span class="string">'coast'</span>)           <span class="comment">% plots a coast line</span>
+scalebarps(<span class="string">'color'</span>,<span class="string">'w'</span>)      <span class="comment">% adds a grapical reference scale</span>
+axis <span class="string">off</span>                     <span class="comment">% removes axis tick labels</span>
+</pre><img vspace="5" hspace="5" src="antarctic_slr_01.png" alt=""> <h2 id="2">Profile view</h2><p>A profile view along that red line looks like this. Plot the profile relative to path distance for convenience later on.</p><pre class="codeinput">d = pathdistps(lat,lon,<span class="string">'km'</span>);
+
+figure
+bedmap2_profile(lat,lon,<span class="string">'horiz'</span>,d)
+xlabel <span class="string">'distance along track (km)'</span>
+ylabel <span class="string">'elevation relative to the geoid (m)'</span>
+</pre><img vspace="5" hspace="5" src="antarctic_slr_02.png" alt=""> <h2 id="3">Height above flotation</h2><p>Not all of the ice in Antarctica has the potential to cause sea level rise. For starters, any ice that is currently below sea level can't possibly add to sea level when it melts, because when the ice goes away the void will just be filled by water.</p><p>Let's add a black dotted line at sea level to make it clear that any ice below this line cannot contribute to sea level:</p><pre class="codeinput">hold <span class="string">on</span>
+plot(xlim,[0 0],<span class="string">'k'</span>)
+text(d(end),0,<span class="string">'Ice that''s currently below sea level cannot add to sea level. '</span>,<span class="keyword">...</span>
+   <span class="string">'color'</span>,<span class="string">'k'</span>,<span class="string">'horiz'</span>,<span class="string">'right'</span>,<span class="string">'vert'</span>,<span class="string">'top'</span>)
+</pre><img vspace="5" hspace="5" src="antarctic_slr_03.png" alt=""> <p>This is an interesting perspective, because we already see that half of the ice in this profile does not have the potential to contribute to sea level. Furthermore, the fact that the ice here is grounded below sea level gives Thwaites the potential to contribute to rapid sea level rise through <a href="https://en.wikipedia.org/wiki/Marine_ice_sheet_instability">marine ice sheet instability</a>, yet, in this way of looking at it, the ice that's currently below sea level cannot contribute to sea level rise.</p><p>At first glance that may seem like a contradiction, but then again, it's actually quite straightforward and simple: <i>Only ice that's currently above sea level can possibly add to the volume of the ocean and change sea level.</i></p><p>And actually, this truth is even more pronounced when you consider the fact that when ice melts, it changes density. Accounting for the density change means determining the volume of water required to fill the space between sea level and the submarine bed. Then we convert that volume of water to the equivalent volume of ice.</p><p>The density conversion we need to do here is functionally equivalent to determining the freeboard height of an iceberg from its base elevation, where in this case the base is the known bed topography. AMT has a <tt>base2freeboard</tt> function to do exactly that, but I'll also show how you can do it yourself if you prefer a DIY approach:</p><pre class="codeinput"><span class="comment">% Get elevations of ice surface and base:</span>
+sfz = bedmap2_interp(lat,lon,<span class="string">'surface'</span>);
+base = sfz - bedmap2_interp(lat,lon,<span class="string">'thickness'</span>);
+
+<span class="comment">% Get the freeboard level corresponding to base elevation:</span>
+fb = base2freeboard(base,<span class="string">'rhow'</span>,1030);
+
+<span class="comment">% Or you can calculate the freeboard height yourself:</span>
+rho_ice = 917; <span class="comment">% (kg/m^3) density of ice</span>
+rho_sw = 1030; <span class="comment">% (kg/m^3) density of seawater</span>
+fb = -base*rho_sw/rho_ice + base;
+
+<span class="comment">% Plot freeboard height:</span>
+plot(d,fb,<span class="string">'r'</span>)
+text(d(end),100,<span class="string">'Anything below the red line cannot contribute to SLR. '</span>,<span class="keyword">...</span>
+   <span class="string">'color'</span>,<span class="string">'r'</span>,<span class="string">'horiz'</span>,<span class="string">'right'</span>,<span class="string">'vert'</span>,<span class="string">'top'</span>)
+</pre><img vspace="5" hspace="5" src="antarctic_slr_04.png" alt=""> <p>One thing that's important to note in the figure above is that even though the ice below sea level can't contribute to  sea level rise, the shape and depth of the bedrock topography far below sea level still have a significant impact on the volume of ice that <i>can</i> contribute to sea level. That's because the shape of the bed controls the freeboard height. By extension, wherever the bedrock elevation is unknown, we also can't know how much sea level potential exists there, even if the surface elevation is known with great accuracy.</p><p>Here it is a little more bluntly:</p><pre class="codeinput"><span class="comment">% Get indices of finite (non-NaN) values:</span>
+isf = isfinite(fb);
+
+<span class="comment">% Plot the finite region as a patch object:</span>
+patch([d(isf),fliplr(d(isf))],[base(isf),fliplr(fb(isf))],<span class="string">'y'</span>);
+
+<span class="comment">% Plot zero elevation once again:</span>
+plot(xlim,[0 0],<span class="string">'k:'</span>)
+
+<span class="comment">% Label:</span>
+text(200,-300,{<span class="string">'This yellow region'</span>;<span class="string">'melts to hydrostatic equilibrium.'</span>},<span class="keyword">...</span>
+   <span class="string">'fontsize'</span>,16,<span class="string">'horiz'</span>,<span class="string">'center'</span>)
+</pre><img vspace="5" hspace="5" src="antarctic_slr_05.png" alt=""> <h2 id="6">Firn correction</h2><p>The red freeboard line in the figure above represents the surface of a hydrostatically floating iceberg whose base matches the topography of the ice sheet base. If it weren't for the weight of the overlying ice holding it down, it would just be a giant, barely-floating iceberg that would have no effect on sea level if it were to melt. <i>Only the volume of ice above the red line matters to sea level rise.</i></p><p>But there's still one more big thing to account for. The firn and snow near the upper surface of the ice contains lots of air. That air can't contribute to sea level rise either. The total sum of all the air in the ice column is called the <i>firn air content</i> or (more ambiguously) the <i>firn correction</i>. If you remove all the air from the ice sheet, the resulting surface of the ice would be a bit lower than the observed surface, and it would look like this (Using Le Brocq's <a href="https://www.mathworks.com/matlabcentral/fileexchange/69216">ALBMAP</a> data for the firn correction).</p><pre class="codeinput">sfz_corrected = sfz - albmap_interp(<span class="string">'firn'</span>,lat,lon);
+
+plot(d,sfz_corrected,<span class="string">'color'</span>,rgb(<span class="string">'dark green'</span>))
+</pre><img vspace="5" hspace="5" src="antarctic_slr_06.png" alt=""> <p>The green line above indicates where the surface of the ice would be if you could suck out all of the ice sheet's air and be left with nothing but pure ice of constant density (about 917 kg/m^3). In theory it should line up exactly with the freeboard line on the ice shelf, and then the two lines would diverge at the grounding line, but the Bedmap2 and ALBMAP datasets were generated under slightly different assumptions, so there's a little bit of mismatch.</p><pre class="codeinput"><span class="comment">% Get indices of finite (non-NaN) values:</span>
+isf = isfinite(sfz_corrected);
+
+<span class="comment">% Plot the finite region as a patch object:</span>
+patch([d(isf),fliplr(d(isf))],[sfz_corrected(isf),fliplr(sfz(isf))],<span class="string">'g'</span>,<span class="keyword">...</span>
+   <span class="string">'facecolor'</span>,rgb(<span class="string">'green'</span>));
+
+<span class="comment">% Label:</span>
+text(80,630,{<span class="string">'This thin green section'</span>;<span class="string">'is the volume of air'</span>;<span class="string">'in the ice sheet.'</span>},<span class="keyword">...</span>
+   <span class="string">'fontsize'</span>,16,<span class="string">'horiz'</span>,<span class="string">'center'</span>,<span class="string">'color'</span>,rgb(<span class="string">'dark green'</span>),<span class="keyword">...</span>
+   <span class="string">'vert'</span>,<span class="string">'bottom'</span>,<span class="string">'horiz'</span>,<span class="string">'center'</span>)
+</pre><img vspace="5" hspace="5" src="antarctic_slr_07.png" alt=""> <p>Now we can see the volume of ice near Thwaites that really can affect sea level. To deal with the slight mismatch between the freeboard height and firn-corrected surfaces, let's just find the index of the last time <tt>fb</tt> is greater than <tt>sfz_corrected</tt>:</p><pre class="codeinput">ind = find(fb&gt;=sfz_corrected,1,<span class="string">'last'</span>);
+</pre><p>From that index, build a patch object bounded by <tt>fb</tt> and <tt>sfz_corrected</tt>:</p><pre class="codeinput">patch([d(ind:end),fliplr(d(ind:end))],<span class="keyword">...</span>
+   [fb(ind:end),fliplr(sfz_corrected(ind:end))],<span class="string">'r'</span>);
+
+text(200,500,{<span class="string">'Only this red region '</span>;<span class="string">'can contribute to SLR. '</span>},<span class="keyword">...</span>
+   <span class="string">'color'</span>,<span class="string">'w'</span>,<span class="string">'fontsize'</span>,16,<span class="string">'horiz'</span>,<span class="string">'center'</span>)
+</pre><img vspace="5" hspace="5" src="antarctic_slr_08.png" alt=""> <h2 id="10">Pan-Antarctic map of sea level potential</h2><p>The profile-view example above makes it clear that sea level potential exists wherever there is ice between the firn-corrected surface elevation and the freeboard height corresponding to the ice sheet bed. Let's calculate that using Bedmap2 data, and use ALBMAP for the firn correction:</p><pre class="codeinput">[X,Y,sfz] = bedmap2_data(<span class="string">'surface'</span>,<span class="string">'xy'</span>);
+
+fac = albmap_interp(<span class="string">'firn'</span>,X,Y); <span class="comment">% (m) firn air content</span>
+sfz_corrected = sfz - fac;
+</pre><p>In the profile example above we didn't encounter any bits of land where the bed elevation is above sea level, so we we didn't have to worry about any nonphysical freeboard heights. But there is some bedrock above sea level in Antarctica, and wherever that is the case we can simply let the bottom of the SLR-potential-ice layer be the bed elevation.</p><pre class="codeinput">bed = bedmap2_data(<span class="string">'bed'</span>);
+rho_sw = 1030; <span class="comment">% kg/m^3 density of seawater used by Fretwell et al.</span>
+freeboard = base2freeboard(bed,<span class="string">'rhow'</span>,rho_sw);
+
+<span class="comment">% Account for bedrock above sea level:</span>
+freeboard(bed&gt;=0) = bed(bed&gt;=0);
+</pre><p>We now have the firn-corrected surface elevation and the freeboard height (or bedrock elevation where it's above sea level). The SLR potential exists between the two layers:</p><pre class="codeinput"><span class="comment">% Thickness of the layer of ice that can contribute to SLR:</span>
+SLR_thickness = sfz_corrected - freeboard;
+
+<span class="comment">% Mask out everything except grounded ice:</span>
+mask = bedmap2_data(<span class="string">'icemask'</span>);
+SLR_thickness(mask&gt;0) = NaN;
+
+<span class="comment">% Fix negative values around steep topography:</span>
+SLR_thickness(SLR_thickness&lt;0) = 0;
+
+figure
+h = imagesc(X(1,:),Y(:,1),SLR_thickness);
+h.AlphaData = isfinite(SLR_thickness); <span class="comment">% makes NaNs transparent</span>
+axis <span class="string">xy</span> <span class="string">image</span> <span class="string">off</span>
+cb = colorbar;
+ylabel(cb,<span class="string">'thickness of potential SLR layer (m)'</span>)
+cmocean <span class="string">amp</span> <span class="comment">% optional red colormap</span>
+antbounds(<span class="string">'gl'</span>,<span class="string">'color'</span>,.5*[1 1 1])
+</pre><img vspace="5" hspace="5" src="antarctic_slr_09.png" alt=""> <h2 id="13">Calculate Antarctica's total SLR potential</h2><p>Converting the thickness of the SLR-potential layer to meters of sea level rise is now just a matter of summing up grid cells and converting units. Start by converting to cubic meters, meaning we need to multiply the thickness of the ice layer in each grid cell by the area of each grid cell (1000^2 m). Then convert cubic meters of ice to the mass of ice, then mass to sea level potential:</p><pre class="codeinput"><span class="comment">% Total ice volume available for SLR, in cubic meters:</span>
+TotalSLRVolume = sum(SLR_thickness(:)*1000^2,<span class="string">'omitnan'</span>);
+
+<span class="comment">% Total ice mass available for SLR (kg):</span>
+rho_ice = 917; <span class="comment">% kg/m^3 density of ice</span>
+TotalSLRmass = TotalSLRVolume*rho_ice;
+
+<span class="comment">% Convert mass to Gt, and then to impact on SLR in meters:</span>
+SLR_m_per_Gt = .001/362;  <span class="comment">% (m/Gt) sea level potential per Gt water (or ice) from Meier et al. 2007</span>
+SLR = (TotalSLRmass*1e-12)*SLR_m_per_Gt
+</pre><pre class="codeoutput">SLR =
+         56.44
+</pre><h2 id="14">Correcting for ocean salinity effects</h2><p>The number above suggests that Antarctica's sea level potential is about 56.4 m. This is lower than the 58.3 m value reported in the Fretwell et al. 2013 paper, and there's an interesting reason why: <i>Melting ice dilutes ocean water.</i> The associated changes in salinity don't affect ocean mass, but do affect ocean density, as described by <a href="http://dx.doi.org/10.1029/2007GL030784">Jenkins and Holland, 2007</a>. We could be very fancy about this and use their time-dependent solution (their equation 17), but since we're making so many approximations here, let's just stick with their equation 1, which amounts to about a 3% correction factor.</p><p>The first thing to note is that this effect applies to <b><i>ALL</i></b> of Antarctica's ice, because the total volume of melted ice is what affects sea salinity. So all those statements above, where I said that only the ice presently above sea level matters to sea level potential, well I should have included this asterisk: Ice that's below sea leve, and even ice shelves that are floating in hydrostatic equilibrium, affect sea level when they melt, because they change the ocean's salinity and density. To account for this, we can't just apply the correction to the SLR value we calculated above. Instead, we'll have to apply the correction to ALL of Anarctica's ice. That's easy enough to do by working on the ice thickness dataset. We'll put the ice thickness through the same series of conversions that we did with the sea-level-potential corrections above:</p><pre class="codeinput"><span class="comment">% Thickness of pure ice:</span>
+th = bedmap2_data(<span class="string">'thickness'</span>)-fac;
+
+<span class="comment">% Sea level equivalent of all ice:</span>
+SL_eq = sum(th(:)*1000^2,<span class="string">'omitnan'</span>)*rho_ice*SLR_m_per_Gt*1e-12;
+
+<span class="comment">% Calculate salinity correction factor:</span>
+rho_fw = 1000; <span class="comment">% kg/m^3 density of fresh water</span>
+CorrectionFactor = (rho_sw-rho_fw)/rho_sw;
+
+SLR_corrected = SLR + SL_eq*CorrectionFactor
+</pre><pre class="codeoutput">SLR_corrected =
+         58.36
+</pre><p>Now the 58.36 m value is approximately in agreement with the 58.3 m reported by Fretwell et al., 2013. Any small differences are likely due to differences in Ligtenberg's firn air content (used by Fretwell et al.) versus the ALBMAP values used here.</p><h2 id="16">More corrections</h2><p>The Fretwell et al 2013 paper clearly spells out a list of second-order effects that could also be important to sea level changes, but most of them are time-dependent, difficult to model, rely on many assumptions, or are just not well understood. So following Fretwell et al., I haven't included such second-order effects either. But in case you're curious about what you're missing out on, they include:</p><div><ul><li>crustal rebound,</li><li>geoid modification,</li><li>thermosteric modification of the oceans,</li><li>other stuff?</li></ul></div><h2 id="17">Citing this tutorial</h2><p>If this tutorial is useful for you, please cite my Antarctic Mapping Tools paper,</p><p>Greene, C. A., Gwyther, D. E., &amp; Blankenship, D. D. Antarctic Mapping Tools for Matlab. <i>Computers &amp; Geosciences</i>. 104 (2017) pp.151-157. <a href="http://dx.doi.org/10.1016/j.cageo.2016.08.003">doi:10.1016/j.cageo.2016.08.003</a>.</p><p>And of course, also cite any data sources you use. This tutorial relied primarily on data from Fretwell et al and Le Brocq et al:</p><p>Fretwell, P., et al. "Bedmap2: improved ice bed, surface and thickness datasets for Antarctica." The Cryosphere 7.1 (2013). <a href="http://dx.doi.org/10.5194/tc-7-375-2013">http://dx.doi.org/10.5194/tc-7-375-2013</a></p><p>Le Brocq, Anne M; Payne, Antony J; Vieli, Andreas (2010): An improved Antarctic dataset for high resolution numerical ice sheet models (ALBMAP v1). <i>Earth System Science Data,</i> 2(2), 247-260, <a href="https://doi.org/10.5194/essd-2-247-2010">https://doi.org/10.5194/essd-2-247-2010</a></p><h2 id="18">Author Info</h2><p>This file was written by Chad A. Greene, October 2018.</p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Antarctic Sea Level Rise 
+% This tutorial describes some of the basic concepts in calculating Antarctica's 
+% potential contribution to sea level rise. It also shows how you can do it
+% with Antarctic Mapping Tools for Matlab (Greene et al., 2017). 
+% 
+% *Key points in this tutorial:*
+% 
+% # Not all Antarctic ice has the potential to affect sea levels. 
+% # Only ice that's currently above sea level can possibly cause increased sea levels. 
+% # Due to the fact that H2O changes density when it melts, and due to a significant
+% volume occupied by air in Antarctica's snow/firn surface layer, some of the ice that is 
+% currently above sea level would not contribute to sea level rise if it melts. 
+% # Despite these caveats, Antarctica still holds enough ice to raise global 
+% sea levels by about 58 m (190 ft). 
+% # Remember when I said that not all ice in Antarctica can impact sea levels, 
+% and that we must only consider the ice that's currently above sea level? Well, 
+% there is one small correction to that statement, and its's related to how
+% adding meltwater to the ocean affects the salinity and density of the ocean. 
+% 
+% Let me know if I've missed anything.
+% 
+% -Chad A. Greene. 
+
+%% Thwaites Glacier
+% Here's a profile of Thwaites Glacier. Use |pspath| to make a path
+% at 100 m spacing and plot on a map as a thick red line: 
+
+% Create a path between two points: 
+[lat,lon] = pspath([-74.6 -77.2],[-106.7 -109],100); 
+
+% Make a map of the region: 
+mapzoomps 'thwaites glacier' % zooms a map
+measuresps('speed','alpha',0.75) % speed as semitransparent color 
+measuresps('vel','k')        % black velocity vectors 
+modismoaps('contrast','low') % modismoa background image
+plotps(lat,lon,'r-','linewidth',2) 
+antbounds('gl')              % plots a grounding line
+antbounds('coast')           % plots a coast line
+scalebarps('color','w')      % adds a grapical reference scale
+axis off                     % removes axis tick labels
+
+%% Profile view
+% A profile view along that red line looks like this. Plot the profile
+% relative to path distance for convenience later on. 
+
+d = pathdistps(lat,lon,'km'); 
+
+figure
+bedmap2_profile(lat,lon,'horiz',d)
+xlabel 'distance along track (km)' 
+ylabel 'elevation relative to the geoid (m)'
+
+%% Height above flotation
+% Not all of the ice in Antarctica has the potential to cause sea level 
+% rise. For starters, any ice that is currently below sea level can't 
+% possibly add to sea level when it melts, because when the ice goes away
+% the void will just be filled by water. 
+% 
+% Let's add a black dotted line at sea level to make it clear that any ice below
+% this line cannot contribute to sea level: 
+
+hold on
+plot(xlim,[0 0],'k') 
+text(d(end),0,'Ice that''s currently below sea level cannot add to sea level. ',...
+   'color','k','horiz','right','vert','top') 
+
+%% 
+% This is an interesting perspective, because we already see that half of the 
+% ice in this profile does not have the potential to contribute to sea level. 
+% Furthermore, the fact that the ice here is grounded below sea level gives 
+% Thwaites the potential to contribute to rapid sea level rise through
+% <https://en.wikipedia.org/wiki/Marine_ice_sheet_instability 
+% marine ice sheet instability>, yet, in this way of looking at it, the ice
+% that's currently below sea level cannot contribute to sea level rise. 
+% 
+% At first glance that may seem like a contradiction, but then again, it's 
+% actually quite straightforward and simple: _Only ice that's currently above
+% sea level can possibly add to the volume of the ocean and change sea level._ 
+% 
+% And actually, this truth is even more pronounced when you consider the fact
+% that when ice melts, it changes density. Accounting for the density change
+% means determining the volume of water required to fill the space between 
+% sea level and the submarine bed. Then we convert that volume of water to 
+% the equivalent volume of ice. 
+% 
+% The density conversion we need to do here is functionally equivalent to determining
+% the freeboard height of an iceberg from its base elevation, where in this case
+% the base is the known bed topography. AMT has a |base2freeboard| function to 
+% do exactly that, but I'll also show how you can do it yourself if you
+% prefer a DIY approach: 
+
+% Get elevations of ice surface and base: 
+sfz = bedmap2_interp(lat,lon,'surface'); 
+base = sfz - bedmap2_interp(lat,lon,'thickness'); 
+
+% Get the freeboard level corresponding to base elevation: 
+fb = base2freeboard(base,'rhow',1030); 
+
+% Or you can calculate the freeboard height yourself: 
+rho_ice = 917; % (kg/m^3) density of ice
+rho_sw = 1030; % (kg/m^3) density of seawater
+fb = -base*rho_sw/rho_ice + base; 
+
+% Plot freeboard height: 
+plot(d,fb,'r') 
+text(d(end),100,'Anything below the red line cannot contribute to SLR. ',...
+   'color','r','horiz','right','vert','top') 
+
+%% 
+% One thing that's important to note in the figure above is that even though
+% the ice below sea level can't contribute to  sea level rise, the shape and 
+% depth of the bedrock topography far below sea level still have a significant 
+% impact on the volume of ice that _can_ contribute to sea level. That's 
+% because the shape of the bed controls the freeboard height. By extension, 
+% wherever the bedrock elevation is unknown, we also can't know how much sea level
+% potential exists there, even if the surface elevation is known with great
+% accuracy. 
+% 
+% Here it is a little more bluntly: 
+
+% Get indices of finite (non-NaN) values: 
+isf = isfinite(fb); 
+
+% Plot the finite region as a patch object: 
+patch([d(isf),fliplr(d(isf))],[base(isf),fliplr(fb(isf))],'y'); 
+
+% Plot zero elevation once again: 
+plot(xlim,[0 0],'k:') 
+
+% Label: 
+text(200,-300,{'This yellow region';'melts to hydrostatic equilibrium.'},...
+   'fontsize',16,'horiz','center') 
+
+%% Firn correction 
+% The red freeboard line in the figure above represents the surface of a hydrostatically
+% floating iceberg whose base matches the topography of the ice sheet base. 
+% If it weren't for the weight of the overlying ice holding it down, it would just 
+% be a giant, barely-floating iceberg that would have no effect on sea level if 
+% it were to melt. _Only the volume of ice above the red line matters to sea level rise._ 
+% 
+% But there's still one more big thing to account for. The firn and snow near the upper
+% surface of the ice contains lots of air. That air can't contribute to
+% sea level rise either. The total sum of all the air in the ice column is
+% called the _firn air content_ or (more ambiguously) the _firn correction_. 
+% If you remove all the air from the ice sheet, the resulting surface of the
+% ice would be a bit lower than the observed surface, and it would look like this
+% (Using Le Brocq's <https://www.mathworks.com/matlabcentral/fileexchange/69216
+% ALBMAP> data for the firn correction). 
+
+sfz_corrected = sfz - albmap_interp('firn',lat,lon); 
+
+plot(d,sfz_corrected,'color',rgb('dark green')) 
+
+%% 
+% The green line above indicates where the surface of the ice would be if you
+% could suck out all of the ice sheet's air and be left with nothing but pure ice of constant
+% density (about 917 kg/m^3). In theory it should line up exactly with the 
+% freeboard line on the ice shelf, and then the two lines would diverge at the 
+% grounding line, but the Bedmap2 and ALBMAP datasets were generated under 
+% slightly different assumptions, so there's a little bit of mismatch. 
+% 
+
+% Get indices of finite (non-NaN) values: 
+isf = isfinite(sfz_corrected); 
+
+% Plot the finite region as a patch object: 
+patch([d(isf),fliplr(d(isf))],[sfz_corrected(isf),fliplr(sfz(isf))],'g',...
+   'facecolor',rgb('green')); 
+
+% Label: 
+text(80,630,{'This thin green section';'is the volume of air';'in the ice sheet.'},...
+   'fontsize',16,'horiz','center','color',rgb('dark green'),...
+   'vert','bottom','horiz','center') 
+
+%% 
+% Now we can see the volume of ice near Thwaites that really can affect 
+% sea level. To deal with the slight mismatch between the freeboard height and 
+% firn-corrected surfaces, let's just find the index of the last time |fb|
+% is greater than |sfz_corrected|: 
+
+ind = find(fb>=sfz_corrected,1,'last'); 
+
+%% 
+% From that index, build a patch object bounded by |fb| and |sfz_corrected|:
+
+patch([d(ind:end),fliplr(d(ind:end))],...
+   [fb(ind:end),fliplr(sfz_corrected(ind:end))],'r'); 
+
+text(200,500,{'Only this red region ';'can contribute to SLR. '},...
+   'color','w','fontsize',16,'horiz','center') 
+
+%% Pan-Antarctic map of sea level potential 
+% The profile-view example above makes it clear that sea level potential
+% exists wherever there is ice between the firn-corrected surface elevation 
+% and the freeboard height corresponding to the ice sheet bed. Let's calculate
+% that using Bedmap2 data, and use ALBMAP for the firn correction: 
+
+[X,Y,sfz] = bedmap2_data('surface','xy'); 
+
+fac = albmap_interp('firn',X,Y); % (m) firn air content 
+sfz_corrected = sfz - fac; 
+
+%% 
+% In the profile example above we didn't encounter any bits of land
+% where the bed elevation is above sea level, so we we didn't have to 
+% worry about any nonphysical freeboard heights. But there is some bedrock
+% above sea level in Antarctica, and wherever that is the case we can 
+% simply let the bottom of the SLR-potential-ice layer be the bed elevation.
+
+bed = bedmap2_data('bed'); 
+rho_sw = 1030; % kg/m^3 density of seawater used by Fretwell et al.
+freeboard = base2freeboard(bed,'rhow',rho_sw); 
+
+% Account for bedrock above sea level: 
+freeboard(bed>=0) = bed(bed>=0); 
+
+%% 
+% We now have the firn-corrected surface elevation and the freeboard
+% height (or bedrock elevation where it's above sea level). The SLR
+% potential exists between the two layers: 
+
+% Thickness of the layer of ice that can contribute to SLR: 
+SLR_thickness = sfz_corrected - freeboard; 
+
+% Mask out everything except grounded ice: 
+mask = bedmap2_data('icemask'); 
+SLR_thickness(mask>0) = NaN; 
+
+% Fix negative values around steep topography:  
+SLR_thickness(SLR_thickness<0) = 0; 
+
+figure
+h = imagesc(X(1,:),Y(:,1),SLR_thickness); 
+h.AlphaData = isfinite(SLR_thickness); % makes NaNs transparent
+axis xy image off
+cb = colorbar; 
+ylabel(cb,'thickness of potential SLR layer (m)') 
+cmocean amp % optional red colormap
+antbounds('gl','color',.5*[1 1 1])
+
+%% Calculate Antarctica's total SLR potential
+% Converting the thickness of the SLR-potential layer to meters of sea level 
+% rise is now just a matter of summing up grid cells and converting units. 
+% Start by converting to cubic meters, meaning we need to multiply the thickness
+% of the ice layer in each grid cell by the area of each grid cell (1000^2 m). 
+% Then convert cubic meters of ice to the mass of ice, then mass to sea level 
+% potential: 
+
+% Total ice volume available for SLR, in cubic meters: 
+TotalSLRVolume = sum(SLR_thickness(:)*1000^2,'omitnan'); 
+
+% Total ice mass available for SLR (kg): 
+rho_ice = 917; % kg/m^3 density of ice
+TotalSLRmass = TotalSLRVolume*rho_ice; 
+
+% Convert mass to Gt, and then to impact on SLR in meters: 
+SLR_m_per_Gt = .001/362;  % (m/Gt) sea level potential per Gt water (or ice) from Meier et al. 2007
+SLR = (TotalSLRmass*1e-12)*SLR_m_per_Gt
+
+%% Correcting for ocean salinity effects
+% The number above suggests that Antarctica's sea level potential is about 56.4 m. This is
+% lower than the 58.3 m value reported in the Fretwell et al. 2013 paper, 
+% and there's an interesting reason why: _Melting ice dilutes ocean water._ 
+% The associated changes in salinity don't affect ocean mass, but do affect
+% ocean density, as described by <http://dx.doi.org/10.1029/2007GL030784 Jenkins and Holland, 2007>. 
+% We could be very fancy about this and use their time-dependent solution (their equation 17), but 
+% since we're making so many approximations here, let's just stick with their 
+% equation 1, which amounts to about a 3% correction factor. 
+% 
+% The first thing to note is that this effect applies to *_ALL_* of Antarctica's 
+% ice, because the total volume of melted ice is what affects sea salinity. So all those 
+% statements above, where I said that only the ice presently above sea level matters
+% to sea level potential, well I should have included this asterisk: Ice that's below 
+% sea leve, and even ice shelves that are floating in hydrostatic equilibrium,
+% affect sea level when they melt, because they change the ocean's salinity and density. 
+% To account for this, we can't just apply the correction to the SLR value
+% we calculated above. Instead, we'll have to apply the correction to ALL of 
+% Anarctica's ice. That's easy enough to do by working on the ice thickness 
+% dataset. We'll put the ice thickness through the same series of conversions
+% that we did with the sea-level-potential corrections above: 
+
+% Thickness of pure ice: 
+th = bedmap2_data('thickness')-fac; 
+
+% Sea level equivalent of all ice: 
+SL_eq = sum(th(:)*1000^2,'omitnan')*rho_ice*SLR_m_per_Gt*1e-12; 
+
+% Calculate salinity correction factor: 
+rho_fw = 1000; % kg/m^3 density of fresh water
+CorrectionFactor = (rho_sw-rho_fw)/rho_sw; 
+
+SLR_corrected = SLR + SL_eq*CorrectionFactor
+
+%% 
+% Now the 58.36 m value is approximately in agreement with the 58.3 m reported
+% by Fretwell et al., 2013. Any small differences are likely due to differences
+% in Ligtenberg's firn air content (used by Fretwell et al.) versus the ALBMAP 
+% values used here. 
+
+%% More corrections
+% The Fretwell et al 2013 paper clearly spells out a list of second-order 
+% effects that could also be important to sea level changes, but most of them 
+% are time-dependent, difficult to model, rely on many assumptions, or are 
+% just not well understood. So following Fretwell et al., I haven't included 
+% such second-order effects either. But in case you're curious about what you're 
+% missing out on, they include: 
+% 
+% * crustal rebound, 
+% * geoid modification, 
+% * thermosteric modification of the oceans, 
+% * other stuff? 
+% 
+%% Citing this tutorial
+% If this tutorial is useful for you, please cite my Antarctic Mapping 
+% Tools paper, 
+% 
+% Greene, C. A., Gwyther, D. E., & Blankenship, D. D. Antarctic Mapping Tools for Matlab. 
+% _Computers & Geosciences_. 104 (2017) pp.151-157. <http://dx.doi.org/10.1016/j.cageo.2016.08.003 doi:10.1016/j.cageo.2016.08.003>.
+% 
+% And of course, also cite any data sources you use. This tutorial relied
+% primarily on data from Fretwell et al and Le Brocq et al: 
+% 
+% Fretwell, P., et al. "Bedmap2: improved ice bed, surface and thickness datasets for Antarctica." The Cryosphere 7.1 (2013).
+% <http://dx.doi.org/10.5194/tc-7-375-2013> 
+% 
+% Le Brocq, Anne M; Payne, Antony J; Vieli, Andreas (2010): An improved 
+% Antarctic dataset for high resolution numerical ice sheet models (ALBMAP v1). 
+% _Earth System Science Data,_ 2(2), 247-260, <https://doi.org/10.5194/essd-2-247-2010>
+% 
+%% Author Info
+% This file was written by Chad A. Greene, October 2018. 
+
+##### SOURCE END #####
+--></body></html>

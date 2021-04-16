@@ -1,0 +1,215 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>antmap documentation</title><meta name="generator" content="MATLAB 8.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-05-22"><meta name="DC.source" content="antmap_documentation.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>antmap</tt> documentation</h1><!--introduction--><p><tt>antmap</tt> is part of Antarctic Mapping Tools for Matlab (Greene et al., 2017). Click <a href="List_of_functions.html">here</a> for a complete list of functions in AMT.</p><p>Use of <tt>antmap</tt>, <tt>mapzoom</tt> or anything that requires a license for Matlab's Mapping Toolbox is not recommended. Since I started developing AMT, I've come to realize Matlab's Mapping Toolbox is often rather inefficient, inflexible, and dependence on it can make it difficult to share code with colleagues who might not have a license. Instead of <tt>antmap</tt>, try using <a href="mapzoomps_documentation.html"><tt>mapzoomps</tt></a> and the suite of functions ending in <tt>ps</tt>.</p><p>This function initializes a polar stereographic map of the southern hemisphere. This function is an adaptation of Andrew Roberts' <a href="http://www.mathworks.com/matlabcentral/fileexchange/30414"><tt>ncpolarm</tt></a> function. This function requires Matlab's Mapping Toolbox.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Example 1</a></li><li><a href="#5">Example 2</a></li><li><a href="#7">Citing AMT</a></li><li><a href="#8">Author Info, function lineage</a></li></ul></div><h2>Syntax<a name="1"></a></h2><pre>antmap
+antmap('northernlimit',latitude)
+antmap('grid')
+antmap('lats',Latitudes)
+antmap('lons',Longitudes)
+antmap(...,'LineProperty',LineValue)
+antmap(...,'Frame','off')
+antmap(...,'OceanColor',Color)
+h = antmap(...)</pre><h2>Description<a name="2"></a></h2><p><tt>antmap</tt> initializes a polar stereographic projection map of Antarctica. If a figure is current, the new map is placed in the current figure. If no figure is current, a new figure is opened and a map is initialized.</p><p><tt>antmap('northernlimit',latitude)</tt> sets the northern limit as a scalar latitude value between -90 and 0, northernmost limit of the map. Default is -63. If a positive value is declared, it is automatically switched to a negative value to indicate southern hemisphere.</p><p><tt>antmap('grid')</tt> places a grid or graticule on the map.</p><p><tt>antmap('lats',Latitudes)</tt> places grid lines a specified latitudes.</p><p><tt>antmap('lons',Longitudes)</tt> places grid lines a specified longitudes.</p><p><tt>antmap(...,'LineProperty',LineValue)</tt> sets line properties of a grid.</p><p><tt>antmap(...,'Frame','off')</tt> removes frame from map perimeter. Default value is <tt>'Frame', 'off'</tt>. Note that turning the frame off also removes ocean color.</p><p><tt>antmap(...,'OceanColor',Color)</tt> specifies background color by Matlab's color names (e.g., <tt>'red'</tt>, <tt>'blue'</tt>,etc), abbreviations (e.g., <tt>'r'</tt>, <tt>'b'</tt>), or RGB triple.</p><p><tt>h = antmap(...)</tt> returns a handle <tt>h</tt> of new axes.</p><h2>Example 1<a name="3"></a></h2><p>Plot an ugly and inaccurate rendition of Antarctica's coast line:</p><pre class="codeinput">load <span class="string">coast</span>
+antmap
+plotm(lat,long)
+</pre><img vspace="5" hspace="5" src="antmap_documentation_01.png" alt=""> <p>The frame from the image above may be removed by declaring <tt>'frame','off'</tt>:</p><pre class="codeinput">antmap(<span class="string">'frame'</span>,<span class="string">'off'</span>)
+</pre><img vspace="5" hspace="5" src="antmap_documentation_02.png" alt=""> <h2>Example 2<a name="5"></a></h2><p>Plot a graticule under and over that ugly continent, and specify locations and <tt>LineSpec</tt> for another grid:</p><pre class="codeinput">figure(<span class="string">'position'</span>,[100 100 1000 400])
+subplot(1,3,1)
+antmap(<span class="string">'grid'</span>)              <span class="comment">% initializes left map and plots grid</span>
+patchm(lat,long,<span class="string">'y'</span>)        <span class="comment">% plots yellow continent atop grid</span>
+
+subplot(1,3,2)
+antmap                      <span class="comment">% initializes center map</span>
+patchm(lat,long,<span class="string">'b'</span>)        <span class="comment">% plots blue continent</span>
+antmap(<span class="string">'grid'</span>,<span class="string">'color'</span>,<span class="string">'m'</span>)  <span class="comment">% overlays magenta grid atop continent</span>
+
+subplot(1,3,3)
+antmap(<span class="string">'lats'</span>,-80:10:-50,<span class="keyword">...</span><span class="comment">% Initializes &amp; plots lines at 50, 60, 70, &amp; 80 S</span>
+    <span class="string">'lons'</span>,0:45:180,<span class="keyword">...</span><span class="comment">     % and 0, 45, 95, etc longitude</span>
+    <span class="string">'color'</span>,<span class="string">'red'</span>,<span class="keyword">...</span><span class="comment">       % in red</span>
+    <span class="string">'linewidth'</span>,2,<span class="keyword">...</span><span class="comment">       % kinda thick</span>
+    <span class="string">'linestyle'</span>,<span class="string">':'</span>,<span class="keyword">...</span><span class="comment">     % and dotted</span>
+    <span class="string">'oceancolor'</span>,rgb(<span class="string">'ocean blue'</span>)) <span class="comment">% and sets ocean color.</span>
+patchm(lat,long,[.5 .5 .5]) <span class="comment">% plot gray continent</span>
+</pre><img vspace="5" hspace="5" src="antmap_documentation_03.png" alt=""> <p>In the third subplot above, the <a href="http://www.mathworks.com/matlabcentral/fileexchange/46872-intuitive-rgb-color-values-from-xkcd/content/demo/html/rgb_demo.html"><tt>rgb</tt></a> function was used to declare the ocean color as <tt>'ocean blue'</tt>.</p><h2>Citing AMT<a name="7"></a></h2><p>If this function or any other part of Antarctic Mapping Tools is useful for you, please cite the paper that describes AMT.</p><p>Greene, C. A., Gwyther, D. E., &amp; Blankenship, D. D. Antarctic Mapping Tools for Matlab. <i>Computers &amp; Geosciences</i>. 104 (2017) pp. 104 (2017) pp.151-157. <a href="http://dx.doi.org/10.1016/j.cageo.2016.08.003">doi:10.1016/j.cageo.2016.08.003</a>.</p><h2>Author Info, function lineage<a name="8"></a></h2><p>This function has been adapted by Chad Greene of the University of Texas at Austin's Institute for Geophysics (<a href="http://www.ig.utexas.edu">UTIG)</a>.  The <tt>antmap</tt> function is an updated version of an old function called <tt>antmapinit</tt>, which was in an old version of the <a href="http://www.mathworks.com/matlabcentral/fileexchange/42353">Bedmap2 Toolbox for Matlab</a>. <tt>antmapinit</tt> was an adapted version of Andrew Roberts' <a href="http://www.mathworks.com/matlabcentral/fileexchange/30414"><tt>ncpolarm</tt></a> function. Thanks to Dr. Roberts for sharing his function and making this work possible.</p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2012b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |antmap| documentation
+% |antmap| is part of Antarctic Mapping Tools for Matlab (Greene et al., 2017). Click <List_of_functions.html here>
+% for a complete list of functions in AMT. 
+% 
+% Use of |antmap|, |mapzoom| or anything that requires a license for Matlab's Mapping Toolbox
+% is not recommended. Since I started developing AMT, I've come to realize Matlab's Mapping
+% Toolbox is often rather inefficient, inflexible, and dependence on it can make it difficult
+% to share code with colleagues who might not have a license. Instead of |antmap|, try using
+% <mapzoomps_documentation.html |mapzoomps|> and the suite of functions ending in |ps|. 
+% 
+% This function initializes a polar stereographic map of the southern 
+% hemisphere. This function is an adaptation of Andrew Roberts' 
+% <http://www.mathworks.com/matlabcentral/fileexchange/30414 |ncpolarm|> 
+% function. This function requires Matlab's Mapping Toolbox. 
+% 
+%% Syntax
+% 
+%  antmap
+%  antmap('northernlimit',latitude)
+%  antmap('grid')
+%  antmap('lats',Latitudes)
+%  antmap('lons',Longitudes)
+%  antmap(...,'LineProperty',LineValue) 
+%  antmap(...,'Frame','off') 
+%  antmap(...,'OceanColor',Color)
+%  h = antmap(...)
+% 
+% 
+%% Description 
+% 
+% |antmap| initializes a polar stereographic projection map of Antarctica.
+% If a figure is current, the new map is placed in the current figure. If 
+% no figure is current, a new figure is opened and a map is initialized. 
+% 
+% |antmap('northernlimit',latitude)| sets the northern limit as a scalar 
+% latitude value between -90 and 0, northernmost limit of the map. Default 
+% is -63. If a positive value is declared, it is automatically switched to
+% a negative value to indicate southern hemisphere. 
+%
+% |antmap('grid')| places a grid or graticule on the map. 
+% 
+% |antmap('lats',Latitudes)| places grid lines a specified latitudes. 
+% 
+% |antmap('lons',Longitudes)| places grid lines a specified longitudes. 
+% 
+% |antmap(...,'LineProperty',LineValue)| sets line properties of a grid. 
+% 
+% |antmap(...,'Frame','off')| removes frame from map perimeter. Default
+% value is |'Frame', 'off'|. Note that turning the frame off also removes
+% ocean color.  
+% 
+% |antmap(...,'OceanColor',Color)| specifies background color by Matlab's
+% color names (e.g., |'red'|, |'blue'|,etc), abbreviations (e.g., |'r'|, |'b'|), or
+% RGB triple.
+% 
+% |h = antmap(...)| returns a handle |h| of new axes.
+% 
+% 
+%% Example 1
+% Plot an ugly and inaccurate rendition of Antarctica's coast line: 
+
+load coast 
+antmap
+plotm(lat,long) 
+
+%% 
+% The frame from the image above may be removed by declaring
+% |'frame','off'|: 
+
+antmap('frame','off') 
+
+%% Example 2
+% Plot a graticule under and over that ugly continent, and specify 
+% locations and |LineSpec| for another grid: 
+
+figure('position',[100 100 1000 400])
+subplot(1,3,1)
+antmap('grid')              % initializes left map and plots grid
+patchm(lat,long,'y')        % plots yellow continent atop grid
+
+subplot(1,3,2)  
+antmap                      % initializes center map
+patchm(lat,long,'b')        % plots blue continent
+antmap('grid','color','m')  % overlays magenta grid atop continent
+
+subplot(1,3,3) 
+antmap('lats',-80:10:-50,...% Initializes & plots lines at 50, 60, 70, & 80 S
+    'lons',0:45:180,...     % and 0, 45, 95, etc longitude
+    'color','red',...       % in red
+    'linewidth',2,...       % kinda thick
+    'linestyle',':',...     % and dotted
+    'oceancolor',rgb('ocean blue')) % and sets ocean color. 
+patchm(lat,long,[.5 .5 .5]) % plot gray continent
+
+%% 
+% In the third subplot above, the <http://www.mathworks.com/matlabcentral/fileexchange/46872-intuitive-rgb-color-values-from-xkcd/content/demo/html/rgb_demo.html 
+% |rgb|> function was used to declare the ocean color as |'ocean blue'|. 
+
+%% Citing AMT
+% If this function or any other part of Antarctic Mapping Tools is useful for you, please
+% cite the paper that describes AMT.  
+% 
+% Greene, C. A., Gwyther, D. E., & Blankenship, D. D. Antarctic Mapping Tools for Matlab. 
+% _Computers & Geosciences_. 104 (2017) pp. 104 (2017) pp.151-157. <http://dx.doi.org/10.1016/j.cageo.2016.08.003 doi:10.1016/j.cageo.2016.08.003>.
+% 
+%% Author Info, function lineage
+% This function has been adapted by Chad Greene of the University
+% of Texas at Austin's Institute for Geophysics (<http://www.ig.utexas.edu UTIG)>.  The |antmap| function is an updated version of an old function
+% called |antmapinit|, which was in an old version of the <http://www.mathworks.com/matlabcentral/fileexchange/42353 
+% Bedmap2 Toolbox for Matlab>. |antmapinit| was an adapted version of 
+% Andrew Roberts' <http://www.mathworks.com/matlabcentral/fileexchange/30414 
+% |ncpolarm|> function. Thanks to Dr. Roberts for sharing his function and
+% making this work possible. 
+
+##### SOURCE END #####
+--></body></html>

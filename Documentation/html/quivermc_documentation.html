@@ -1,0 +1,351 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>quivermc</title><meta name="generator" content="MATLAB 8.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2014-08-21"><meta name="DC.source" content="quivermc_documentation.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>quivermc</h1><!--introduction--><p>QUIVERMC is an adapted version of Andrew Roberts' <a href="http://www.mathworks.com/matlabcentral/fileexchange/17582"><tt>ncquiverref</tt></a>.  This function fixes a couple of problems with Matlab's <tt>quiverm</tt> function. The two primary issues with <tt>quiverm</tt> are as follows:</p><div><ol><li>Matlab's <tt>quiverm</tt> confoundingly mixes up <tt>u</tt> and <tt>v</tt>.  By convention in the Earth sciences, <tt>u</tt> is the zonal component where eastward is positive and <tt>v</tt> is the meridional component where northward is positive.  Matlab gets this wrong, but the <tt>quivermc</tt> function described here gets it right.</li><li>For reasons related to ship travel and some old legacy code from Navy guys decades ago, Matlab's <tt>quiverm</tt> scales vectors in a strange way that depends on latitude.  If you're plotting some absolute field like wind vectors, there is no physical reason that you would want to scale vectors in such a way that their zonal components shrink to zero at the poles.</li></ol></div><p>In addition to fixing the problems described above, <tt>quivermc</tt> also allows a few extra options including color settings, arrow density, and options for converging or diverging flow.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Examples</a></li><li><a href="#18">Author Info</a></li></ul></div><h2>Syntax<a name="1"></a></h2><pre>quivermc(lat,lon,u,v)
+quivermc(...,'units',unitString)
+quivermc(...,'color',arrowcolor)
+quivermc(...,'colormap',colorMap)
+quivermc(...,'colorbar','ColorbarLocation')
+quivermc(...,'density',densityVal)
+quivermc(...,'arrowstyle',arrowStyle)
+quivermc(...,'linewidth',lineWidth)
+quivermc(...,'reference',referenceScale)
+h = quivermc(...)
+[h,cb] = quivermc(...)</pre><h2>Description<a name="2"></a></h2><p><tt>quivermc(lat,lon,u,v)</tt> plots vectors of zonal and meridional components <tt>u</tt> and <tt>v</tt> at locations given by <tt>lat</tt> and <tt>lon</tt>.</p><p><tt>quivermc(...,'units',unitString)</tt> prints any user-specified units alongside a reference vector.</p><p><tt>quivermc(...,'color',arrowcolor)</tt> sets all arrows to the color given by <tt>arrowcolor</tt>, which can be a string (e.g. 'blue', or 'r') or RGB value. Default color is black.</p><p><tt>quivermc(...,'colormap',colorMap)</tt> colors vectors scaled relative to their magnitude using any colormap such as <tt>jet</tt> or <tt>autumn(256)</tt>.</p><p><tt>quivermc(...,'colorbar','ColorbarLocation')</tt> places a colorbar at a specified location. The argument <tt>'colorbar','on'</tt> may be used to place a colorbar to the outside right of the plot, or a location may be set as</p><div><ul><li><tt>'EastOutside'</tt>, <tt>'vertical'</tt>, or <tt>'on'</tt> Outside right</li><li><tt>'SouthOutside'</tt> or <tt>'horizontal'</tt>  Outside bottom</li><li><tt>'North Inside'</tt> plot box near top</li><li><tt>'South Inside'</tt> bottom</li><li><tt>'East Inside'</tt> right</li><li><tt>'West Inside'</tt> left</li><li><tt>'NorthOutside'</tt> Outside plot box near top</li><li><tt>'SouthOutside'</tt> Outside bottom</li><li><tt>'WestOutside'</tt> Outside left</li></ul></div><p><tt>quivermc(...,'density',densityVal)</tt> allows user-declared downsampling as a percentage of input data width. By default, if the input grid is larger than about 50x50, <tt>quivermc</tt> will attempt to downsample your data to some dimensions close to 50x50.  This is because large datasets take time to plot, and the arrows become so small they're hard to see.  If your dataset is 400x400 and you would like to plot about 100 arrows by 100 arrows instead of the default 50x50, use the name-value pair <tt>'density',25</tt> to specify 25 percent of the data are to be plotted in each dimension.</p><p><tt>quivermc(...,'arrowstyle',arrowStyle)</tt> specifies whether the arrow's tail or tip is located at its respective data point. By default, arrows are centered about their data points.  To pin arrow tails at their data points, declare <tt>'arrowstyle','tail'</tt> or <tt>'arrowstyle','divergent'</tt>. To pin arrow heads at their data points choose <tt>'arrowstyle','tip'</tt> or <tt>'arrowstyle','convergent'</tt>.</p><p><tt>quivermc(...,'linewidth',lineWidth)</tt> sets the linewidth of plotted arrows in points.</p><p><tt>quivermc(...,'reference',referenceScale)</tt> declares the scale by which arrows are plotted. Can be <tt>'median'</tt>, which scales vectors relative to the median magnitude, <tt>'max'</tt>, which scales vectors relative to the maximum magnitude, or <tt>'equal'</tt> to make all vectors equal in size.  The <tt>referenceScale</tt> may also be a scalar value of your choosing. Default is <tt>'max'</tt>.</p><p><tt>h = quivermc(...)</tt> returns the vector handles of plotted arrow objects.</p><p><tt>[h,cb] = quivermc(...)</tt> returns the handle <tt>cb</tt> of the colorbar.</p><h2>Examples<a name="3"></a></h2><pre class="codeinput"><span class="comment">% Make up some data:</span>
+load <span class="string">wind</span> <span class="string">u</span> <span class="string">v</span>
+u = squeeze(u(:,:,1));
+v = squeeze(v(:,:,1));
+u(1:30,:) = u(1:30,:)+5;
+u(31:end,:) = u(31:end,:)-3;
+lat = repmat((20:-1:-14)',1,41);
+lon = repmat(-160:-120,35,1);
+
+<span class="comment">% Initialize a map:</span>
+worldmap([min(lat(:))-1 max(lat(:))+1],[min(lon(:))-1 max(lon(:))+1]);
+cla;
+
+<span class="comment">% Use the quivermc function:</span>
+quivermc(lat,lon,u,v)
+</pre><img vspace="5" hspace="5" src="quivermc_documentation_01.png" alt=""> <p>Specify units:</p><pre class="codeinput">cla <span class="comment">% clears the data that was plotted above</span>
+quivermc(lat,lon,u,v,<span class="string">'units'</span>,<span class="string">'miles per hour'</span>)
+</pre><img vspace="5" hspace="5" src="quivermc_documentation_02.png" alt=""> <p>The <tt>quivermc</tt> function tries to figure out the best reference value for units, but you don't want your reference scale to be referenced to 20 mph--you'd much rather reference 10 mph.</p><pre class="codeinput">cla
+quivermc(lat,lon,u,v,<span class="string">'units'</span>,<span class="string">'miles per hour'</span>,<span class="string">'reference'</span>,10)
+</pre><img vspace="5" hspace="5" src="quivermc_documentation_03.png" alt=""> <p>Make all arrows one color by one of Matlab's color names:</p><pre class="codeinput">cla
+quivermc(lat,lon,u,v,<span class="string">'color'</span>,<span class="string">'b'</span>)
+</pre><img vspace="5" hspace="5" src="quivermc_documentation_04.png" alt=""> <p>Make all arrows one color by one by an arbitrary rgb value:</p><pre class="codeinput">cla
+quivermc(lat,lon,u,v,<span class="string">'color'</span>,[.2 .4 .8])
+</pre><img vspace="5" hspace="5" src="quivermc_documentation_05.png" alt=""> <p>Instead of a single color, declare a colormap of your own:</p><pre class="codeinput">cla
+quivermc(lat,lon,u,v,<span class="string">'colormap'</span>,hot(256),<span class="string">'units'</span>,<span class="string">'m/s'</span>)
+</pre><img vspace="5" hspace="5" src="quivermc_documentation_06.png" alt=""> <p>Include a colorbar:</p><pre class="codeinput">cla
+quivermc(lat,lon,u,v,<span class="string">'colormap'</span>,hot(256),<span class="string">'units'</span>,<span class="string">'m/s'</span>,<span class="string">'colorbar'</span>,<span class="string">'on'</span>)
+</pre><img vspace="5" hspace="5" src="quivermc_documentation_07.png" alt=""> <p>Place the colorbar somewhere fancy:</p><pre class="codeinput">colorbar <span class="string">off</span> <span class="comment">% Deletes the one we just created above</span>
+cla
+quivermc(lat,lon,u,v,<span class="string">'colormap'</span>,jet,<span class="string">'units'</span>,<span class="string">'m/s'</span>,<span class="string">'colorbar'</span>,<span class="string">'northoutside'</span>)
+</pre><img vspace="5" hspace="5" src="quivermc_documentation_08.png" alt=""> <p>The label on that colorbar feels a bit incomplete. Let's return a handle for the colorbar and label it accordingly:</p><pre class="codeinput">colorbar <span class="string">off</span> <span class="comment">% Deletes the one we just created above</span>
+cla
+[~,cb] = quivermc(lat,lon,u,v,<span class="string">'colormap'</span>,jet,<span class="string">'colorbar'</span>,<span class="string">'northoutside'</span>);
+xlabel(cb,<span class="string">'Wind speed, meters per second'</span>)
+</pre><img vspace="5" hspace="5" src="quivermc_documentation_09.png" alt=""> <p>Downsample the number of vectors plotted by about a factor of three in each dimension:</p><pre class="codeinput">colorbar <span class="string">off</span>
+cla
+quivermc(lat,lon,u,v,<span class="string">'density'</span>,33.3,<span class="string">'colormap'</span>,jet)
+</pre><img vspace="5" hspace="5" src="quivermc_documentation_10.png" alt=""> <p>Fatten up those arrows:</p><pre class="codeinput">cla
+quivermc(lat,lon,u,v,<span class="string">'density'</span>,33.3,<span class="string">'colormap'</span>,jet,<span class="string">'linewidth'</span>,2)
+</pre><img vspace="5" hspace="5" src="quivermc_documentation_11.png" alt=""> <p>Make all arrows the same size:</p><pre class="codeinput">cla
+quivermc(lat,lon,u,v,<span class="string">'density'</span>,33.3,<span class="string">'colormap'</span>,jet,<span class="string">'linewidth'</span>,2,<span class="string">'reference'</span>,<span class="string">'equal'</span>)
+</pre><img vspace="5" hspace="5" src="quivermc_documentation_12.png" alt=""> <p>Show arrows with tails pinned at their datapoints (This is good for divergent flow):</p><pre class="codeinput">cla
+quivermc(lat,lon,u,v,<span class="string">'density'</span>,33.3,<span class="string">'arrowstyle'</span>,<span class="string">'divergent'</span>,<span class="string">'color'</span>,[.4 .6 .2])
+</pre><img vspace="5" hspace="5" src="quivermc_documentation_13.png" alt=""> <p>Scale vectors relative to the median vector size instead of the max:</p><pre class="codeinput">cla
+quivermc(lat,lon,u,v,<span class="string">'density'</span>,33.3,<span class="string">'arrowstyle'</span>,<span class="string">'divergent'</span>,<span class="string">'color'</span>,[.4 .6 .2],<span class="string">'reference'</span>,<span class="string">'median'</span>)
+</pre><img vspace="5" hspace="5" src="quivermc_documentation_14.png" alt=""> <p>The example image used for the <tt>quivermc</tt> function is of the ice velocity of Totten Glacier, Antarctica. It was created with the <a href="http://www.mathworks.com/matlabcentral/fileexchange/47329">measures</a> function, which employs <tt>quivermc</tt>. Velocity vectors are then overlaid on a <a href="http://www.mathworks.com/matlabcentral/fileexchange/47282">MODIS MOA</a> satellite image as follows</p><pre class="codeinput">figure
+modismoa(<span class="string">'totten glacier'</span>,200)
+h = measures(<span class="string">'vel'</span>,<span class="string">'totten glacier'</span>,<span class="string">'mapwidth'</span>,200,<span class="string">'colormap'</span>,jet(256),<span class="keyword">...</span>
+    <span class="string">'density'</span>,7,<span class="string">'units'</span>,<span class="string">'m/a'</span>,<span class="string">'linewidth'</span>,1);
+scalebar(<span class="string">'length'</span>,50,<span class="string">'color'</span>,<span class="string">'w'</span>)
+</pre><img vspace="5" hspace="5" src="quivermc_documentation_15.png" alt=""> <h2>Author Info<a name="18"></a></h2><p>The <tt>quivermc</tt> function is an adapted version of Andrew Roberts'  <a href="http://www.mathworks.com/matlabcentral/fileexchange/17582"><tt>ncquiverref</tt></a>.  Chad Greene of the University of Texas at Austin and UT's Institute for Geophysics took away some of the functionality of <tt>ncquiverref</tt> and made it purely map-centric in July of 2014. In August 2014, a change was made to allow colorbars, and the tick marks of the colorbars are now set with <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/111917">John Barber's</a> quite wonderful <a href="http://www.mathworks.com/matlabcentral/fileexchange/30671"><tt>calcticks</tt></a> function, which is included as a subfunction in <tt>quivermc</tt>.</p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2012b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% quivermc 
+% QUIVERMC is an adapted version of Andrew Roberts' <http://www.mathworks.com/matlabcentral/fileexchange/17582
+% |ncquiverref|>.  This function fixes a couple of problems with Matlab's |quiverm| function.
+% The two primary issues with |quiverm| are as follows: 
+% 
+% # Matlab's |quiverm| confoundingly mixes up |u| and |v|.  By convention in the
+% Earth sciences, |u| is the zonal component where eastward is positive and
+% |v| is the meridional component where northward is positive.  Matlab gets this wrong, but the
+% |quivermc| function described here gets it right. 
+% # For reasons related to ship travel and some old legacy code from Navy
+% guys decades ago, Matlab's |quiverm| scales vectors in a strange way that
+% depends on latitude.  If you're plotting some absolute field like wind
+% vectors, there is no physical reason that you would want to scale vectors
+% in such a way that their zonal components shrink to zero at the poles.  
+% 
+% In addition to fixing the problems described above, |quivermc| also
+% allows a few extra options including color settings, arrow density, and 
+% options for converging or diverging flow.  
+% 
+%% Syntax 
+% 
+%  quivermc(lat,lon,u,v)
+%  quivermc(...,'units',unitString)
+%  quivermc(...,'color',arrowcolor)
+%  quivermc(...,'colormap',colorMap)
+%  quivermc(...,'colorbar','ColorbarLocation')
+%  quivermc(...,'density',densityVal)
+%  quivermc(...,'arrowstyle',arrowStyle)
+%  quivermc(...,'linewidth',lineWidth)
+%  quivermc(...,'reference',referenceScale)
+%  h = quivermc(...)
+%  [h,cb] = quivermc(...)
+
+%% Description 
+% 
+% |quivermc(lat,lon,u,v)| plots vectors of zonal and meridional components
+% |u| and |v| at locations given by |lat| and |lon|. 
+% 
+% |quivermc(...,'units',unitString)| prints any user-specified units
+% alongside a reference vector. 
+%
+% |quivermc(...,'color',arrowcolor)| sets all arrows to the color given by
+% |arrowcolor|, which can be a string (e.g. 'blue', or 'r') or RGB value.
+% Default color is black. 
+%
+% |quivermc(...,'colormap',colorMap)| colors vectors scaled relative to
+% their magnitude using any colormap such as |jet| or |autumn(256)|. 
+% 
+% |quivermc(...,'colorbar','ColorbarLocation')| places a colorbar at a
+% specified location. The argument |'colorbar','on'| may be used to place a
+% colorbar to the outside right of the plot, or a location may be set as 
+% 
+% * |'EastOutside'|, |'vertical'|, or |'on'| Outside right
+% * |'SouthOutside'| or |'horizontal'|  Outside bottom
+% * |'North Inside'| plot box near top
+% * |'South Inside'| bottom
+% * |'East Inside'| right
+% * |'West Inside'| left
+% * |'NorthOutside'| Outside plot box near top
+% * |'SouthOutside'| Outside bottom
+% * |'WestOutside'| Outside left
+% 
+% |quivermc(...,'density',densityVal)| allows user-declared downsampling as 
+% a percentage of input data width. By default, if the input grid is larger 
+% than about 50x50, |quivermc| will attempt to downsample your data to some 
+% dimensions close to 50x50.  This is because large datasets take time to plot, and the
+% arrows become so small they're hard to see.  If your dataset is 400x400
+% and you would like to plot about 100 arrows by 100 arrows instead of the 
+% default 50x50, use the name-value pair |'density',25| to specify 25
+% percent of the data are to be plotted in each dimension.  
+%
+% |quivermc(...,'arrowstyle',arrowStyle)| specifies whether the arrow's
+% tail or tip is located at its respective data point. By default, arrows
+% are centered about their data points.  To pin arrow tails at their data
+% points, declare |'arrowstyle','tail'| or |'arrowstyle','divergent'|. To
+% pin arrow heads at their data points choose |'arrowstyle','tip'| or
+% |'arrowstyle','convergent'|.  
+% 
+% |quivermc(...,'linewidth',lineWidth)| sets the linewidth of plotted
+% arrows in points.  
+%
+% |quivermc(...,'reference',referenceScale)| declares the scale by which arrows are 
+% plotted. Can be |'median'|, which scales vectors relative to the median magnitude, 
+% |'max'|, which scales vectors relative to the maximum magnitude, or
+% |'equal'| to make all vectors equal in size.  The |referenceScale| may
+% also be a scalar value of your choosing. Default is |'max'|. 
+%
+% |h = quivermc(...)| returns the vector handles of plotted arrow objects. 
+% 
+% |[h,cb] = quivermc(...)| returns the handle |cb| of the colorbar. 
+
+%% Examples 
+
+% Make up some data: 
+load wind u v 
+u = squeeze(u(:,:,1)); 
+v = squeeze(v(:,:,1)); 
+u(1:30,:) = u(1:30,:)+5;     
+u(31:end,:) = u(31:end,:)-3;    
+lat = repmat((20:-1:-14)',1,41);
+lon = repmat(-160:-120,35,1);
+
+% Initialize a map: 
+worldmap([min(lat(:))-1 max(lat(:))+1],[min(lon(:))-1 max(lon(:))+1]);
+cla; 
+
+% Use the quivermc function:
+quivermc(lat,lon,u,v)
+
+%% 
+% Specify units: 
+
+cla % clears the data that was plotted above
+quivermc(lat,lon,u,v,'units','miles per hour')
+
+%% 
+% The |quivermc| function tries to figure out the best reference value for
+% units, but you don't want your reference scale to be referenced to 20
+% mphREPLACE_WITH_DASH_DASHyou'd much rather reference 10 mph.  
+
+cla 
+quivermc(lat,lon,u,v,'units','miles per hour','reference',10)
+
+%% 
+% Make all arrows one color by one of Matlab's color names: 
+
+cla
+quivermc(lat,lon,u,v,'color','b')
+
+%% 
+% Make all arrows one color by one by an arbitrary rgb value: 
+
+cla
+quivermc(lat,lon,u,v,'color',[.2 .4 .8])
+
+
+%% 
+% Instead of a single color, declare a colormap of your own: 
+
+cla 
+quivermc(lat,lon,u,v,'colormap',hot(256),'units','m/s')
+
+%% 
+% Include a colorbar: 
+
+cla 
+quivermc(lat,lon,u,v,'colormap',hot(256),'units','m/s','colorbar','on')
+
+%% 
+% Place the colorbar somewhere fancy: 
+
+colorbar off % Deletes the one we just created above
+cla 
+quivermc(lat,lon,u,v,'colormap',jet,'units','m/s','colorbar','northoutside')
+
+%% 
+% The label on that colorbar feels a bit incomplete. Let's return a handle
+% for the colorbar and label it accordingly: 
+
+colorbar off % Deletes the one we just created above
+cla 
+[~,cb] = quivermc(lat,lon,u,v,'colormap',jet,'colorbar','northoutside'); 
+xlabel(cb,'Wind speed, meters per second')
+
+%% 
+% Downsample the number of vectors plotted by about a factor of three in each dimension:
+
+colorbar off 
+cla 
+quivermc(lat,lon,u,v,'density',33.3,'colormap',jet)
+
+%% 
+% Fatten up those arrows: 
+
+cla 
+quivermc(lat,lon,u,v,'density',33.3,'colormap',jet,'linewidth',2)
+
+%% 
+% Make all arrows the same size:
+
+cla
+quivermc(lat,lon,u,v,'density',33.3,'colormap',jet,'linewidth',2,'reference','equal')
+
+
+%% 
+% Show arrows with tails pinned at their datapoints (This is good for divergent flow): 
+
+cla 
+quivermc(lat,lon,u,v,'density',33.3,'arrowstyle','divergent','color',[.4 .6 .2])
+
+%% 
+% Scale vectors relative to the median vector size instead of the max: 
+
+cla
+quivermc(lat,lon,u,v,'density',33.3,'arrowstyle','divergent','color',[.4 .6 .2],'reference','median')
+
+%% 
+% The example image used for the |quivermc| function is of the ice velocity of
+% Totten Glacier, Antarctica. It was created with the <http://www.mathworks.com/matlabcentral/fileexchange/47329 
+% measures> function, which employs |quivermc|. Velocity vectors are then overlaid on a 
+% <http://www.mathworks.com/matlabcentral/fileexchange/47282 MODIS MOA> satellite image as follows
+
+figure
+modismoa('totten glacier',200)
+h = measures('vel','totten glacier','mapwidth',200,'colormap',jet(256),...
+    'density',7,'units','m/a','linewidth',1);
+scalebar('length',50,'color','w')
+
+%% Author Info 
+% The |quivermc| function is an adapted version of Andrew Roberts'
+%  <http://www.mathworks.com/matlabcentral/fileexchange/17582
+% |ncquiverref|>.  Chad Greene of the University of Texas at Austin and
+% UT's Institute for Geophysics took away some of the functionality of
+% |ncquiverref| and made it purely map-centric in July of 2014. 
+% In August 2014, a change was made to allow colorbars, and the tick marks
+% of the colorbars are now set with <http://www.mathworks.com/matlabcentral/fileexchange/authors/111917 
+% John Barber's> quite wonderful
+% <http://www.mathworks.com/matlabcentral/fileexchange/30671 |calcticks|>
+% function, which is included as a subfunction in |quivermc|. 
+
+##### SOURCE END #####
+--></body></html>

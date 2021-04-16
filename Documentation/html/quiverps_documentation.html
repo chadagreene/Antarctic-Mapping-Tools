@@ -1,0 +1,404 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>quiverps documentation</title><meta name="generator" content="MATLAB 8.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-05-29"><meta name="DC.source" content="quiverps_documentation.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>quiverps</tt> documentation</h1><!--introduction--><p>The <tt>quiverps</tt> function plots georeferenced vector fields on a southern-hemisphere polar stereographic map.</p><p>Note: This function <b>only</b> works for grids that are regularly spaced in degrees (not regular spacing in meters). If your data are irregularly spaced or are regular in polar stereographic meters, use the standard Matlab quiver function, after using <tt>uv2vxvy</tt> if necessary.</p><p><tt>quiverps</tt> is part of Antarctic Mapping Tools for Matlab (Greene et al., 2017). <a href="List_of_functions.html">Click here for a complete list of functions in AMT.</a></p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Multiple ways to plot a vector field</a></li><li><a href="#4">Plot in unprojected coordinates</a></li><li><a href="#7">Downsample the grid</a></li><li><a href="#9">Plot in polar stereographic projection</a></li><li><a href="#10">Transform yourself</a></li><li><a href="#14">Plot with <tt>quiverps</tt></a></li><li><a href="#15">Set <tt>quiverps</tt> arrow density</a></li><li><a href="#16">Set <tt>quiverps</tt> display properties</a></li><li><a href="#17">Zooming to a small region</a></li><li><a href="#19">Fix boundaries near <tt>NaN</tt> holes</a></li><li><a href="#20">Citing AMT</a></li><li><a href="#21">Author Info</a></li></ul></div><h2>Syntax<a name="1"></a></h2><pre>quiverps(lat,lon,u,v)
+quiverps(...,'scale',scale)
+quiverps(...,'inpaintnans',false)
+quiverps(...,'QuiverProperty',Value,...)
+quiverps(...,'km')
+h = quiverps(...)</pre><h2>Description<a name="2"></a></h2><p><tt>quiverps(lat,lon,u,v)</tt> plots zonal (<tt>u</tt>, eastward) and meridional (<tt>v</tt>, northward) components of a velocity field at geo locations <tt>lat,lon</tt>.</p><p><tt>quiverps(...,'scale',scale)</tt> scales the density of the plotted vector field. The scale value corresponds to the number of arrows that fit in the diagonal of the figure window. Default <tt>scale</tt> is <tt>45</tt>. Increase the scale to plot more arrows, decrease the scale to plot fewer.</p><p><tt>quiverps(...,'inpaintnans',false)</tt> fixes edge effects near <tt>NaN</tt> holes. This option fills regions of missing data before interpolation to regular polar stereographic grid, then sets original NaN regions back to <tt>NaN</tt>. The intent of filling <tt>NaN</tt> holes before interpolation is to prevent losing data near boundaries, but the inpainting algorithm can be slow for large datasets.</p><p><tt>quiverps(...,'QuiverProperty',Value,...)</tt> specifies any quiver properties such as color, linewidth, etc.</p><p><tt>quiverps(...,'km')</tt> plots in polar stereographic kilometers rather than the default meters.</p><p><tt>h = quiverps(...)</tt> returns a handle <tt>h</tt> of the graphics object.</p><h2>Multiple ways to plot a vector field<a name="3"></a></h2><p>This series of examples explores different ways to plot gridded wind vectors. Let's start by creating the grid, which will have 1/8 degree resolution. We'll focus on wind over the ocean and set everything else to <tt>NaN</tt>. To determine which grid cells correspond to open ocean and which correspond to the ice sheet, I'm using the <tt>isice</tt> function from the <a href="https://www.mathworks.com/matlabcentral/fileexchange/60246">Antarctic boundaries plugin</a>, which I highly recommend if you don't already have it.</p><pre class="codeinput"><span class="comment">% Create a 1/8 degree resolution grid:</span>
+[lon,lat] = meshgrid(-90:1/8:90,-80:1/8:-60);
+
+<span class="comment">% Define some zonal and meridional components of wind speed:</span>
+U = 10*ones(size(lat)).*cosd((lat+65)*3).^3;
+V = 3*sind(15*lon);
+
+<span class="comment">% Mask out the ice sheet (optional):</span>
+U(isice(lat,lon)) = NaN;
+V(isice(lat,lon)) = NaN;
+</pre><h2>Plot in unprojected coordinates<a name="4"></a></h2><p>We can plot the vectors in plain, unprojected coordinates using the standard Matlab <tt>quiver</tt> function. Just plot longitude values like they're x values and latitudes like they're y:</p><pre class="codeinput">q = quiver(lon,lat,U,V);
+axis <span class="string">tight</span>
+xlabel <span class="string">'longitude'</span>
+ylabel <span class="string">'latitude'</span>
+</pre><img vspace="5" hspace="5" src="quiverps_documentation_01.png" alt=""> <p>For a little extra context, add a grounding line. Here I'm using <a href="https://www.mathworks.com/matlabcentral/fileexchange/60246"><tt>antbounds_data</tt></a> from the Antarctic boundaries plugin to get Mouginot et al.'s coast line:</p><pre class="codeinput">[gllat,gllon] = antbounds_data(<span class="string">'coast'</span>);
+
+hold <span class="string">on</span>
+plot(gllon,gllat,<span class="string">'k'</span>)
+</pre><img vspace="5" hspace="5" src="quiverps_documentation_02.png" alt=""> <p>The plot above displays a wind vector for each of the 161x1441 (nearly a quarter million!) grid cells in lat, lon, U, and V. So they're hard to see unless you zoom in. Here's what it looks like if you zoom in to the Antarctic Peninsula:</p><pre class="codeinput">axis([-65.5 -56.5 -66 -63])
+</pre><img vspace="5" hspace="5" src="quiverps_documentation_03.png" alt=""> <h2>Downsample the grid<a name="7"></a></h2><p>In most cases, a quarter million wind vectors are too many to be displayed meaningfully, and you'll probably want to downsample the grid.  A quick and dirty way to downsample a grid is to just plot every Nth point along each row and column.  For example, you could downsample to every 10th point like this:</p><pre>lat(1:10:end,1:10:end)</pre><p>and you would do the same for lon, U, and V.  But be aware that simply taking every Nth point introduces the possibility of aliasing. An easier way to do it that also applies anti-aliasing is to use the Image Processing Toolbox function called <tt>imresize</tt>. Now let's delete the <tt>quiver</tt> arrows we plotted above and re-plot the wind vectors downsampled by a factor of 10:</p><pre class="codeinput"><span class="comment">% Delete the quiver plot from above:</span>
+delete(q)
+
+<span class="comment">% Re-plot a downsampled quiver plot:</span>
+q = quiver(imresize(lon,1/10),imresize(lat,1/10),imresize(U,1/10),imresize(V,1/10));
+
+axis([-90 90 -80 -60])
+</pre><img vspace="5" hspace="5" src="quiverps_documentation_04.png" alt=""> <p>Hmmm... That's still not a very pretty display. And you'll notice everything close to the continent got set to <tt>NaN</tt> because the <tt>imresize</tt> function performs bicubic interpolation, so everything close to the coast that had at least one neigboring NaN grid cell also became <tt>NaN</tt> after interpolation. Let's explore other ways of plotting the data...</p><h2>Plot in polar stereographic projection<a name="9"></a></h2><p>Before plotting wind vectors, let's set up a little context. I'm using <tt>pcolorps</tt> to plot wind speed, then Mouginot et al.'s grounding line and coast line:</p><pre class="codeinput">figure
+
+<span class="comment">% Plot wind speed as pcolor:</span>
+pcolorps(lat,lon,hypot(U,V))
+axis <span class="string">tight</span>
+
+<span class="comment">% Add a grounding line and coast line</span>
+antbounds(<span class="string">'gl'</span>,<span class="string">'k'</span>)
+antbounds(<span class="string">'coast'</span>,<span class="string">'k'</span>)
+
+<span class="comment">% Add a graticule (grid)</span>
+graticuleps(-85:5:-45,-90:30:90)
+
+<span class="comment">% Put a frame around the map:</span>
+box <span class="string">on</span>
+
+<span class="comment">% Remove numbers from x and y axes:</span>
+set(gca,<span class="string">'xtick'</span>,[],<span class="string">'ytick'</span>,[])
+
+<span class="comment">% Make note of the axis limits for later use:</span>
+ax = axis;
+</pre><img vspace="5" hspace="5" src="quiverps_documentation_05.png" alt=""> <h2>Transform yourself<a name="10"></a></h2><p>Antarctic Mapping Tools has a function specifically designed to transform zonal (eastward) and meridional (northward) vector components into the x and y components on a polar stereographic map.  It's called <a href="uv2vxvy_documentation.html"><tt>uv2vxvy</tt></a>. You can use <tt>uv2vxvy</tt> along with <a href="ll2ps_documentation.html"><tt>ll2ps</tt></a> to perform the coordinate transformations yourself, then plot with Matlab's standard <tt>quiver</tt> function:</p><pre class="codeinput"><span class="comment">% Transform the grid coordinates:</span>
+[x,y] = ll2ps(lat,lon);
+
+<span class="comment">% Transform the vector components:</span>
+[vx,vy] = uv2vxvy(lat,lon,U,V);
+
+hold <span class="string">on</span>
+q = quiver(x,y,vx,vy);
+</pre><img vspace="5" hspace="5" src="quiverps_documentation_06.png" alt=""> <p>And again, the vector field is too dense to see at this scale, but individual vectors become visible if you zoom in:</p><pre class="codeinput">mapzoomps(<span class="string">'palmer station'</span>,<span class="string">'mapwidth'</span>,200)
+</pre><img vspace="5" hspace="5" src="quiverps_documentation_07.png" alt=""> <p>Still, the vector field is too dense to be of much use.  We can try to resize it with <tt>imresize</tt> the same way we did for unprojected coordinates above:</p><pre class="codeinput"><span class="comment">% Delete the vector field</span>
+delete(q)
+
+<span class="comment">% Plot a downsampled vector field:</span>
+q = quiver(imresize(x,1/10),imresize(y,1/10),imresize(vx,1/10),imresize(vy,1/10));
+
+<span class="comment">% Restore original axis limits:</span>
+axis(ax)
+</pre><img vspace="5" hspace="5" src="quiverps_documentation_08.png" alt=""> <p>Again, we run into the same problems we ran into with the unprojected coordinates--the vectors are too dense in longitude and there are edge effects around the coast where interpolation has been confused by neighboring NaNs.</p><h2>Plot with <tt>quiverps</tt><a name="14"></a></h2><p>This documentation file is all about <tt>quiverps</tt>, so let's plot with <tt>quiverps</tt> already! Here's how it looks with default settings:</p><pre class="codeinput"><span class="comment">% Delete the old quiver plot:</span>
+delete(q)
+
+<span class="comment">% Make a new quiverps plot:</span>
+q = quiverps(lat,lon,U,V);
+</pre><img vspace="5" hspace="5" src="quiverps_documentation_09.png" alt=""> <h2>Set <tt>quiverps</tt> arrow density<a name="15"></a></h2><p>Too many arrows? Not enough arrows? By default, <tt>quiverps</tt> plots enough arrows such that about 45 arrows will be displayed across the diagonal of the polar stereographic map window. If you want more arrows or fewer arrows, simply set the <tt>'scale'</tt> property to a value more or less than 45. Here we reduce the number of arrows by setting the scale to 30:</p><pre class="codeinput">delete(q)
+
+q = quiverps(lat,lon,U,V,<span class="string">'scale'</span>,30);
+</pre><img vspace="5" hspace="5" src="quiverps_documentation_10.png" alt=""> <h2>Set <tt>quiverps</tt> display properties<a name="16"></a></h2><p>Formatting <tt>quiverps</tt> arrows is just as easy as formatting <tt>quiver</tt> arrows. Just specify any <tt>quiver</tt> properties as property name-value pairs. Here we plot fat red <tt>quiverps</tt> arrows:</p><pre class="codeinput">delete(q)
+
+q = quiverps(lat,lon,U,V,<span class="string">'color'</span>,<span class="string">'red'</span>,<span class="string">'linewidth'</span>,2);
+</pre><img vspace="5" hspace="5" src="quiverps_documentation_11.png" alt=""> <h2>Zooming to a small region<a name="17"></a></h2><p>The <tt>quiverps</tt> function is written to optimize vector display for the extents of the current map window. So if your vector dataset extends beyond your region of interest, it is best to zoom to your region of interest before calling <tt>quiverps</tt>.  Here's what it looks like if you zoom after calling <tt>quiverps</tt>:</p><pre class="codeinput">mapzoomps(<span class="string">'palmer station'</span>,<span class="string">'mapwidth'</span>,200)
+</pre><img vspace="5" hspace="5" src="quiverps_documentation_12.png" alt=""> <p>Well that's no good. But if we call <tt>quiverps</tt> again, it'll fill in the map window with arrows:</p><pre class="codeinput">delete(q)
+
+q = quiverps(lat,lon,U,V,<span class="string">'color'</span>,<span class="string">'red'</span>,<span class="string">'scale'</span>,30);
+</pre><img vspace="5" hspace="5" src="quiverps_documentation_13.png" alt=""> <h2>Fix boundaries near <tt>NaN</tt> holes<a name="19"></a></h2><p>If you're missing vectors near a coast line or some other <tt>NaN</tt> hole in your dataset, <tt>quiverps</tt> has an option to help.  By setting <tt>'inpaintnans'</tt> to <tt>true</tt>, <tt>quiverps</tt> uses John D'Errico's <tt>inpaint_nans</tt> function to fill in any missing values before interpolating to a regular polar stereographic grid. After interpolation and before plotting, any location that was originally <tt>NaN</tt> is set back to <tt>NaN</tt>. That might sound silly and pointless, but the difference is in the edges near NaN boundaries.</p><pre class="codeinput">delete(q)
+
+q = quiverps(lat,lon,U,V,<span class="string">'color'</span>,<span class="string">'red'</span>,<span class="string">'scale'</span>,30,<span class="string">'inpaintnans'</span>,true);
+</pre><img vspace="5" hspace="5" src="quiverps_documentation_14.png" alt=""> <h2>Citing AMT<a name="20"></a></h2><p>If this function or any other part of Antarctic Mapping Tools is useful for you, please cite the paper that describes AMT.</p><p>Greene, C. A., Gwyther, D. E., &amp; Blankenship, D. D. Antarctic Mapping Tools for Matlab. <i>Computers &amp; Geosciences</i>. 104 (2017) pp.151-157. <a href="http://dx.doi.org/10.1016/j.cageo.2016.08.003">doi:10.1016/j.cageo.2016.08.003</a>.</p><h2>Author Info<a name="21"></a></h2><p>The <tt>quiverps</tt> function and supporting documentation were written by Chad A. Greene of the University of Texas at Austin's Institute for Geophysics (UTIG), May 2017.</p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2012b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |quiverps| documentation 
+% The |quiverps| function plots georeferenced vector fields on a southern-hemisphere polar
+% stereographic map. 
+% 
+% Note: This function *only* works for grids that are regularly spaced in 
+% degrees (not regular spacing in meters). If your data are irregularly spaced
+% or are regular in polar stereographic meters, use the standard Matlab quiver 
+% function, after using |uv2vxvy| if necessary. 
+% 
+% |quiverps| is part of Antarctic Mapping Tools for Matlab (Greene et al., 2017).  
+% <List_of_functions.html Click here for a complete list of functions in AMT.>
+% 
+%% Syntax 
+% 
+%  quiverps(lat,lon,u,v)
+%  quiverps(...,'scale',scale)
+%  quiverps(...,'inpaintnans',false) 
+%  quiverps(...,'QuiverProperty',Value,...)
+%  quiverps(...,'km') 
+%  h = quiverps(...) 
+% 
+%% Description 
+% 
+% |quiverps(lat,lon,u,v)| plots zonal (|u|, eastward) and meridional (|v|, northward) components of
+% a velocity field at geo locations |lat,lon|. 
+%
+% |quiverps(...,'scale',scale)| scales the density of the plotted vector field. The scale value 
+% corresponds to the number of arrows that fit in the diagonal of the figure window. Default
+% |scale| is |45|. Increase the scale to plot more arrows, decrease the scale to plot fewer. 
+% 
+% |quiverps(...,'inpaintnans',false)| fixes edge effects near |NaN| holes. This option fills regions
+% of missing data before interpolation to regular polar stereographic grid, then sets original
+% NaN regions back to |NaN|. The intent of filling |NaN| holes before interpolation is to prevent 
+% losing data near boundaries, but the inpainting algorithm can be slow for large datasets. 
+% 
+% |quiverps(...,'QuiverProperty',Value,...)| specifies any quiver properties such as color, linewidth, 
+% etc. 
+%
+% |quiverps(...,'km')| plots in polar stereographic kilometers rather than the default meters. 
+% 
+% |h = quiverps(...)| returns a handle |h| of the graphics object. 
+% 
+%% Multiple ways to plot a vector field
+% This series of examples explores different ways to plot gridded wind vectors. Let's 
+% start by creating the grid, which will have 1/8 degree resolution. We'll focus on 
+% wind over the ocean and set everything else to |NaN|. To determine which grid cells
+% correspond to open ocean and which correspond to the ice sheet, I'm using the |isice| 
+% function from the <https://www.mathworks.com/matlabcentral/fileexchange/60246 Antarctic boundaries 
+% plugin>, which I highly recommend if you don't already have it. 
+
+% Create a 1/8 degree resolution grid: 
+[lon,lat] = meshgrid(-90:1/8:90,-80:1/8:-60); 
+
+% Define some zonal and meridional components of wind speed:
+U = 10*ones(size(lat)).*cosd((lat+65)*3).^3; 
+V = 3*sind(15*lon); 
+
+% Mask out the ice sheet (optional): 
+U(isice(lat,lon)) = NaN; 
+V(isice(lat,lon)) = NaN; 
+
+%% Plot in unprojected coordinates
+% We can plot the vectors in plain, unprojected coordinates using the standard Matlab
+% |quiver| function. Just plot longitude values like they're x values and latitudes like 
+% they're y: 
+
+q = quiver(lon,lat,U,V); 
+axis tight
+xlabel 'longitude'
+ylabel 'latitude'
+
+%% 
+% For a little extra context, add a grounding line. Here I'm using <https://www.mathworks.com/matlabcentral/fileexchange/60246 
+% |antbounds_data|> from the Antarctic boundaries plugin to get Mouginot et al.'s coast line: 
+
+[gllat,gllon] = antbounds_data('coast'); 
+
+hold on
+plot(gllon,gllat,'k')
+
+%% 
+% The plot above displays a wind vector for each of the 161x1441 (nearly a quarter million!) 
+% grid cells in lat, lon, U, and V. So they're hard to see unless you zoom in. Here's what it
+% looks like if you zoom in to the Antarctic Peninsula: 
+
+axis([-65.5 -56.5 -66 -63])
+
+%% Downsample the grid 
+% In most cases, a quarter million wind vectors are too many to be displayed meaningfully, and you'll
+% probably want to downsample the grid.  A quick and dirty way to downsample a grid is to just plot 
+% every Nth point along each row and column.  For example, you could downsample to every 10th point
+% like this: 
+% 
+%  lat(1:10:end,1:10:end)
+% 
+% and you would do the same for lon, U, and V.  But be aware that simply taking every Nth point introduces the 
+% possibility of aliasing. An easier way to do it that also applies anti-aliasing is to use the 
+% Image Processing Toolbox function called |imresize|. Now let's delete the |quiver| arrows we 
+% plotted above and re-plot the wind vectors downsampled by a factor of 10: 
+
+% Delete the quiver plot from above: 
+delete(q) 
+
+% Re-plot a downsampled quiver plot: 
+q = quiver(imresize(lon,1/10),imresize(lat,1/10),imresize(U,1/10),imresize(V,1/10));
+
+axis([-90 90 -80 -60])
+
+%% 
+% Hmmm... That's still not a very pretty display. And you'll notice everything close to the 
+% continent got set to |NaN| because the |imresize| function performs bicubic interpolation, 
+% so everything close to the coast that had at least one neigboring NaN grid cell also became
+% |NaN| after interpolation. Let's explore other ways of plotting the data...
+
+%% Plot in polar stereographic projection
+% Before plotting wind vectors, let's set up a little context. I'm using |pcolorps| 
+% to plot wind speed, then Mouginot et al.'s grounding line and coast line: 
+
+figure 
+
+% Plot wind speed as pcolor: 
+pcolorps(lat,lon,hypot(U,V)) 
+axis tight
+
+% Add a grounding line and coast line
+antbounds('gl','k')
+antbounds('coast','k')
+
+% Add a graticule (grid) 
+graticuleps(-85:5:-45,-90:30:90)
+
+% Put a frame around the map: 
+box on
+
+% Remove numbers from x and y axes: 
+set(gca,'xtick',[],'ytick',[])
+
+% Make note of the axis limits for later use: 
+ax = axis; 
+
+%% Transform yourself
+% Antarctic Mapping Tools has a function specifically designed to transform zonal (eastward) and meridional 
+% (northward) vector components into the x and y components on a polar stereographic map.  It's called 
+% <uv2vxvy_documentation.html |uv2vxvy|>. You can use |uv2vxvy| along with <ll2ps_documentation.html |ll2ps|> 
+% to perform the coordinate transformations yourself, then plot with Matlab's standard |quiver| function: 
+
+% Transform the grid coordinates: 
+[x,y] = ll2ps(lat,lon); 
+
+% Transform the vector components: 
+[vx,vy] = uv2vxvy(lat,lon,U,V); 
+
+hold on
+q = quiver(x,y,vx,vy); 
+
+%% 
+% And again, the vector field is too dense to see at this scale, but individual vectors become visible if you zoom in: 
+
+mapzoomps('palmer station','mapwidth',200)
+
+%% 
+% Still, the vector field is too dense to be of much use.  We can try to resize it 
+% with |imresize| the same way we did for unprojected coordinates above: 
+
+% Delete the vector field
+delete(q) 
+
+% Plot a downsampled vector field: 
+q = quiver(imresize(x,1/10),imresize(y,1/10),imresize(vx,1/10),imresize(vy,1/10));
+
+% Restore original axis limits: 
+axis(ax)
+
+%% 
+% Again, we run into the same problems we ran into with the unprojected coordinatesREPLACE_WITH_DASH_DASHthe 
+% vectors are too dense in longitude and there are edge effects around the coast where 
+% interpolation has been confused by neighboring NaNs. 
+
+%% Plot with |quiverps| 
+% This documentation file is all about |quiverps|, so let's plot with |quiverps| already! 
+% Here's how it looks with default settings: 
+
+% Delete the old quiver plot:
+delete(q)
+
+% Make a new quiverps plot: 
+q = quiverps(lat,lon,U,V); 
+
+%% Set |quiverps| arrow density 
+% Too many arrows? Not enough arrows? By default, |quiverps| plots enough arrows such that about 
+% 45 arrows will be displayed across the diagonal of the polar stereographic map window. If you
+% want more arrows or fewer arrows, simply set the |'scale'| property to a value more or less 
+% than 45. Here we reduce the number of arrows by setting the scale to 30: 
+
+delete(q) 
+
+q = quiverps(lat,lon,U,V,'scale',30); 
+
+%% Set |quiverps| display properties
+% Formatting |quiverps| arrows is just as easy as formatting |quiver| arrows. Just
+% specify any |quiver| properties as property name-value pairs. Here we plot fat
+% red |quiverps| arrows: 
+
+delete(q)
+
+q = quiverps(lat,lon,U,V,'color','red','linewidth',2); 
+
+%% Zooming to a small region
+% The |quiverps| function is written to optimize vector display for the extents of the current map
+% window. So if your vector dataset extends beyond your region of interest, it is best to zoom
+% to your region of interest before calling |quiverps|.  Here's what it looks like if you zoom
+% after calling |quiverps|: 
+
+mapzoomps('palmer station','mapwidth',200)
+
+%% 
+% Well that's no good. But if we call |quiverps| again, it'll fill in the map window
+% with arrows: 
+
+delete(q)
+
+q = quiverps(lat,lon,U,V,'color','red','scale',30); 
+
+%% Fix boundaries near |NaN| holes 
+% If you're missing vectors near a coast line or some other |NaN| hole in your dataset, |quiverps| 
+% has an option to help.  By setting |'inpaintnans'| to |true|, |quiverps| uses John D'Errico's |inpaint_nans|
+% function to fill in any missing values before interpolating to a regular polar stereographic grid. 
+% After interpolation and before plotting, any location that was originally |NaN| is set back to |NaN|.
+% That might sound silly and pointless, but the difference is in the edges near NaN boundaries. 
+
+delete(q)
+
+q = quiverps(lat,lon,U,V,'color','red','scale',30,'inpaintnans',true); 
+
+
+%% Citing AMT
+% If this function or any other part of Antarctic Mapping Tools is useful for you, please
+% cite the paper that describes AMT.  
+% 
+% Greene, C. A., Gwyther, D. E., & Blankenship, D. D. Antarctic Mapping Tools for Matlab. 
+% _Computers & Geosciences_. 104 (2017) pp.151-157. <http://dx.doi.org/10.1016/j.cageo.2016.08.003 doi:10.1016/j.cageo.2016.08.003>.
+% 
+%% Author Info
+% The |quiverps| function and supporting documentation were written by Chad
+% A. Greene of the University of Texas at Austin's Institute for Geophysics
+% (UTIG), May 2017. 
+##### SOURCE END #####
+--></body></html>

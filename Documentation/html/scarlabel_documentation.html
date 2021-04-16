@@ -1,0 +1,296 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>scarlabel and corelabel</title><meta name="generator" content="MATLAB 8.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-05-22"><meta name="DC.source" content="scarlabel_documentation.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>scarlabel</tt> and <tt>corelabel</tt></h1><!--introduction--><p><tt>scarlabel</tt> and <tt>corelabel</tt> are part of Antarctic Mapping Tools for Matlab (Greene et al., 2017). <a href="List_of_functions.html">Click here for a complete list of functions in AMT.</a></p><p>These functions label Antarctic features on a map. Feature names and locations correspond to 25,601 locations identified by the Scientific Committee on Antarctic Research (<a href="http://www.scar.org/cga">SCAR</a>) in their Composite Gazetteer.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">When to use which function</a></li><li><a href="#2">Syntax</a></li><li><a href="#3">Description</a></li><li><a href="#4">Example 1</a></li><li><a href="#6">Example 2: Label and format multiple locations at once</a></li><li><a href="#7">Example 3: <tt>corelabel</tt></a></li><li><a href="#8">Example 4: Polar stereographic cartesian kilometers</a></li><li><a href="#9"><tt>scarlabel</tt> and <tt>scarclick</tt> user interface video tutorial</a></li><li><a href="#10">Known Issues</a></li><li><a href="#11">Citing this Dataset</a></li><li><a href="#12">Citing AMT</a></li><li><a href="#13">Author Info</a></li></ul></div><h2>When to use which function<a name="1"></a></h2><p>This package comes with a handful of similar-sounding function names. So which one to use?</p><p><b>Ice Cores:</b> For ice cores, use <tt>coreloc</tt> to retrieve the lat/lon coordinates of any ice core identified by the <a href="http://www.icereader.org/icereader/listData.jsp">iceREADER</a> group. Use <tt>corelabel</tt> to label those features on a map.</p><p><b>Everything Else:</b> For just about any feature you can think of, use <a href="scarloc_documentation.html"><tt>scarloc</tt></a> to retrieve lat/lon coordinates of any feature or place south of 60&deg;S. Use <tt>scarlabel</tt> to label those features on a map.  If you have created a map and you want to click around on that map to find out what stuff is called, use the all-new <tt>scarclick</tt> function, which will label everything you click on. If you do not know the name of a particular feature, use <tt>scarclick</tt> to label any mapped feature you click on.</p><h2>Syntax<a name="2"></a></h2><pre>scarlabel(FeatureNames)
+scarlabel(FeatureNames,'TextProperty',PropertyValue)
+scarlabel(FeatureNames,'Marker','MarkerStyle')
+scarlabel(...,'km')
+h = scarlabel(...)
+[h,feature,feature] = scarlabel(...)</pre><h2>Description<a name="3"></a></h2><p><tt>scarlabel(FeatureNames)</tt> labels Antarctic features core location if a map is current. Multiple <tt>FeatureNames</tt> may be entered as a cell array (e.g., <tt>{'McMurdo Station','Palmer Station', 'Casey Station'}</tt> ). If the current axes are not map axes, polar stereographic cartesian coordinates are assumed.</p><p><tt>scarlabel(FeatureNames,'TextProperty',PropertyValue)</tt> formats labels with text properties as name-value pairs.</p><p><tt>scarlabel(FeatureNames,'Marker','MarkerStyle')</tt> places a marker at the center location.</p><p><tt>scarlabel(...,'km')</tt> places labels on cartesian coordinates in polar stereographic kilometers.</p><p><tt>h = scarlabel(...)</tt> returns the handle <tt>h</tt> of the label.</p><p><tt>[h,feature,feature] = scarlabel(...)</tt> returns geographic coordinates of the feature.</p><h2>Example 1<a name="4"></a></h2><p>Before labelling we'll initialize a map with Matlab's inaccurate and ugly built-in coast line:</p><pre class="codeinput">antmap
+load <span class="string">coast</span>
+patchm(lat,long,[.5 .5 .5])
+</pre><img vspace="5" hspace="5" src="scarlabel_documentation_01.png" alt=""> <p>Now start labelling:</p><pre class="codeinput">scarlabel(<span class="string">'Totten Glacier'</span>)
+
+scarlabel(<span class="string">'Recovery Glacier'</span>,<span class="keyword">...</span>
+   <span class="string">'fontsize'</span>,10,<span class="keyword">...</span>
+   <span class="string">'HorizontalAlignment'</span>,<span class="string">'left'</span>,<span class="keyword">...</span>
+   <span class="string">'marker'</span>,<span class="string">'x'</span>,<span class="keyword">...</span>
+   <span class="string">'color'</span>,<span class="string">'blue'</span>)
+
+scarlabel(<span class="string">'Ross Ice Shelf'</span>,<span class="keyword">...</span>
+    <span class="string">'edgecolor'</span>,<span class="string">'magenta'</span>,<span class="keyword">...</span>
+    <span class="string">'fontangle'</span>,<span class="string">'italic'</span>,<span class="keyword">...</span>
+    <span class="string">'backgroundcolor'</span>,[.4 .6 .8],<span class="keyword">...</span>
+    <span class="string">'fontsize'</span>,<span class="string">'20'</span>)
+
+scarlabel(<span class="string">'Marie Byrd Land'</span>,<span class="string">'rotation'</span>,45)
+
+scarlabel(<span class="string">'South Pole'</span>,<span class="keyword">...</span>
+    <span class="string">'fontweight'</span>,<span class="string">'bold'</span>,<span class="keyword">...</span>
+    <span class="string">'color'</span>,<span class="string">'red'</span>,<span class="keyword">...</span>
+    <span class="string">'marker'</span>,<span class="string">'rp'</span>,<span class="keyword">...</span>
+    <span class="string">'markersize'</span>,50)
+</pre><img vspace="5" hspace="5" src="scarlabel_documentation_02.png" alt=""> <h2>Example 2: Label and format multiple locations at once<a name="6"></a></h2><p>This example uses the <a href="http://www.mathworks.com/matlabcentral/fileexchange/47282-modis-mosaic-of-antarctica/content//html/modismoa_demo.html"><tt>modismoa</tt></a> function to make a 1000-km-wide MODIS MOA map of the Antarctic Peninsula, then we place multiple labels with one command. I'm using my <a href="http://www.mathworks.com/matlabcentral/fileexchange/46872-intuitive-rgb-color-values-from-xkcd/content//demo/html/rgb_demo.html"><tt>rgb</tt></a> function to get RGB values of mauve by its name.</p><pre class="codeinput">close <span class="comment">% (closes previous figure)</span>
+modismoa(<span class="string">'graham land'</span>,1000,<span class="string">'inset'</span>,<span class="string">'northeast'</span>)
+myplaces = {<span class="string">'Renaud Island'</span>,<span class="string">'Longing Peninsula'</span>,<span class="string">'Palmer Station'</span>};
+scarlabel(myplaces,<span class="string">'color'</span>,<span class="string">'b'</span>,<span class="string">'backgroundcolor'</span>,rgb(<span class="string">'mauve'</span>));
+scalebar(<span class="string">'color'</span>,<span class="string">'w'</span>)
+</pre><img vspace="5" hspace="5" src="scarlabel_documentation_03.png" alt=""> <h2>Example 3: <tt>corelabel</tt><a name="7"></a></h2><p>Some ice core locations are not listed in SCAR's primary database, but they're listed by iceReader.  For ice core locations and labelling, we have <tt>coreloc</tt> and <tt>corelabel</tt>, which behave identically to <tt>scarloc</tt> and <tt>scarlabel</tt>.</p><pre class="codeinput">figure
+load <span class="string">coast</span>
+antmap
+patchm(lat,long,<span class="string">'y'</span>)
+
+corelabel(<span class="string">'Vostok'</span>)
+corelabel(<span class="string">'Dome C'</span>,<span class="string">'color'</span>,<span class="string">'b'</span>,<span class="string">'marker'</span>,<span class="string">'b*'</span>)
+corelabel(<span class="string">'byrd'</span>,<span class="string">'rotation'</span>,45,<span class="string">'fontangle'</span>,<span class="string">'italic'</span>)
+</pre><img vspace="5" hspace="5" src="scarlabel_documentation_04.png" alt=""> <h2>Example 4: Polar stereographic cartesian kilometers<a name="8"></a></h2><p>If current axes are not map coordinates, labeling is performed in polar stereographic cartesian coordinates (meters).  If, however, your data are plotted in polar stereographic kilometers, ensure correct labeling with the <tt>'km'</tt> tag:</p><pre class="codeinput">load <span class="string">AMTdata</span> <span class="comment">% some sample data</span>
+figure
+plotps(glat{1},glon{1},<span class="string">'km'</span>)
+xlabel <span class="string">'eastings (km)'</span>
+ylabel <span class="string">'northings (km)'</span>
+scarlabel({<span class="string">'West Antarctica'</span>,<span class="string">'East Antarctica'</span>},<span class="string">'km'</span>)
+</pre><img vspace="5" hspace="5" src="scarlabel_documentation_05.png" alt=""> <h2><tt>scarlabel</tt> and <tt>scarclick</tt> user interface video tutorial<a name="9"></a></h2><p>The <tt>scarclick</tt> function allows you to click around on a map to identify features.  Here is a short video example of how to use <tt>scarclick</tt>:</p><p>
+<iframe id="ytplayer" type="text/html" width="640" height="480"
+src="http://www.youtube.com/embed/gJBM-hUi0Lk?rel=0"
+frameborder="0" allowfullscreen></iframe>
+</p><h2>Known Issues<a name="10"></a></h2><p>1. Unfortunately, <a href="scarloc_documentation.html"><tt>scarloc</tt></a> and <tt>scarlabel</tt> are plagued by problems with special characters. This includes letters with accents and umlauts. Sometimes using letters without accents will work. Other times locations may not be recognized by these functions.</p><p>2. In some cases, the SCAR Composite Gazetteer contains multiple entries for the same feature, and sometimes the coordinates of the multiple entries do not match exactly. I have dealt with this issue by arbitrarily picking the first listed entry for each unique feature and I've deleted duplicates. I did the same kind of culling for a previous release of Antarctic Mapping Tools, but I did not necessarily keep the same entries in both cullings. As a result, if you have used a version of <tt>scarloc</tt> or <tt>scarlabel</tt> from before January 2015, in some cases may appear to have moved with the update.</p><h2>Citing this Dataset<a name="11"></a></h2><p>The SCAR Composite Gazetteer database can be found <a href="http://www.scar.org/cga">here</a>. SCAR has kindly requested that Gazetteer data should be cited as:</p><p>Secretariat SCAR (1992, updated 2015). Composite Gazetteer of Antarctica, Scientific Committee on Antarctic Research. GCMD Metadata <a href="http://gcmd.nasa.gov/records/SCAR_Gazetteer.html">http://gcmd.nasa.gov/records/SCAR_Gazetteer.html</a></p><h2>Citing AMT<a name="12"></a></h2><p>If this function or any other part of Antarctic Mapping Tools is useful for you, please cite the paper that describes AMT.</p><p>Greene, C. A., Gwyther, D. E., &amp; Blankenship, D. D. Antarctic Mapping Tools for Matlab. <i>Computers &amp; Geosciences</i>. 104 (2017) pp.151-157. <a href="http://dx.doi.org/10.1016/j.cageo.2016.08.003">doi:10.1016/j.cageo.2016.08.003</a>.</p><h2>Author Info<a name="13"></a></h2><p>These functions and supporting documentation were created by <a href="http://www.chadagreene.com/">Chad A. Greene</a>, July 2013, updated August 2014 and January 2015. Chad is a researcher at the University of Texas Institute for Geophysics (<a href="www.ig.utexas.edu/research/cryosphere/">UTIG</a>).</p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2012b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |scarlabel| and |corelabel|
+% |scarlabel| and |corelabel| are part of Antarctic Mapping Tools for Matlab (Greene et al., 2017). <List_of_functions.html Click here
+% for a complete list of functions in AMT.>
+% 
+% These functions label Antarctic features on a map. Feature names and 
+% locations correspond to 25,601 locations identified by the 
+% Scientific Committee on Antarctic Research (<http://www.scar.org/cga
+% SCAR>) in their Composite Gazetteer. 
+% 
+%% When to use which function
+% This package comes with a handful of similar-sounding function names. So
+% which one to use?  
+% 
+% *Ice Cores:* For ice cores, use |coreloc| to retrieve the lat/lon
+% coordinates of any ice core identified by the <http://www.icereader.org/icereader/listData.jsp
+% iceREADER> group. Use |corelabel| to label those features on a map. 
+% 
+% *Everything Else:* For just about any feature you can think of, use
+% <scarloc_documentation.html |scarloc|> to retrieve lat/lon coordinates of any feature or place south
+% of 60°S. Use |scarlabel| to label those features on a map.  If you have 
+% created a map and you want to click around on that map to find out what
+% stuff is called, use the all-new |scarclick| function, which will label
+% everything you click on. If you do not know the name of a particular
+% feature, use |scarclick| to label any mapped feature you click on. 
+% 
+%% Syntax
+% 
+%  scarlabel(FeatureNames)
+%  scarlabel(FeatureNames,'TextProperty',PropertyValue)
+%  scarlabel(FeatureNames,'Marker','MarkerStyle') 
+%  scarlabel(...,'km') 
+%  h = scarlabel(...)
+%  [h,feature,feature] = scarlabel(...)
+% 
+%% Description 
+% 
+% |scarlabel(FeatureNames)| labels Antarctic features core location if a map is current.
+% Multiple |FeatureNames| may be entered as a cell array (e.g., |{'McMurdo Station','Palmer Station', 
+% 'Casey Station'}| ). If the current axes are not map axes, polar stereographic cartesian
+% coordinates are assumed.  
+% 
+% |scarlabel(FeatureNames,'TextProperty',PropertyValue)| formats labels with
+% text properties as name-value pairs. 
+% 
+% |scarlabel(FeatureNames,'Marker','MarkerStyle')| places a marker at the
+% center location. 
+%
+% |scarlabel(...,'km')| places labels on cartesian coordinates in polar
+% stereographic kilometers.  
+% 
+% |h = scarlabel(...)| returns the handle |h| of the label. 
+% 
+% |[h,feature,feature] = scarlabel(...)| returns geographic coordinates of
+% the feature. 
+%
+%% Example 1
+% Before labelling we'll initialize a map with Matlab's inaccurate and ugly built-in coast line: 
+
+antmap
+load coast 
+patchm(lat,long,[.5 .5 .5])
+
+%% 
+% Now start labelling:
+
+scarlabel('Totten Glacier')
+
+scarlabel('Recovery Glacier',...
+   'fontsize',10,...
+   'HorizontalAlignment','left',...
+   'marker','x',...
+   'color','blue')
+
+scarlabel('Ross Ice Shelf',...
+    'edgecolor','magenta',...
+    'fontangle','italic',...
+    'backgroundcolor',[.4 .6 .8],...
+    'fontsize','20')
+
+scarlabel('Marie Byrd Land','rotation',45)
+
+scarlabel('South Pole',...
+    'fontweight','bold',...
+    'color','red',...
+    'marker','rp',...
+    'markersize',50)
+
+%% Example 2: Label and format multiple locations at once
+% This example uses the <http://www.mathworks.com/matlabcentral/fileexchange/47282-modis-mosaic-of-antarctica/content//html/modismoa_demo.html 
+% |modismoa|> function to make a 1000-km-wide MODIS MOA map of the
+% Antarctic Peninsula, then we place multiple labels with one command. I'm
+% using my <http://www.mathworks.com/matlabcentral/fileexchange/46872-intuitive-rgb-color-values-from-xkcd/content//demo/html/rgb_demo.html
+% |rgb|> function to get RGB values of mauve by its name. 
+
+close % (closes previous figure)
+modismoa('graham land',1000,'inset','northeast')
+myplaces = {'Renaud Island','Longing Peninsula','Palmer Station'}; 
+scarlabel(myplaces,'color','b','backgroundcolor',rgb('mauve'));
+scalebar('color','w')
+
+%% Example 3: |corelabel|
+% Some ice core locations are not listed in SCAR's primary database, but
+% they're listed by iceReader.  For ice core locations and labelling,
+% we have |coreloc| and |corelabel|, which behave identically to |scarloc|
+% and |scarlabel|. 
+
+figure
+load coast
+antmap
+patchm(lat,long,'y')
+
+corelabel('Vostok')
+corelabel('Dome C','color','b','marker','b*')
+corelabel('byrd','rotation',45,'fontangle','italic')
+
+%% Example 4: Polar stereographic cartesian kilometers
+% If current axes are not map coordinates, labeling is performed in polar
+% stereographic cartesian coordinates (meters).  If, however, your data are plotted
+% in polar stereographic kilometers, ensure correct labeling with the
+% |'km'| tag: 
+
+load AMTdata % some sample data 
+figure
+plotps(glat{1},glon{1},'km')
+xlabel 'eastings (km)'
+ylabel 'northings (km)' 
+scarlabel({'West Antarctica','East Antarctica'},'km') 
+
+%% |scarlabel| and |scarclick| user interface video tutorial
+% The |scarclick| function allows you to click around on a map to identify
+% features.  Here is a short video example of how to use |scarclick|:
+%
+% <html> 
+% <iframe id="ytplayer" type="text/html" width="640" height="480" 
+% src="http://www.youtube.com/embed/gJBM-hUi0Lk?rel=0"
+% frameborder="0" allowfullscreen></iframe>
+% </html>
+
+%% Known Issues
+% 1. Unfortunately, <scarloc_documentation.html |scarloc|> and |scarlabel| are plagued by problems with special
+% characters. This includes letters with accents and umlauts. Sometimes
+% using letters without accents will work. Other times locations may not be
+% recognized by these functions. 
+% 
+% 2. In some cases, the SCAR Composite Gazetteer contains multiple entries
+% for the same feature, and sometimes the coordinates of the multiple
+% entries do not match exactly. I have dealt with this issue by arbitrarily 
+% picking the first listed entry for each unique feature and I've deleted duplicates. I did the
+% same kind of culling for a previous release of Antarctic Mapping 
+% Tools, but I did not necessarily keep the same entries in both cullings.  
+% As a result, if you have used a version of |scarloc| or |scarlabel| from
+% before January 2015, in some cases may appear to have moved with the
+% update.  
+% 
+%% Citing this Dataset
+% The SCAR Composite Gazetteer database can be found <http://www.scar.org/cga here>. 
+% SCAR has kindly requested that Gazetteer data should be cited as:
+% 
+% Secretariat SCAR (1992, updated 2015). Composite Gazetteer of Antarctica,
+% Scientific Committee on Antarctic Research. GCMD Metadata 
+% <http://gcmd.nasa.gov/records/SCAR_Gazetteer.html>
+%
+%% Citing AMT
+% If this function or any other part of Antarctic Mapping Tools is useful for you, please
+% cite the paper that describes AMT.  
+% 
+% Greene, C. A., Gwyther, D. E., & Blankenship, D. D. Antarctic Mapping Tools for Matlab. 
+% _Computers & Geosciences_. 104 (2017) pp.151-157. <http://dx.doi.org/10.1016/j.cageo.2016.08.003 doi:10.1016/j.cageo.2016.08.003>.
+% 
+%% Author Info
+% These functions and supporting documentation were created by <http://www.chadagreene.com/ Chad A. Greene>,
+% July 2013, updated August 2014 and January 2015. Chad is a researcher at the University of Texas Institute 
+% for Geophysics (<www.ig.utexas.edu/research/cryosphere/ UTIG>).
+##### SOURCE END #####
+--></body></html>

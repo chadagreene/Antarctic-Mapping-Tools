@@ -1,0 +1,318 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Satellite Image Comparison</title><meta name="generator" content="MATLAB 8.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2015-07-25"><meta name="DC.source" content="Satellite_Image_Comparison.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Satellite Image Comparison</h1><!--introduction--><p>This example file compares MODIS Mosaic of Antarctica, Landsat 8, Landsat Image Mosaic of Antarctica, and Radarsat Antarctic Mapping Project images of Antarctica. Images are plotted in Matlab using <a href="http://www.mathworks.com/matlabcentral/fileexchange/47282-modis-mosaic-of-antarctica/content//html/modismoa_demo.html"><tt>modismoa</tt></a>, <a href="http://www.mathworks.com/matlabcentral/fileexchange/49842-lima-landsat-image-mosaic-of-antarctica/content/lima/html/lima_documentation.html"><tt>lima</tt></a>, <a href="http://www.mathworks.com/matlabcentral/fileexchange/52031-ramp-radarsat-antarctic-mapping-project/content/RAMP/html/ramp_documentation.html"><tt>ramp</tt></a>, and <a href="http://www.mathworks.com/matlabcentral/fileexchange/48726-landsat/content/landsat/html/landsat_documentation.html"><tt>landsat</tt></a>, which are plugins to Antarctic Mapping Tools for Matlab.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Full continent</a></li><li><a href="#2">Regions of interest</a></li><li><a href="#4">Temporal change</a></li><li><a href="#6">Contrast and feature detection</a></li><li><a href="#7">Mapping Toolbox and Polar Stereographic Coordinates</a></li><li><a href="#8">Colors and Colormaps</a></li><li><a href="#9">Author Info</a></li></ul></div><h2>Full continent<a name="1"></a></h2><p>MODIS MOA, LIMA, and RAMP are all image mosaics.  Thus, they're easy to plot on the continent-wide scale:</p><pre class="codeinput">figure(<span class="string">'pos'</span>,[100 100 1100 420])
+
+subplot(131)
+modismoa
+textm(-90,0,<span class="string">'MODIS MOA'</span>,<span class="string">'horiz'</span>,<span class="string">'center'</span>)
+
+subplot(132)
+lima
+textm(-90,0,<span class="string">'LIMA'</span>,<span class="string">'horiz'</span>,<span class="string">'center'</span>)
+
+subplot(133)
+ramp
+textm(-90,0,<span class="string">'RAMP'</span>,<span class="string">'horiz'</span>,<span class="string">'center'</span>)
+</pre><img vspace="5" hspace="5" src="Satellite_Image_Comparison_01.png" alt=""> <h2>Regions of interest<a name="2"></a></h2><p>On a local or regional scale, sensor differences become apparent: MODIS offers the greatest radiometric resolution, Landsat gives color images, and RAMP can be used to identify flow.  Note there are some minor syntax differences between plugins: <tt>modismoa</tt> and <tt>lima</tt> automatically zoom to features of interest, but <tt>ramp</tt> requires zooming with <tt>mapzoom</tt> before calling <tt>ramp</tt>:</p><pre class="codeinput">figure(<span class="string">'pos'</span>,[100 100 1100 420])
+
+subplot(131)
+modismoa <span class="string">'beardmore glacier'</span>
+
+subplot(132)
+lima <span class="string">'beardmore glacier'</span>
+
+subplot(133)
+mapzoom <span class="string">'beardmore glacier'</span>
+ramp
+scalebar
+</pre><img vspace="5" hspace="5" src="Satellite_Image_Comparison_02.png" alt=""> <p>Above, blue ice is evident in the Landsat image. Now compare images of floating ice:</p><pre class="codeinput">figure(<span class="string">'pos'</span>,[100 100 1100 420])
+
+subplot(131)
+modismoa <span class="string">'wilkins ice shelf'</span>
+scalebar(<span class="string">'color'</span>,<span class="string">'w'</span>)
+
+subplot(132)
+lima <span class="string">'wilkins ice shelf'</span>
+
+subplot(133)
+mapzoom <span class="string">'wilkins ice shelf'</span>
+ramp
+</pre><img vspace="5" hspace="5" src="Satellite_Image_Comparison_03.png" alt=""> <h2>Temporal change<a name="4"></a></h2><p>Currently, the only satellite image plugins for AMT with the ability to show temporal change are <tt>modismoa</tt> and <tt>landsat</tt>.  The <tt>landsat</tt> function plots only low-resolution images, but offers the greatest temporal precision.  If it does not find an image for the date you specify, it will automatically search for an image taken close to that date.  <tt>landsat</tt> requires knowledge of the Landsat <a href="https://landsat.usgs.gov/tools_latlong.php">path and row</a> for your region of interest. Here we compare a few landsat images specified by date:</p><pre class="codeinput">figure(<span class="string">'pos'</span>,[100 100 1100 420])
+
+subplot(131)
+mapzoom(<span class="string">'pine island glacier'</span>,200)
+landsat(233,113,<span class="string">'dec 24, 2013'</span>)
+title <span class="string">'December 24, 2013'</span>
+
+subplot(132)
+mapzoom(<span class="string">'pine island glacier'</span>,200)
+landsat(233,113,<span class="string">'jan 28, 2015'</span>)
+title <span class="string">'January 28, 2015'</span>
+
+subplot(133)
+mapzoom(<span class="string">'pine island glacier'</span>,200)
+landsat(233,113,<span class="string">'march 17, 2015'</span>)
+scalebar(<span class="string">'location'</span>,<span class="string">'se'</span>)
+title <span class="string">'St. Patty''s Day, 2015'</span>
+</pre><img vspace="5" hspace="5" src="Satellite_Image_Comparison_04.png" alt=""> <p><tt>modismoa</tt> allows you to specify the year 2004 or 2009:</p><pre class="codeinput">figure(<span class="string">'position'</span>,[100 100 900 400])
+
+subplot(1,2,1)
+modismoa(-64.9,-60.2,200,<span class="string">'2004'</span>)
+scalebar(<span class="string">'color'</span>,<span class="string">'w'</span>,<span class="string">'location'</span>,<span class="string">'northeast'</span>)
+
+subplot(1,2,2)
+modismoa(-64.9,-60.2,200,<span class="string">'2009'</span>)
+</pre><img vspace="5" hspace="5" src="Satellite_Image_Comparison_05.png" alt=""> <h2>Contrast and feature detection<a name="6"></a></h2><p>The best function for indentifying features such as flow stripes is often <tt>modismoa</tt>.  The dynamic range range of MODIS allows detection of features large and small.  Sometimes this means tinkering with contrast until the features are clear enough to see.  Other times, such as when a MOA image is being used as a background plot intended only for geospatial context, you may wish to reduce contrast to bring focus to your data of interest.  Here are a few of <tt>modismoa</tt> contrasts, ordered from ultra-low contrast (<tt>'ulc'</tt>) to ultra-high contrast (<tt>'uhc'</tt>):</p><pre class="codeinput">figure(<span class="string">'position'</span>,[100 100 900 600])
+subplot(2,3,1)
+modismoa(<span class="string">'rutford ice stream'</span>,100,<span class="string">'contrast'</span>,<span class="string">'ulc'</span>)
+scalebar(<span class="string">'location'</span>,<span class="string">'southeast'</span>,<span class="string">'length'</span>,25)
+text(0,.95,<span class="string">' ulc contrast'</span>,<span class="string">'units'</span>,<span class="string">'normalized'</span>,<span class="string">'backgroundcolor'</span>,<span class="string">'w'</span>)
+
+subplot(2,3,2)
+modismoa(<span class="string">'rutford ice stream'</span>,100,<span class="string">'contrast'</span>,<span class="string">'lc'</span>)
+text(0,.95,<span class="string">' lc contrast'</span>,<span class="string">'units'</span>,<span class="string">'normalized'</span>,<span class="string">'backgroundcolor'</span>,<span class="string">'w'</span>)
+
+subplot(2,3,3)
+modismoa(<span class="string">'rutford ice stream'</span>,100,<span class="string">'contrast'</span>,<span class="string">'moa'</span>)
+text(0,.95,<span class="string">' default contrast'</span>,<span class="string">'units'</span>,<span class="string">'normalized'</span>,<span class="string">'backgroundcolor'</span>,<span class="string">'w'</span>)
+
+subplot(2,3,4)
+modismoa(<span class="string">'rutford ice stream'</span>,100,<span class="string">'contrast'</span>,<span class="string">'hc'</span>)
+text(0,.95,<span class="string">' hc contrast'</span>,<span class="string">'units'</span>,<span class="string">'normalized'</span>,<span class="string">'backgroundcolor'</span>,<span class="string">'w'</span>)
+
+subplot(2,3,5)
+modismoa(<span class="string">'rutford ice stream'</span>,100,<span class="string">'contrast'</span>,<span class="string">'vhc'</span>)
+text(0,.95,<span class="string">' vhc contrast'</span>,<span class="string">'units'</span>,<span class="string">'normalized'</span>,<span class="string">'backgroundcolor'</span>,<span class="string">'w'</span>)
+
+subplot(2,3,6)
+modismoa(<span class="string">'rutford ice stream'</span>,100,<span class="string">'contrast'</span>,<span class="string">'uhc'</span>)
+text(0,.95,<span class="string">' uhc contrast'</span>,<span class="string">'units'</span>,<span class="string">'normalized'</span>,<span class="string">'backgroundcolor'</span>,<span class="string">'w'</span>)
+</pre><img vspace="5" hspace="5" src="Satellite_Image_Comparison_06.png" alt=""> <h2>Mapping Toolbox and Polar Stereographic Coordinates<a name="7"></a></h2><p>If you don't have Matlab's Mapping Toolbox, or if you wish to plot in polar stereographic cartesian coordinates, use <tt>lima</tt> or <tt>ramp</tt> with the <tt>'xy'</tt> argument.  Currently, <tt>modismoa</tt> and <tt>landsat</tt> do not support cartesian coordinates.</p><h2>Colors and Colormaps<a name="8"></a></h2><p>An important note for when images are plotted along with other datasets: <tt>modismoa</tt> and <tt>ramp</tt> set the current colormap to <tt>gray</tt>.  If you wish to incorporate other datasets that use the colormap, such as semitransparent ice speed or temperature, you'll need to plot the grayscale <tt>modismoa</tt> or <tt>ramp</tt> image, freeze the color map with <a href="http://www.mathworks.com/matlabcentral/fileexchange/7943"><tt>freezeColors</tt></a>, then plot your new dataset and set the new colormap.</p><p>On the contrary, <tt>landsat</tt> and <tt>lima</tt> images are plotted as RGB images and do not affect the current colormap.</p><h2>Author Info<a name="9"></a></h2><p>This tutorial was written by <a href="http://www.chadagreene">Chad Greene</a> of the University of Texas at Austin's Institute for Geophysics (UTIG), July 2015.</p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2012b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Satellite Image Comparison
+% This example file compares MODIS Mosaic of Antarctica, Landsat 8, Landsat Image Mosaic of Antarctica, and 
+% Radarsat Antarctic Mapping Project images of Antarctica. Images are
+% plotted in Matlab using <http://www.mathworks.com/matlabcentral/fileexchange/47282-modis-mosaic-of-antarctica/content//html/modismoa_demo.html |modismoa|>, 
+% <http://www.mathworks.com/matlabcentral/fileexchange/49842-lima-landsat-image-mosaic-of-antarctica/content/lima/html/lima_documentation.html |lima|>,
+% <http://www.mathworks.com/matlabcentral/fileexchange/52031-ramp-radarsat-antarctic-mapping-project/content/RAMP/html/ramp_documentation.html |ramp|>, 
+% and <http://www.mathworks.com/matlabcentral/fileexchange/48726-landsat/content/landsat/html/landsat_documentation.html |landsat|>, 
+% which are plugins to Antarctic Mapping Tools for Matlab. 
+
+%% Full continent
+% MODIS MOA, LIMA, and RAMP are all image mosaics.  Thus, they're easy to
+% plot on the continent-wide scale: 
+
+figure('pos',[100 100 1100 420]) 
+
+subplot(131)
+modismoa
+textm(-90,0,'MODIS MOA','horiz','center') 
+
+subplot(132)
+lima
+textm(-90,0,'LIMA','horiz','center') 
+
+subplot(133)
+ramp
+textm(-90,0,'RAMP','horiz','center') 
+
+%% Regions of interest
+% On a local or regional scale, sensor differences become apparent: MODIS offers the greatest radiometric resolution, 
+% Landsat gives color images, and RAMP can be used to identify flow.  Note
+% there are some minor syntax differences between plugins: |modismoa| and |lima| automatically zoom
+% to features of interest, but |ramp| requires zooming with |mapzoom| before
+% calling |ramp|: 
+
+figure('pos',[100 100 1100 420]) 
+
+subplot(131)
+modismoa 'beardmore glacier'
+
+subplot(132)
+lima 'beardmore glacier'
+
+subplot(133)
+mapzoom 'beardmore glacier'
+ramp
+scalebar
+
+%% 
+% Above, blue ice is evident in the Landsat image. Now compare images
+% of floating ice: 
+
+figure('pos',[100 100 1100 420]) 
+
+subplot(131)
+modismoa 'wilkins ice shelf'
+scalebar('color','w')
+
+subplot(132)
+lima 'wilkins ice shelf'
+
+subplot(133)
+mapzoom 'wilkins ice shelf'
+ramp
+
+%% Temporal change
+% Currently, the only satellite image plugins for AMT with the ability to show temporal change are 
+% |modismoa| and |landsat|.  The |landsat| function plots only
+% low-resolution images, but offers the greatest temporal precision.  If it does not find an image 
+% for the date you specify, it will automatically search for an image taken close to that date.  |landsat| requires
+% knowledge of the Landsat <https://landsat.usgs.gov/tools_latlong.php path and row> for your region of interest.  
+% Here we compare a few landsat images specified by date:  
+
+figure('pos',[100 100 1100 420]) 
+
+subplot(131)
+mapzoom('pine island glacier',200)
+landsat(233,113,'dec 24, 2013') 
+title 'December 24, 2013'
+
+subplot(132)
+mapzoom('pine island glacier',200)
+landsat(233,113,'jan 28, 2015') 
+title 'January 28, 2015'
+
+subplot(133)
+mapzoom('pine island glacier',200)
+landsat(233,113,'march 17, 2015') 
+scalebar('location','se') 
+title 'St. Patty''s Day, 2015'
+
+%% 
+% |modismoa| allows you to specify the year 2004 or 2009: 
+
+figure('position',[100 100 900 400])
+
+subplot(1,2,1)
+modismoa(-64.9,-60.2,200,'2004')
+scalebar('color','w','location','northeast')
+
+subplot(1,2,2)
+modismoa(-64.9,-60.2,200,'2009')
+
+%% Contrast and feature detection 
+% The best function for indentifying features such as flow stripes is often
+% |modismoa|.  The dynamic range range of MODIS allows detection of
+% features large and small.  Sometimes this means tinkering with contrast
+% until the features are clear enough to see.  Other times, such as when
+% a MOA image is being used as a background plot intended only for
+% geospatial context, you may wish to reduce contrast to bring focus to
+% your data of interest.  Here are a few of |modismoa| contrasts, ordered
+% from ultra-low contrast (|'ulc'|) to ultra-high contrast (|'uhc'|): 
+
+figure('position',[100 100 900 600])
+subplot(2,3,1)
+modismoa('rutford ice stream',100,'contrast','ulc')
+scalebar('location','southeast','length',25)
+text(0,.95,' ulc contrast','units','normalized','backgroundcolor','w')
+
+subplot(2,3,2)
+modismoa('rutford ice stream',100,'contrast','lc')
+text(0,.95,' lc contrast','units','normalized','backgroundcolor','w')
+
+subplot(2,3,3)
+modismoa('rutford ice stream',100,'contrast','moa')
+text(0,.95,' default contrast','units','normalized','backgroundcolor','w')
+
+subplot(2,3,4)
+modismoa('rutford ice stream',100,'contrast','hc')
+text(0,.95,' hc contrast','units','normalized','backgroundcolor','w')
+
+subplot(2,3,5)
+modismoa('rutford ice stream',100,'contrast','vhc')
+text(0,.95,' vhc contrast','units','normalized','backgroundcolor','w')
+
+subplot(2,3,6)
+modismoa('rutford ice stream',100,'contrast','uhc')
+text(0,.95,' uhc contrast','units','normalized','backgroundcolor','w')
+
+%% Mapping Toolbox and Polar Stereographic Coordinates
+% If you don't have Matlab's Mapping Toolbox, or if you wish to plot in
+% polar stereographic cartesian coordinates, use |lima| or |ramp| with the
+% |'xy'| argument.  Currently, |modismoa| and |landsat| do not support
+% cartesian coordinates.  
+
+%% Colors and Colormaps
+% An important note for when images are plotted along with other datasets:
+% |modismoa| and |ramp| set the current colormap to |gray|.  If you wish to
+% incorporate other datasets that use the colormap, such as semitransparent
+% ice speed or temperature, you'll need to plot the
+% grayscale |modismoa| or |ramp| image, freeze the color map with
+% <http://www.mathworks.com/matlabcentral/fileexchange/7943
+% |freezeColors|>, then plot your new dataset and set the new colormap. 
+% 
+% On the contrary, |landsat| and |lima| images are plotted as RGB images
+% and do not affect the current colormap. 
+
+%% Author Info
+% This tutorial was written by <http://www.chadagreene Chad Greene> of the
+% University of Texas at Austin's Institute for Geophysics (UTIG), July
+% 2015. 
+##### SOURCE END #####
+--></body></html>

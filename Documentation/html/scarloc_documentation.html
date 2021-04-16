@@ -1,0 +1,189 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>scarloc documentation</title><meta name="generator" content="MATLAB 8.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-05-22"><meta name="DC.source" content="scarloc_documentation.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>scarloc</tt> documentation</h1><!--introduction--><p><tt>scarloc</tt> is part of Antarctic Mapping Tools for Matlab (Greene et al., 2017).  <a href="List_of_functions.html">Click here for a complete list of functions in AMT.</a></p><p>The <tt>scarloc</tt> function returns coordinates of any of the 25,601 features identified by the Scientific Committee on Antarctic Research (<a href="http://www.scar.org/cga">SCAR</a>).</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Example: Where is McMurdo Station?</a></li><li><a href="#4">Example 2: Two-column output</a></li><li><a href="#5">Example 3: Multiple locations</a></li><li><a href="#6">Example 4: Polar stereographic coordinates</a></li><li><a href="#7">Example 5: Polar stereographic kilometers</a></li><li><a href="#8">Known Issues</a></li><li><a href="#9">Cite this dataset as:</a></li><li><a href="#10">Citing AMT</a></li><li><a href="#11">Author Info</a></li></ul></div><h2>Syntax<a name="1"></a></h2><pre>[lat,lon] = scarloc(FeatureNames)
+latlon = scarloc(FeatureNames)
+[x,y] = scarloc(FeatureNames,'xy')
+xy = scarloc(FeatureNames,'xy')
+[...] = scarloc(FeatureNames,'xy','km')</pre><h2>Description<a name="2"></a></h2><p><tt>[lat,lon] = scarloc(FeatureNames)</tt> returns the geo coordinate location(s) of an almost any feature(s) in Antarctica. <tt>FeatureNames</tt> can be string or cell array of multiple locations.</p><p><tt>latlon = scarloc('Feature Name')</tt> returns geo coordinate location(s) of an almost any feature(s) in Antarctica. If only one output argument is used, column 1 corresponds to latitude and column 2 corresponds to longitude.</p><p><tt>[x,y] = scarloc(FeatureNames,'xy')</tt> returns polar stereographic (true latitude 71&deg;S) eastings and northings in meters.</p><p><tt>[y = scarloc(FeatureNames,'xy')</tt> returns polar stereographic (true latitude 71&deg;S) eastings and northings in meters. If only one output argument is used, column 1 corresponds to eastings and column 2 corresponds to northings.</p><p><tt>[...] = scarloc(FeatureNames,'xy','km')</tt> returns polar stereographic kilometers instead of the default meters.</p><h2>Example: Where is McMurdo Station?<a name="3"></a></h2><pre class="codeinput">[lat,lon] = scarloc(<span class="string">'McMurdo Station'</span>)
+</pre><pre class="codeoutput">lat =
+  -77.8478
+lon =
+  166.6683
+</pre><h2>Example 2: Two-column output<a name="4"></a></h2><p>If two outputs are requested as in Example 1, outputs are lat and lon. If one output is requested, latitudes populate column 1 and longitudes populate column 2:</p><pre class="codeinput">latlon = scarloc(<span class="string">'mcmurdo station'</span>)
+</pre><pre class="codeoutput">latlon =
+  -77.8478  166.6683
+</pre><h2>Example 3: Multiple locations<a name="5"></a></h2><p>Multiple locations may be entered as a cell array of strings:</p><pre class="codeinput">places = {<span class="string">'Byrd Camp'</span>;<span class="string">'Casey Station'</span>;<span class="string">'Pine Island Glacier'</span>};
+scarloc(places)
+</pre><pre class="codeoutput">ans =
+  -80.0833 -119.5333
+  -66.2833  110.5194
+  -75.1667 -100.0000
+</pre><h2>Example 4: Polar stereographic coordinates<a name="6"></a></h2><p>If you want polar stereographic eastings and northings, include the <tt>'xy'</tt> tag:</p><pre class="codeinput">scarloc(places,<span class="string">'xy'</span>)
+</pre><pre class="codeoutput">ans =
+   1.0e+06 *
+   -0.9397   -0.5324
+    2.4470   -0.9159
+   -1.5958   -0.2814
+</pre><h2>Example 5: Polar stereographic kilometers<a name="7"></a></h2><p>Sometimes you want polar stereographic kilometers, but dividing meters by a thousand feels like far too much of a burden.  Fortunately, <tt>scarloc</tt>'ll do it for you:</p><pre class="codeinput">scarloc(places,<span class="string">'xy'</span>,<span class="string">'km'</span>)
+</pre><pre class="codeoutput">ans =
+   1.0e+03 *
+   -0.9397   -0.5324
+    2.4470   -0.9159
+   -1.5958   -0.2814
+</pre><h2>Known Issues<a name="8"></a></h2><p>Unfortunately, scarloc and scarlabel are plagued by problems with special characters. This includes letters with accents and umlauts. My sincerest apologies to our French, Norwegian, and just about everything aside from American friends.</p><h2>Cite this dataset as:<a name="9"></a></h2><p>Secretariat SCAR (1992, updated 2015). Composite Gazetteer of Antarctica, Scientific Committee on Antarctic Research. GCMD Metadata <a href="http://gcmd.nasa.gov/records/SCAR_Gazetteer.html">http://gcmd.nasa.gov/records/SCAR_Gazetteer.html</a></p><h2>Citing AMT<a name="10"></a></h2><p>If this function or any other part of Antarctic Mapping Tools is useful for you, please cite the paper that describes AMT.</p><p>Greene, C. A., Gwyther, D. E., &amp; Blankenship, D. D. Antarctic Mapping Tools for Matlab. <i>Computers &amp; Geosciences</i>. 104 (2017) pp.151-157. <a href="http://dx.doi.org/10.1016/j.cageo.2016.08.003">doi:10.1016/j.cageo.2016.08.003</a>.</p><h2>Author Info<a name="11"></a></h2><p>This function and supporting documentation were written by <a href="http://www.chadagreene.com">Chad Greene</a> of the University of Texas at Austin's Institute for Geophysics (UTIG). Feel free to contact me if you have any questions or comments.</p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2012b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |scarloc| documentation  
+% |scarloc| is part of Antarctic Mapping Tools for Matlab (Greene et al., 2017).  <List_of_functions.html Click here
+% for a complete list of functions in AMT.>
+% 
+% The |scarloc| function returns coordinates of any of the 25,601 features identified by the Scientific Committee 
+% on Antarctic Research (<http://www.scar.org/cga SCAR>). 
+% 
+%% Syntax 
+% 
+%  [lat,lon] = scarloc(FeatureNames) 
+%  latlon = scarloc(FeatureNames) 
+%  [x,y] = scarloc(FeatureNames,'xy') 
+%  xy = scarloc(FeatureNames,'xy')
+%  [...] = scarloc(FeatureNames,'xy','km')
+% 
+%% Description 
+% 
+% |[lat,lon] = scarloc(FeatureNames)| returns the geo coordinate location(s) of an
+% almost any feature(s) in Antarctica. |FeatureNames| can be string or cell array of 
+% multiple locations. 
+% 
+% |latlon = scarloc('Feature Name')| returns geo coordinate location(s) of an
+% almost any feature(s) in Antarctica. If only one output argument is used,
+% column 1 corresponds to latitude and column 2 corresponds to longitude. 
+% 
+% |[x,y] = scarloc(FeatureNames,'xy')| returns polar stereographic (true latitude 
+% 71°S) eastings and northings in meters.  
+% 
+% |[y = scarloc(FeatureNames,'xy')| returns polar stereographic (true latitude 
+% 71°S) eastings and northings in meters. If only one output argument is used,
+% column 1 corresponds to eastings and column 2 corresponds to northings. 
+% 
+% |[...] = scarloc(FeatureNames,'xy','km')| returns polar stereographic kilometers 
+% instead of the default meters. 
+% 
+%% Example: Where is McMurdo Station? 
+
+[lat,lon] = scarloc('McMurdo Station')
+
+%% Example 2: Two-column output
+% If two outputs are requested as in Example 1, outputs are lat and lon. If
+% one output is requested, latitudes populate column 1 and longitudes
+% populate column 2: 
+
+latlon = scarloc('mcmurdo station')
+
+%% Example 3: Multiple locations 
+% Multiple locations may be entered as a cell array of strings: 
+
+places = {'Byrd Camp';'Casey Station';'Pine Island Glacier'}; 
+scarloc(places)
+
+%% Example 4: Polar stereographic coordinates 
+% If you want polar stereographic eastings and northings, include the
+% |'xy'| tag: 
+
+scarloc(places,'xy')
+
+%% Example 5: Polar stereographic kilometers 
+% Sometimes you want polar stereographic kilometers, but dividing meters by
+% a thousand feels like far too much of a burden.  Fortunately,
+% |scarloc|'ll do it for you: 
+
+scarloc(places,'xy','km')
+
+%% Known Issues
+% Unfortunately, scarloc and scarlabel are plagued by problems with special
+% characters. This includes letters with accents and umlauts. My sincerest
+% apologies to our French, Norwegian, and just about everything aside from
+% American friends.  
+% 
+%% Cite this dataset as: 
+% Secretariat SCAR (1992, updated 2015). Composite Gazetteer of Antarctica,
+% Scientific Committee on Antarctic Research. GCMD Metadata 
+% <http://gcmd.nasa.gov/records/SCAR_Gazetteer.html>
+% 
+%% Citing AMT
+% If this function or any other part of Antarctic Mapping Tools is useful for you, please
+% cite the paper that describes AMT.  
+% 
+% Greene, C. A., Gwyther, D. E., & Blankenship, D. D. Antarctic Mapping Tools for Matlab. 
+% _Computers & Geosciences_. 104 (2017) pp.151-157. <http://dx.doi.org/10.1016/j.cageo.2016.08.003 doi:10.1016/j.cageo.2016.08.003>.
+% 
+%% Author Info
+% This function and supporting documentation were written by
+% <http://www.chadagreene.com Chad Greene> of the University of Texas at
+% Austin's Institute for Geophysics (UTIG). Feel free to contact me if you
+% have any questions or comments. 
+##### SOURCE END #####
+--></body></html>

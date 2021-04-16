@@ -1,0 +1,268 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>pathdist documentation</title><meta name="generator" content="MATLAB 8.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-05-22"><meta name="DC.source" content="pathdist_documentation.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>pathdist</tt> documentation</h1><!--introduction--><p>The <tt>pathdist</tt> function uses the <tt>distance</tt> function to calculate cumulative distance traveled along a path given by the arrays lat and lon. This may be useful when variables such as ice thickness or velocity as a function of distance traveled along a ship track, snowmobile path, flight line, or satellite track.</p><p>Requires Matlab's Mapping Toolbox. Always assumes WGS84 ellipsoid.</p><p>If your work pertains to Antarctica and you do not have a license for Matlab's Mapping Toolbox you can use <a href="pathdistps_documentation.html"><tt>pathdistps</tt></a>, which is produces very similar results to <tt>pathdist</tt>, although may be slightly less accurate due to inherent distortion in the polar stereographic projection.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Example 1: How long is Antarctica's coast line?</a></li><li><a href="#5">Example 2: Find distance traveled along a route marked by GPS measurements</a></li><li><a href="#6">Example 3: Calculate path length in meters referenced to a point</a></li><li><a href="#7">Citing AMT</a></li><li><a href="#8">Author Info:</a></li></ul></div><h2>Syntax<a name="1"></a></h2><pre>pathDistance = pathdist(lat,lon)
+pathDistance = pathdist(...,LengthUnit)
+pathDistance = pathdist(...,track)
+pathDistance = pathdist(...,'refpoint',[reflat reflon])</pre><h2>Description<a name="2"></a></h2><p><tt>pathDistance = pathdist(lat,lon)</tt> returns the cumulative distance traveled along the path given by (<tt>lat</tt>,|lon|). Distance is in meters by default, referenced to the WGS84 ellipsoid. The <tt>pathDistance</tt> array will be the same size as <tt>lat</tt> and <tt>lon</tt>.</p><p><tt>pathDistance = pathdist(...,LengthUnit)</tt> specifies any valid length unit. The following are a few <tt>LengthUnit</tt> options. See documentation for <tt>validateLengthUnit</tt> for a complete list of options.</p><div><ul><li>meter	       <tt>'m', 'meter(s)', 'metre(s)'</tt> (default)</li><li>kilometer     <tt>'km', 'kilometer(s)', 'kilometre(s)'</tt></li><li>nautical mile	<tt>'nm', 'naut mi', 'nautical mile(s)'</tt></li><li>foot          <tt>'ft', 'international ft','foot', 'international foot', 'feet', 'international feet'</tt></li><li>yard          <tt>'yd', 'yds', 'yard(s)'</tt></li><li>mile          <tt>'mi', 'mile(s)','international mile(s)'</tt></li></ul></div><p><tt>pathDistance = pathdist(...,track)</tt> uses the input string track to specify either a great circle/geodesic or a rhumb line arc. If track equals <tt>'gc'</tt> (the default value), then great circle distances are computed on a sphere and geodesic distances are computed on the WGS84 ellipsoid. If track equals <tt>'rh'</tt>, then rhumb line distances are computed on the WGS84 ellipsoid.</p><p><tt>pathDistance = pathdist(...,'refpoint',[reflat reflon])</tt> references the path distance to the point along the path nearest to <tt>[reflat reflon]</tt>. For this calculation, <tt>pathdist</tt> finds the point in <tt>lat</tt> and <tt>lon</tt> which is nearest to <tt>[reflat reflon]</tt> and assumes this point along <tt>lat</tt>,|lon| is the zero point. This is only an approximation, and may give erroneous results in cases of very sharply-curving, crossing, or otherwise spaghetti-like paths; where <tt>[reflat reflon]</tt> lies far from any point along the path, or where points along the path are spaced far apart.</p><h2>Example 1: How long is Antarctica's coast line?<a name="3"></a></h2><p>For this example we'll use data from <a href="https://www.mathworks.com/matlabcentral/fileexchange/60246">Mouginot et al.</a> which we load with the <tt>antbounds_data</tt> function:</p><pre class="codeinput">[lat,lon] = antbounds_data(<span class="string">'coast'</span>);
+DistanceAroundAntarctica = pathdist(lat,lon,<span class="string">'kilometers'</span>);
+
+DistanceAroundAntarctica(end)
+</pre><pre class="codeoutput">ans =
+   3.5491e+04
+</pre><p>So a walk around Antarctica's coast line will take you on about a 35,000 kilometer trek. Let's see longitude as a function of distance traveled, if we go clockwise around the continent:</p><pre class="codeinput">plot(DistanceAroundAntarctica/1000,lon,<span class="string">'b.'</span>)
+axis <span class="string">tight</span>; box <span class="string">off</span>;
+xlabel(<span class="string">'distance traveled (thousands of km)'</span>)
+ylabel(<span class="string">'longitude'</span>)
+</pre><img vspace="5" hspace="5" src="pathdist_documentation_01.png" alt=""> <h2>Example 2: Find distance traveled along a route marked by GPS measurements<a name="5"></a></h2><p>This example uses the built-in <tt>sample_route.gpx</tt> route.</p><pre class="codeinput">route = gpxread(<span class="string">'sample_route.gpx'</span>); <span class="comment">% some sample data</span>
+lat = route.Latitude;
+lon = route.Longitude;
+time = 0:255; <span class="comment">% assume GPS measurements logged every minute</span>
+
+<span class="comment">% Create a map of the route:</span>
+figure(<span class="string">'position'</span>,[100 50 560 800])
+subplot(3,1,1)
+usamap([min(lat)-.05 max(lat)+.05],[min(lon)-.08 max(lon)+.08])
+plotm(lat,lon,<span class="string">'ko-'</span>)
+textm(lat(1),lon(1),<span class="string">'start'</span>,<span class="string">'color'</span>,[.01 .7 .1])
+textm(lat(end),lon(end),<span class="string">'end'</span>,<span class="string">'color'</span>,<span class="string">'r'</span>)
+
+<span class="comment">% Plot distance traveled:</span>
+metersTraveled = pathdist(lat,lon);
+
+subplot(3,1,2)
+plot(time,metersTraveled)
+box <span class="string">off</span>; axis <span class="string">tight</span>;
+xlabel(<span class="string">'time (minutes)'</span>)
+ylabel(<span class="string">'meters traveled'</span>)
+
+<span class="comment">% Plot speed:</span>
+speed = diff(metersTraveled/1000)./diff(time/60);
+
+subplot(3,1,3)
+plot(time(2:end)-.5,speed)
+box <span class="string">off</span>; axis <span class="string">tight</span>
+xlabel(<span class="string">'time (minutes)'</span>)
+ylabel(<span class="string">'speed (km/hr)'</span>)
+</pre><img vspace="5" hspace="5" src="pathdist_documentation_02.png" alt=""> <h2>Example 3: Calculate path length in meters referenced to a point<a name="6"></a></h2><p>Adding to the plot above, we will define a reference point at (42.354 N, 71.2 W). Then we will look at travel time as a function of distance from the reference point.</p><pre class="codeinput">reflat = 42.354;
+reflon = -71.2;
+
+subplot(3,1,1)
+plotm(reflat,reflon,<span class="string">'bp'</span>)
+textm(reflat,reflon,<span class="string">'reference point'</span>,<span class="string">'color'</span>,<span class="string">'b'</span>)
+
+kmFromRefPt = pathdist(lat,lon,<span class="string">'refpoint'</span>,[reflat reflon],<span class="string">'kilometers'</span>);
+
+subplot(3,1,2)
+plot(kmFromRefPt,time)
+ylabel(<span class="string">'travel time (min)'</span>)
+xlabel(<span class="string">'distance from reference point (km)'</span>)
+axis <span class="string">tight</span>; box <span class="string">off</span>;
+</pre><img vspace="5" hspace="5" src="pathdist_documentation_03.png" alt=""> <h2>Citing AMT<a name="7"></a></h2><p>If this function or any other part of Antarctic Mapping Tools is useful for you, please cite the paper that describes AMT.</p><p>Greene, C. A., Gwyther, D. E., &amp; Blankenship, D. D. Antarctic Mapping Tools for Matlab. <i>Computers &amp; Geosciences</i>. 104 (2017) pp.151-157. <a href="http://dx.doi.org/10.1016/j.cageo.2016.08.003">doi:10.1016/j.cageo.2016.08.003</a>.</p><h2>Author Info:<a name="8"></a></h2><p>This function was written by <a href="http://www.chadagreene.com">Chad A. Greene</a> of the Institute for Geophysics at the University of Texas at Austin (<a href="http://www.ig.utexas.edu/research/cryosphere/">UTIG</a>). June 23, 2014. Updated January 2015 to include support for more length units.</p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2012b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |pathdist| documentation  
+% The |pathdist| function uses the |distance| function to calculate cumulative distance
+% traveled along a path given by the arrays lat and lon. This may be useful when 
+% variables such as ice thickness or velocity as a function of distance traveled 
+% along a ship track, snowmobile path, flight line, or satellite track. 
+% 
+% Requires Matlab's Mapping Toolbox. Always assumes WGS84 ellipsoid. 
+% 
+% If your work pertains to Antarctica and you do not have a license for Matlab's Mapping Toolbox 
+% you can use <pathdistps_documentation.html |pathdistps|>, which is produces very similar results
+% to |pathdist|, although may be slightly less accurate due to inherent distortion in the polar
+% stereographic projection. 
+% 
+%% Syntax
+% 
+%  pathDistance = pathdist(lat,lon)
+%  pathDistance = pathdist(...,LengthUnit)
+%  pathDistance = pathdist(...,track)
+%  pathDistance = pathdist(...,'refpoint',[reflat reflon])
+% 
+%% Description
+% 
+% |pathDistance = pathdist(lat,lon)| returns the cumulative distance
+% traveled along the path given by (|lat|,|lon|). Distance is in meters
+% by default, referenced to the WGS84 ellipsoid. The |pathDistance| array
+% will be the same size as |lat| and |lon|. 
+%
+% |pathDistance = pathdist(...,LengthUnit)| specifies any valid length unit. 
+% The following are a few |LengthUnit| options. See documentation for 
+% |validateLengthUnit| for a complete list of options.
+% 
+% * meter	       |'m', 'meter(s)', 'metre(s)'| (default)
+% * kilometer     |'km', 'kilometer(s)', 'kilometre(s)'|
+% * nautical mile	|'nm', 'naut mi', 'nautical mile(s)'|
+% * foot          |'ft', 'international ft','foot', 'international foot', 'feet', 'international feet'|
+% * yard          |'yd', 'yds', 'yard(s)'|
+% * mile          |'mi', 'mile(s)','international mile(s)'|
+%
+% |pathDistance = pathdist(...,track)| uses the input string track to specify 
+% either a great circle/geodesic or a rhumb line arc. If track equals |'gc'| (the default 
+% value), then great circle distances are computed on a sphere and geodesic distances are 
+% computed on the WGS84 ellipsoid. If track equals |'rh'|, then rhumb line distances are 
+% computed on the WGS84 ellipsoid.
+%
+% |pathDistance = pathdist(...,'refpoint',[reflat reflon])| references the
+% path distance to the point along the path nearest to |[reflat reflon]|.
+% For this calculation, |pathdist| finds the point in |lat| and |lon|
+% which is nearest to |[reflat reflon]| and assumes this point along
+% |lat|,|lon| is the zero point. This is only an approximation, and may
+% give erroneous results in cases of very sharply-curving, crossing, or 
+% otherwise spaghetti-like paths; where |[reflat reflon]| lies far from any
+% point along the path, or where points along the path are spaced far
+% apart. 
+% 
+
+%% Example 1: How long is Antarctica's coast line?  
+% For this example we'll use data from <https://www.mathworks.com/matlabcentral/fileexchange/60246 Mouginot et al.>
+% which we load with the |antbounds_data| function: 
+
+[lat,lon] = antbounds_data('coast');
+DistanceAroundAntarctica = pathdist(lat,lon,'kilometers'); 
+
+DistanceAroundAntarctica(end)
+
+%%
+% So a walk around Antarctica's coast line will take you on about a 
+% 35,000 kilometer trek. Let's see longitude as a function of distance
+% traveled, if we go clockwise around the continent: 
+
+plot(DistanceAroundAntarctica/1000,lon,'b.')
+axis tight; box off; 
+xlabel('distance traveled (thousands of km)') 
+ylabel('longitude') 
+
+%% Example 2: Find distance traveled along a route marked by GPS measurements
+% This example uses the built-in |sample_route.gpx| route. 
+
+route = gpxread('sample_route.gpx'); % some sample data 
+lat = route.Latitude; 
+lon = route.Longitude; 
+time = 0:255; % assume GPS measurements logged every minute
+
+% Create a map of the route: 
+figure('position',[100 50 560 800]) 
+subplot(3,1,1) 
+usamap([min(lat)-.05 max(lat)+.05],[min(lon)-.08 max(lon)+.08])
+plotm(lat,lon,'ko-')
+textm(lat(1),lon(1),'start','color',[.01 .7 .1]) 
+textm(lat(end),lon(end),'end','color','r')
+
+% Plot distance traveled:
+metersTraveled = pathdist(lat,lon);
+
+subplot(3,1,2) 
+plot(time,metersTraveled)
+box off; axis tight; 
+xlabel('time (minutes)')
+ylabel('meters traveled') 
+
+% Plot speed: 
+speed = diff(metersTraveled/1000)./diff(time/60); 
+
+subplot(3,1,3) 
+plot(time(2:end)-.5,speed)
+box off; axis tight 
+xlabel('time (minutes)') 
+ylabel('speed (km/hr)')
+
+%% Example 3: Calculate path length in meters referenced to a point
+% Adding to the plot above, we will define a reference point at (42.354 N,
+% 71.2 W). Then we will look at travel time as a function of distance from
+% the reference point.  
+
+reflat = 42.354; 
+reflon = -71.2; 
+
+subplot(3,1,1) 
+plotm(reflat,reflon,'bp')
+textm(reflat,reflon,'reference point','color','b') 
+
+kmFromRefPt = pathdist(lat,lon,'refpoint',[reflat reflon],'kilometers'); 
+
+subplot(3,1,2) 
+plot(kmFromRefPt,time)
+ylabel('travel time (min)') 
+xlabel('distance from reference point (km)') 
+axis tight; box off; 
+
+%% Citing AMT
+% If this function or any other part of Antarctic Mapping Tools is useful for you, please
+% cite the paper that describes AMT.  
+% 
+% Greene, C. A., Gwyther, D. E., & Blankenship, D. D. Antarctic Mapping Tools for Matlab. 
+% _Computers & Geosciences_. 104 (2017) pp.151-157. <http://dx.doi.org/10.1016/j.cageo.2016.08.003 doi:10.1016/j.cageo.2016.08.003>.
+% 
+%% Author Info: 
+% This function was written by <http://www.chadagreene.com Chad A. Greene> of the Institute for
+% Geophysics at the University of Texas at Austin (<http://www.ig.utexas.edu/research/cryosphere/
+% UTIG>). June 23, 2014. Updated January 2015 to include support for more
+% length units. 
+##### SOURCE END #####
+--></body></html>

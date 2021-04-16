@@ -1,0 +1,201 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>pathdistps documentation</title><meta name="generator" content="MATLAB 9.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2018-10-31"><meta name="DC.source" content="pathdistps_documentation.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>pathdistps</tt> documentation</h1><!--introduction--><p><tt>pathdistps</tt> is part of Antarctic Mapping Tools for Matlab (Greene et al., 2017). Click <a href="List_of_functions.html">here</a> for a complete list of functions in AMT.</p><p>The <tt>pathdistps</tt> returns the cumulative distance along a path in polar stereographic coordinates (true lat 71 S).</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Examples</a></li><li><a href="#6">Citing AMT</a></li><li><a href="#7">Author Info</a></li></ul></div><h2 id="1">Syntax</h2><pre>d = pathdistps(lat,lon)
+d = pathdistps(x,y)
+d = pathdistps(...,'km')
+d = pathdistps(...,'ref',[reflat reflon])
+d = pathdistps(...,'ref',[refx refy])
+d = pathdistps(...,'FixDistortion',false)</pre><h2 id="2">Description</h2><p><tt>d = pathdistps(lat,lon)</tt> returns the cumulative distance <tt>d</tt> in meters along the path specified by geo coordinates <tt>lat,lon</tt>. Coordinates must be vectors of equal size.</p><p><tt>d = pathdistps(x,y)</tt> returns the cumulative distance <tt>d</tt> in meters along the path specified by polar stereographic coordinates <tt>x,y</tt> where <tt>x</tt> and <tt>y</tt> are vectors of equal size in ps71 meters.</p><p><tt>d = pathdistps(...,'km')</tt> simply divides output by 1000 to give distance in kilometers.</p><p><tt>d = pathdistps(...,'ref',[reflat reflon])</tt> references the output to the track coordinate nearest to the location given by a two-element vector <tt>[reflat reflon]</tt>.  This might be useful when analyzing distance along a satellite ground track relative to a point of interest such as a grounding line.</p><p><tt>d = pathdistps(...,'ref',[refx refy])</tt> references the output as above, but using polar stereogprahic (ps71) coordinates.</p><p><tt>d = pathdistps(...,'FixDistortion',false)</tt> calculates distances in pure polar stereographic coordinates without accounting for distortion induced by the projection. In Nov 2018, the default behavior changed from <tt>'FixDistortion',false</tt> to <tt>'FixDistortion',true</tt> meaning distances now reflect true distances rather than distances in the polar stereographic projection.</p><h2 id="3">Examples</h2><p>Use <a href="http://www.mathworks.com/matlabcentral/fileexchange/46611-icesat-reference-tracks-and-antarctic-grounding-zone-structure/content/icesat_function/icesat_demo/html/reftrack_documentation.html"><tt>reftrack</tt></a> from the ICESat reference tracks toolbox and clip to the eastern hemisphere:</p><pre class="codeinput"><span class="comment">% Load reference track:</span>
+[lat,lon] = reftrack(1304);
+
+<span class="comment">% Clip to eastern hemisphere:</span>
+lat = lat(lon&gt;0);
+lon = lon(lon&gt;0);
+
+<span class="comment">% Plot for context:</span>
+figure(<span class="string">'position'</span>,[100 100 800 400])
+subplot(1,2,1)
+bedmap2(<span class="string">'gl'</span>,<span class="string">'color'</span>,<span class="string">'black'</span>,<span class="string">'xy'</span>)
+plotps(lat,lon,<span class="string">'b-'</span>)
+</pre><img vspace="5" hspace="5" src="pathdistps_documentation_01.png" alt=""> <p>Calculate the total distance in meters and plot:</p><pre class="codeinput">d = pathdistps(lat,lon);
+
+subplot(1,2,2)
+plot(d,lon)
+xlabel <span class="string">'distance relative to the grounding line (m)'</span>
+ylabel <span class="string">'longitude (deg)'</span>
+</pre><img vspace="5" hspace="5" src="pathdistps_documentation_02.png" alt=""> <p>Alternatively, calculate total distance in kilometers, referenced to (66.8575 S, 143.5678 E), which is a point near the ICESat track's intersection with the grounding line:</p><pre class="codeinput"><span class="comment">% Map a red star at the reference point:</span>
+subplot(1,2,1)
+plotps(-66.8575,143.5678,<span class="string">'rp'</span>,<span class="string">'markersize'</span>,12)
+
+<span class="comment">% Calculate distance:</span>
+d = pathdistps(lat,lon,<span class="string">'km'</span>,<span class="string">'ref'</span>,[-66.8575 143.5678]);
+
+subplot(1,2,2)
+plot(d,lon)
+xlabel <span class="string">'distance relative to the grounding line (km)'</span>
+ylabel <span class="string">'longitude (deg)'</span>
+</pre><img vspace="5" hspace="5" src="pathdistps_documentation_03.png" alt=""> <h2 id="6">Citing AMT</h2><p>If this function or any other part of Antarctic Mapping Tools is useful for you, please cite the paper that describes AMT.</p><p>Greene, C. A., Gwyther, D. E., &amp; Blankenship, D. D. Antarctic Mapping Tools for Matlab. <i>Computers &amp; Geosciences</i>. 104 (2017) pp.151-157. <a href="http://dx.doi.org/10.1016/j.cageo.2016.08.003">doi:10.1016/j.cageo.2016.08.003</a>.</p><h2 id="7">Author Info</h2><p>This function was written by <a href="http://www.chadagreene.com">Chad A. Greene</a> of the University of Texas at Austin Institute for Geophysics (UTIG), April 2016. Updated October 2018 to account for distortion in the polar stereographic projection.</p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |pathdistps| documentation 
+% |pathdistps| is part of Antarctic Mapping Tools for Matlab (Greene et al., 2017). Click <List_of_functions.html here>
+% for a complete list of functions in AMT. 
+% 
+% The |pathdistps| returns the cumulative distance along a path in polar stereographic 
+% coordinates (true lat 71 S). 
+% 
+%% Syntax
+% 
+%  d = pathdistps(lat,lon)
+%  d = pathdistps(x,y)
+%  d = pathdistps(...,'km')
+%  d = pathdistps(...,'ref',[reflat reflon])
+%  d = pathdistps(...,'ref',[refx refy])
+%  d = pathdistps(...,'FixDistortion',false) 
+% 
+%% Description 
+% 
+% |d = pathdistps(lat,lon)| returns the cumulative distance |d| in meters along the path 
+% specified by geo coordinates |lat,lon|. Coordinates must be vectors of equal size. 
+%
+% |d = pathdistps(x,y)| returns the cumulative distance |d| in meters along the path 
+% specified by polar stereographic coordinates |x,y| where |x| and |y| are vectors of equal
+% size in ps71 meters.  
+%
+% |d = pathdistps(...,'km')| simply divides output by 1000 to give distance in kilometers. 
+% 
+% |d = pathdistps(...,'ref',[reflat reflon])| references the output to the track coordinate
+% nearest to the location given by a two-element vector |[reflat reflon]|.  This might be 
+% useful when analyzing distance along a satellite ground track relative to a point of 
+% interest such as a grounding line. 
+% 
+% |d = pathdistps(...,'ref',[refx refy])| references the output as above, but using polar
+% stereogprahic (ps71) coordinates. 
+% 
+% |d = pathdistps(...,'FixDistortion',false)| calculates distances in pure polar stereographic 
+% coordinates without accounting for distortion induced by the projection. In Nov 2018, 
+% the default behavior changed from |'FixDistortion',false| to |'FixDistortion',true| 
+% meaning distances now reflect true distances rather than distances in the polar 
+% stereographic projection. 
+% 
+%% Examples
+% Use <http://www.mathworks.com/matlabcentral/fileexchange/46611-icesat-reference-tracks-and-antarctic-grounding-zone-structure/content/icesat_function/icesat_demo/html/reftrack_documentation.html
+% |reftrack|> from the ICESat reference tracks toolbox and clip to the eastern hemisphere: 
+
+% Load reference track: 
+[lat,lon] = reftrack(1304); 
+
+% Clip to eastern hemisphere: 
+lat = lat(lon>0); 
+lon = lon(lon>0); 
+
+% Plot for context: 
+figure('position',[100 100 800 400])
+subplot(1,2,1) 
+bedmap2('gl','color','black','xy')
+plotps(lat,lon,'b-') 
+
+%%
+% Calculate the total distance in meters and plot: 
+
+d = pathdistps(lat,lon); 
+
+subplot(1,2,2)
+plot(d,lon) 
+xlabel 'distance relative to the grounding line (m)'
+ylabel 'longitude (deg)' 
+
+%% 
+% Alternatively, calculate total distance in kilometers, referenced to (66.8575 S, 143.5678 E), which 
+% is a point near the ICESat track's intersection with the grounding line: 
+
+% Map a red star at the reference point: 
+subplot(1,2,1) 
+plotps(-66.8575,143.5678,'rp','markersize',12)
+
+% Calculate distance: 
+d = pathdistps(lat,lon,'km','ref',[-66.8575 143.5678]);
+
+subplot(1,2,2)
+plot(d,lon)
+xlabel 'distance relative to the grounding line (km)'
+ylabel 'longitude (deg)' 
+
+%% Citing AMT
+% If this function or any other part of Antarctic Mapping Tools is useful for you, please
+% cite the paper that describes AMT.  
+% 
+% Greene, C. A., Gwyther, D. E., & Blankenship, D. D. Antarctic Mapping Tools for Matlab. 
+% _Computers & Geosciences_. 104 (2017) pp.151-157. <http://dx.doi.org/10.1016/j.cageo.2016.08.003 doi:10.1016/j.cageo.2016.08.003>.
+% 
+%% Author Info 
+% This function was written by <http://www.chadagreene.com Chad A. Greene> of the University of Texas
+% at Austin Institute for Geophysics (UTIG), April 2016. Updated October 2018 to account for distortion
+% in the polar stereographic projection.
+##### SOURCE END #####
+--></body></html>

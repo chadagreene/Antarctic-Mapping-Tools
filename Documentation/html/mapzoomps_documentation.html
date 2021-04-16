@@ -1,0 +1,260 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>mapzoomps documentation</title><meta name="generator" content="MATLAB 9.3"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2018-08-30"><meta name="DC.source" content="mapzoomps_documentation.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>mapzoomps</tt> documentation</h1><!--introduction--><p><tt>mapzoomps</tt> is part of Antarctic Mapping Tools for Matlab (Greene et al., 2017). Click <a href="List_of_functions.html">here</a> for a complete list of functions in AMT.</p><p>The <tt>mapzoomps</tt> function zooms a south polar stereographic map to a specified location and extent. This is an adaptation of <tt>mapzoom</tt>, but does not require Matlab's Mapping Toolbox. Syntax for <tt>mapzoomps</tt> is similar to <tt>mapzoom</tt>, but differs slightly for some options.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Example 1</a></li><li><a href="#4">Example 2</a></li><li><a href="#5">Example 3: Rotated coordinates:</a></li><li><a href="#6">Fixing a misaligned inset map</a></li><li><a href="#9">Citing AMT</a></li><li><a href="#10">Author Info</a></li></ul></div><h2 id="1">Syntax</h2><pre>mapzoomps
+mapzoomps(lat,lon)
+mapzoomps(x,y)
+mapzoomps('SCAR location')
+mapzoomps(...,'size',mapsizekm)
+mapzoomps(...,InsetLocation)
+mapzoomps(...,'insetsize',sizefraction)
+mapzoomps(...,'frame','off')
+mapzoomps(...,'km')
+mapzoomps(...,'meridian',meridian)
+h = mapzoomps(...)</pre><h2 id="2">Description</h2><p><tt>mapzoomps(lat,lon)</tt> centers a 500 km wide map about the georeferenced location given by <tt>lat, lon</tt>.</p><p><tt>mapzoomps(x,y)</tt> centers a 500 km by 500 km map about the polar stereographic eastings and northings <tt>x</tt> and <tt>y</tt>.  Polar stereographic coordinates are automatically determined by the <tt>islatlon</tt> function.</p><p><tt>mapzoomps('SCAR location')</tt> uses <a href="scarloc_documentation.html"><tt>scarloc</tt></a> to find the coordinates corresponding to the string <tt>'SCAR location'</tt>.</p><p><tt>mapzoomps(...,'size',mapsizekm)</tt> specifies size of the map in kilometers given <tt>mapsizekm</tt>, which can be a scalar to create a square map or a two-element array for a rectangular map in the form <tt>[mapwidthkm mapheightkm]</tt>, where <tt>mapwidthkm</tt> and <tt>mapheightkm</tt> are the dimensions of the map in kilometers.</p><p><tt>mapzoomps(...,InsetLocation)</tt> creates an inset map at the location <tt>InsetLocation</tt>, which can be</p><div><ul><li><tt>'southeast'</tt> or <tt>'se'</tt> (lower right)</li><li><tt>'northwest'</tt> or <tt>'nw'</tt>  (upper left)</li><li><tt>'northeast'</tt> or <tt>'ne'</tt>  (upper right)</li><li><tt>'southwest'</tt> or <tt>'sw'</tt>  (lower left)</li></ul></div><p><tt>mapzoomps(...,'insetsize',sizefraction)</tt> specifies size of the inset as a fraction of the width of the current map. Default <tt>sizefraction</tt> is <tt>0.25</tt>.</p><p><tt>mapzoomps(...,'frame','off')</tt> removes frame from the inset.</p><p><tt>mapzoomps(...,'km')</tt> is for plots in polar stereographic kilometers rather than the default meters.</p><p><tt>mapzoomps(...,'meridian',meridian)</tt> specifies a meridian longitude in the polar stereographic coordinate conversion. Default <tt>meridian</tt> is <tt>0</tt>. This feature may not be fully working quite yet...</p><p><tt>h = mapzoomps(...)</tt> returns a handle <tt>h</tt> of inset map axes.</p><h2 id="3">Example 1</h2><p>Initialize a 500 km by 500 km map centered on Pitman Fracture Zone, plot <a href="http://www.mathworks.com/matlabcentral/fileexchange/52333-ibcso-international-bathymetric-chart-of-the-southern-ocean-toolbox/content/IBCSO/documentation/html/ibcso_documentation.html"><tt>ibcso</tt></a> bathymetry, and place a graphical reference scale with <a href="scalebarps_documentation.html"><tt>scalebarps</tt></a>.  When calling <tt>mapzoomps</tt> specify <tt>'ne'</tt> to place an inset map in the upper right-hand corner.</p><pre class="codeinput">mapzoomps(<span class="string">'pitman fracture zone'</span>,<span class="string">'ne'</span>)
+ibcso(<span class="string">'image'</span>,<span class="string">'xy'</span>)
+scalebarps
+axis <span class="string">image</span> <span class="comment">% tightens up null space</span>
+</pre><img vspace="5" hspace="5" src="mapzoomps_documentation_01.png" alt=""> <h2 id="4">Example 2</h2><p>Plot Bedmap2 bed elevation, apply relief shading with <a href="shadem_documentation.html"><tt>shadem</tt></a>, and center a 1600 km wide by 800 km tall map on the Lambert Glacier/Amery Ice Shelf system at (71&deg;S,69&deg;N).  Place frameless inset map in the upper left hand corner:</p><pre class="codeinput">figure
+bedmap2(<span class="string">'bed'</span>,<span class="string">'xy'</span>)
+shadem([225 80],3)
+mapzoomps(-71,69,<span class="string">'size'</span>,[1600 800],<span class="string">'nw'</span>,<span class="string">'frame'</span>,<span class="string">'off'</span>)
+scalebarps
+scarlabel({<span class="string">'Lambert Glacier'</span>,<span class="string">'Cape Child'</span>,<span class="string">'Landing Bluff'</span>},<span class="keyword">...</span>
+   <span class="string">'fontangle'</span>,<span class="string">'italic'</span>,<span class="string">'fontsize'</span>,8)
+</pre><img vspace="5" hspace="5" src="mapzoomps_documentation_02.png" alt=""> <h2 id="5">Example 3: Rotated coordinates:</h2><p>This syntax is currently in beta, but if instead of entering a single lat,lon location into <tt>mapzoomps</tt>, you may enter two-element vectors defining <tt>[SouthernLimit NorthernLimit]</tt> for <tt>lat</tt> and <tt>[WesternLimit EasternLimit]</tt> for <tt>lon</tt>. This syntax will create a curved inset location map showing the geo edges of the map extents. This is what I mean:</p><pre class="codeinput"><span class="comment">% Load some data</span>
+[lat,lon] = meshgrid(-80:0.01:-63,-90:0.05:-50);
+z = bedmap2_interp(lat,lon,<span class="string">'bed'</span>);
+
+figure
+mapzoomps([-80 -63],[-90 -50],<span class="keyword">...</span><span class="comment"> % latlim, lonlim</span>
+   <span class="string">'inset'</span>,<span class="string">'sw'</span>,<span class="keyword">...</span><span class="comment">               % lower left or "southwest"</span>
+   <span class="string">'insetsize'</span>,0.35,<span class="keyword">...</span><span class="comment">           % slightly large inset</span>
+   <span class="string">'frame'</span>,<span class="string">'off'</span>)                 <span class="comment">% remove the inset frame</span>
+
+pcolorps(lat,lon,z,<span class="string">'meridian'</span>,-70)
+graticuleps(<span class="string">'meridian'</span>,-70)       <span class="comment">% the grid</span>
+shadem(3)                         <span class="comment">% hillshade</span>
+</pre><img vspace="5" hspace="5" src="mapzoomps_documentation_03.png" alt=""> <h2 id="6">Fixing a misaligned inset map</h2><p>Sometimes the inset gets misaligned. This is most common after adding a colorbar. Here's an example:</p><pre class="codeinput">figure
+mapzoomps(<span class="string">'pine island glacier'</span>,<span class="keyword">...</span>
+   <span class="string">'mapwidth'</span>,350,<span class="string">'inset'</span>,<span class="string">'ne'</span>)
+modismoaps
+axis <span class="string">off</span>
+</pre><img vspace="5" hspace="5" src="mapzoomps_documentation_04.png" alt=""> <p>So far, so good. But then you try to add something with a colorbar and the inset gets misaligned:</p><pre class="codeinput">measuresps(<span class="string">'speed'</span>,<span class="string">'alpha'</span>,0.5)
+
+cb = colorbar;
+ylabel(cb,<span class="string">' ice speed (m/a) '</span>)
+cmocean <span class="string">amp</span> <span class="comment">% optional colormap by Thyng et al., 2016 (on File Exchange)</span>
+</pre><img vspace="5" hspace="5" src="mapzoomps_documentation_05.png" alt=""> <p>To fix the the inset misalignment, simply call <tt>mapzooms</tt> again, with the same inputs as last time. Calling <tt>mapzoomps</tt> a second time will delete the old inset and place a new one in the correct spot:</p><pre class="codeinput">mapzoomps(<span class="string">'pine island glacier'</span>,<span class="keyword">...</span>
+   <span class="string">'mapwidth'</span>,350,<span class="string">'inset'</span>,<span class="string">'ne'</span>)
+</pre><img vspace="5" hspace="5" src="mapzoomps_documentation_06.png" alt=""> <h2 id="9">Citing AMT</h2><p>If this function or any other part of Antarctic Mapping Tools is useful for you, please cite the paper that describes AMT.</p><p>Greene, C. A., Gwyther, D. E., &amp; Blankenship, D. D. Antarctic Mapping Tools for Matlab. <i>Computers &amp; Geosciences</i>. 104 (2017) pp.151-157. <a href="http://dx.doi.org/10.1016/j.cageo.2016.08.003">doi:10.1016/j.cageo.2016.08.003</a>.</p><h2 id="10">Author Info</h2><p>The <tt>mapzoomps</tt> function and supporting documentation were written for Antarctic Mapping Tools by Chad A. Greene of the University of Texas at Austin's Institute for Geophysics (UTIG) in February 2016. <a href="http://www.chadagreene.com">http://www.chadagreene.com</a></p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2017b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |mapzoomps| documentation
+% |mapzoomps| is part of Antarctic Mapping Tools for Matlab (Greene et al., 2017). Click <List_of_functions.html here>
+% for a complete list of functions in AMT. 
+% 
+% The |mapzoomps| function zooms a south polar stereographic map to a specified location and extent.
+% This is an adaptation of |mapzoom|, but does not require Matlab's Mapping Toolbox. 
+% Syntax for |mapzoomps| is similar to |mapzoom|, but differs slightly for some options.
+% 
+%% Syntax
+% 
+%  mapzoomps
+%  mapzoomps(lat,lon) 
+%  mapzoomps(x,y)
+%  mapzoomps('SCAR location') 
+%  mapzoomps(...,'size',mapsizekm)
+%  mapzoomps(...,InsetLocation)
+%  mapzoomps(...,'insetsize',sizefraction)
+%  mapzoomps(...,'frame','off')
+%  mapzoomps(...,'km')
+%  mapzoomps(...,'meridian',meridian)
+%  h = mapzoomps(...) 
+% 
+%% Description 
+% 
+% |mapzoomps(lat,lon)| centers a 500 km wide map about the georeferenced 
+% location given by |lat, lon|. 
+% 
+% |mapzoomps(x,y)| centers a 500 km by 500 km map about the polar stereographic 
+% eastings and northings |x| and |y|.  Polar stereographic coordinates are
+% automatically determined by the |islatlon| function. 
+% 
+% |mapzoomps('SCAR location')| uses <scarloc_documentation.html |scarloc|> to find the coordinates corresponding
+% to the string |'SCAR location'|. 
+% 
+% |mapzoomps(...,'size',mapsizekm)| specifies size of the map in kilometers given 
+% |mapsizekm|, which can be a scalar to create a square map or a two-element array
+% for a rectangular map in the form |[mapwidthkm mapheightkm]|, where |mapwidthkm| and
+% |mapheightkm| are the dimensions of the map in kilometers. 
+%
+% |mapzoomps(...,InsetLocation)| creates an inset map at the location |InsetLocation|,
+% which can be 
+% 
+% * |'southeast'| or |'se'| (lower right)
+% * |'northwest'| or |'nw'|  (upper left) 
+% * |'northeast'| or |'ne'|  (upper right)
+% * |'southwest'| or |'sw'|  (lower left) 
+%
+% |mapzoomps(...,'insetsize',sizefraction)| specifies size of the inset as a
+% fraction of the width of the current map. Default |sizefraction| is |0.25|. 
+%
+% |mapzoomps(...,'frame','off')| removes frame from the inset. 
+%
+% |mapzoomps(...,'km')| is for plots in polar stereographic kilometers rather than the default meters.
+% 
+% |mapzoomps(...,'meridian',meridian)| specifies a meridian longitude in the 
+% polar stereographic coordinate conversion. Default |meridian| is |0|. This feature 
+% may not be fully working quite yet...
+% 
+% |h = mapzoomps(...)| returns a handle |h| of inset map axes. 
+% 
+%% Example 1 
+% Initialize a 500 km by 500 km map centered on Pitman Fracture Zone, plot <http://www.mathworks.com/matlabcentral/fileexchange/52333-ibcso-international-bathymetric-chart-of-the-southern-ocean-toolbox/content/IBCSO/documentation/html/ibcso_documentation.html |ibcso|> 
+% bathymetry, and place a graphical reference scale with <scalebarps_documentation.html |scalebarps|>.  When calling |mapzoomps|
+% specify |'ne'| to place an inset map in the upper right-hand corner. 
+
+mapzoomps('pitman fracture zone','ne')
+ibcso('image','xy')
+scalebarps
+axis image % tightens up null space
+
+%% Example 2 
+% Plot Bedmap2 bed elevation, apply relief shading with <shadem_documentation.html |shadem|>, and center a 
+% 1600 km wide by 800 km tall map on the Lambert Glacier/Amery Ice Shelf system at (71°S,69°N).  Place 
+% frameless inset map in the upper left hand corner: 
+
+figure
+bedmap2('bed','xy') 
+shadem([225 80],3)
+mapzoomps(-71,69,'size',[1600 800],'nw','frame','off')
+scalebarps
+scarlabel({'Lambert Glacier','Cape Child','Landing Bluff'},...
+   'fontangle','italic','fontsize',8)
+
+%% Example 3: Rotated coordinates: 
+% This syntax is currently in beta, but if instead of entering a single 
+% lat,lon location into |mapzoomps|, you may enter two-element vectors
+% defining |[SouthernLimit NorthernLimit]| for |lat| and |[WesternLimit EasternLimit]| 
+% for |lon|. This syntax will create a curved inset location map showing
+% the geo edges of the map extents. This is what I mean: 
+
+% Load some data
+[lat,lon] = meshgrid(-80:0.01:-63,-90:0.05:-50); 
+z = bedmap2_interp(lat,lon,'bed'); 
+
+figure
+mapzoomps([-80 -63],[-90 -50],... % latlim, lonlim
+   'inset','sw',...               % lower left or "southwest"
+   'insetsize',0.35,...           % slightly large inset
+   'frame','off')                 % remove the inset frame
+
+pcolorps(lat,lon,z,'meridian',-70)
+graticuleps('meridian',-70)       % the grid
+shadem(3)                         % hillshade
+
+%% Fixing a misaligned inset map 
+% Sometimes the inset gets misaligned. This is most common after adding
+% a colorbar. Here's an example: 
+
+figure
+mapzoomps('pine island glacier',...
+   'mapwidth',350,'inset','ne') 
+modismoaps
+axis off 
+
+%%
+% So far, so good. But then you try to add something with a colorbar and the inset gets misaligned: 
+
+measuresps('speed','alpha',0.5) 
+
+cb = colorbar; 
+ylabel(cb,' ice speed (m/a) ') 
+cmocean amp % optional colormap by Thyng et al., 2016 (on File Exchange)
+
+%% 
+% To fix the the inset misalignment, simply call |mapzooms| again, with 
+% the same inputs as last time. Calling |mapzoomps| a second time will delete 
+% the old inset and place a new one in the correct spot: 
+
+mapzoomps('pine island glacier',...
+   'mapwidth',350,'inset','ne') 
+
+%% Citing AMT
+% If this function or any other part of Antarctic Mapping Tools is useful for you, please
+% cite the paper that describes AMT.  
+% 
+% Greene, C. A., Gwyther, D. E., & Blankenship, D. D. Antarctic Mapping Tools for Matlab. 
+% _Computers & Geosciences_. 104 (2017) pp.151-157. <http://dx.doi.org/10.1016/j.cageo.2016.08.003 doi:10.1016/j.cageo.2016.08.003>.
+% 
+%% Author Info 
+% The |mapzoomps| function and supporting documentation were written for Antarctic Mapping Tools
+% by Chad A. Greene of the University of Texas at Austin's Institute for Geophysics (UTIG) in 
+% February 2016. http://www.chadagreene.com
+##### SOURCE END #####
+--></body></html>

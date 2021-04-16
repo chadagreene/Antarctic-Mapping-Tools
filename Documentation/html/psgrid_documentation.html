@@ -1,0 +1,165 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>psgrid documentation</title><meta name="generator" content="MATLAB 9.3"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2018-05-25"><meta name="DC.source" content="psgrid_documentation.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>psgrid</tt> documentation</h1><!--introduction--><p><tt>psgrid</tt> is part of Antarctic Mapping Tools for Matlab (Greene et al., 2017). Click <a href="List_of_Functions.html">here</a> for a complete list of functions in AMT.</p><p>This function creates a grid of specified spatial resolution in polar stereographic coordinates.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Example 1</a></li><li><a href="#5">Example 2</a></li><li><a href="#7">Citing AMT</a></li><li><a href="#8">Author Info</a></li></ul></div><h2 id="1">Syntax</h2><pre>[lat,lon] = psgrid(CenterLat,CenterLon,width_km,resolution_km)
+[lat,lon] = psgrid(CenterX,CenterY,width_km,resolution_km)
+[lat,lon] = psgrid(CenterName,width_km,resolution_km)
+[x,y] = psgrid(...,'xy')</pre><h2 id="2">Description</h2><p><tt>[lat,lon] = psgrid(CenterLat,CenterLon,width_km,resolution_km)</tt> returns a grid of <tt>width_km</tt> width in kilometers, <tt>resolution_km</tt> resolution in kilometers, centered on the location given by <tt>CenterLat</tt>, <tt>CenterLon</tt>. If <tt>width_km</tt> is a two-element vector, the first element is interpreted as width and the second element is height. If <tt>resolution_km</tt> is a two element vector, the first element is interpreted as horizontal resolution and the second element is interpreted as vertical resolution.</p><p><tt>[lat,lon] = psgrid(CenterX,CenterY,width_km,resolution_km)</tt> centers the grid on polar stereographic coordinate (CenterX,CenterY) in meters. Polar stereographic meters automatically detected if absolute values exceed normal values of geo coordinates.</p><p><tt>[lat,lon] = psgrid(CenterName,width_km,resolution_km)</tt> centers a grid on any location or feature found in the SCAR database.</p><p><tt>[x,y] = psgrid(...,'xy')</tt> returns a grid in polar stereographic meters (ps71).</p><h2 id="3">Example 1</h2><p>Get an 600 km wide, 5 km resolution grid of geo coordinates centered at (75&deg;S,107&deg;W):</p><pre class="codeinput">[lat,lon] = psgrid(-75,-107,600,5);
+</pre><p>We can show the grid on a map as blue dots atop a Landsat Image Mosaic of Antarctica image using the <a href="http://www.mathworks.com/matlabcentral/fileexchange/49842-lima-landsat-image-mosaic-of-antarctica/content/lima/html/lima_documentation.html"><tt>lima</tt></a> function:</p><pre class="codeinput">lima(-75,-107,800,<span class="string">'xy'</span>)
+plotps(lat,lon,<span class="string">'b.'</span>)
+</pre><img vspace="5" hspace="5" src="psgrid_documentation_01.png" alt=""> <h2 id="5">Example 2</h2><p>In a standard polar stereographic projection, Amery Ice Shelf is wider than it is tall.  Let's create a 10 km grid over Amery and make it 900 km wide by 250 km tall.  Also, we'll include the <tt>'xy'</tt> option to return polar stereographic cartesian coordinates rather than the default geo coordinates.</p><pre class="codeinput">[X,Y] = psgrid(<span class="string">'amery ice shelf'</span>,[900 250],10,<span class="string">'xy'</span>);
+</pre><p>The grid can be shown as blue dots in cartesian coordinates like this:</p><pre class="codeinput">figure
+bedmap2(<span class="string">'patchshelves'</span>,<span class="string">'xy'</span>)
+hold <span class="string">on</span>
+bedmap2(<span class="string">'patchgl'</span>,<span class="string">'xy'</span>)
+plot(X,Y,<span class="string">'b.'</span>)
+axis(1000*[757 3093 -170 1673])
+</pre><img vspace="5" hspace="5" src="psgrid_documentation_02.png" alt=""> <h2 id="7">Citing AMT</h2><p>If this function or any other part of Antarctic Mapping Tools is useful for you, please cite the paper that describes AMT.</p><p>Greene, C. A., Gwyther, D. E., &amp; Blankenship, D. D. Antarctic Mapping Tools for Matlab. <i>Computers &amp; Geosciences</i>. 104 (2017) pp.151-157. <a href="http://dx.doi.org/10.1016/j.cageo.2016.08.003">doi:10.1016/j.cageo.2016.08.003</a>.</p><h2 id="8">Author Info</h2><p>This function was written by <a href="http://www.chadagreene.com">Chad Greene</a> of the Uninversity of Texas Institute for Geophysics (UTIG), September 2015.</p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2017b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |psgrid| documentation 
+% |psgrid| is part of Antarctic Mapping Tools for Matlab (Greene et al., 2017). Click <List_of_Functions.html here>
+% for a complete list of functions in AMT. 
+% 
+% This function creates a grid of specified spatial resolution in polar
+% stereographic coordinates. 
+% 
+%% Syntax
+% 
+%  [lat,lon] = psgrid(CenterLat,CenterLon,width_km,resolution_km)
+%  [lat,lon] = psgrid(CenterX,CenterY,width_km,resolution_km)
+%  [lat,lon] = psgrid(CenterName,width_km,resolution_km)
+%  [x,y] = psgrid(...,'xy')
+% 
+%% Description 
+% 
+% |[lat,lon] = psgrid(CenterLat,CenterLon,width_km,resolution_km)| returns
+% a grid of |width_km| width in kilometers, |resolution_km| resolution in
+% kilometers, centered on the location given by |CenterLat|, |CenterLon|.
+% If |width_km| is a two-element vector, the first element is interpreted as 
+% width and the second element is height. If |resolution_km| is a two element vector, 
+% the first element is interpreted as horizontal resolution and the second
+% element is interpreted as vertical resolution. 
+%
+% |[lat,lon] = psgrid(CenterX,CenterY,width_km,resolution_km)| centers the
+% grid on polar stereographic coordinate (CenterX,CenterY) in meters. Polar 
+% stereographic meters automatically detected if absolute values exceed normal 
+% values of geo coordinates. 
+% 
+% |[lat,lon] = psgrid(CenterName,width_km,resolution_km)| centers a grid on
+% any location or feature found in the SCAR database. 
+% 
+% |[x,y] = psgrid(...,'xy')| returns a grid in polar stereographic meters (ps71). 
+
+%% Example 1  
+% Get an 600 km wide, 5 km resolution grid of geo coordinates centered at
+% (75°S,107°W): 
+
+[lat,lon] = psgrid(-75,-107,600,5); 
+
+%% 
+% We can show the grid on a map as blue dots atop a Landsat Image Mosaic of Antarctica
+% image using the <http://www.mathworks.com/matlabcentral/fileexchange/49842-lima-landsat-image-mosaic-of-antarctica/content/lima/html/lima_documentation.html
+% |lima|> function: 
+
+lima(-75,-107,800,'xy')
+plotps(lat,lon,'b.') 
+
+%% Example 2 
+% In a standard polar stereographic projection, Amery Ice Shelf is wider
+% than it is tall.  Let's create a 10 km grid over Amery and make it
+% 900 km wide by 250 km tall.  Also, we'll include the |'xy'| option to
+% return polar stereographic cartesian coordinates rather than the default
+% geo coordinates.  
+
+[X,Y] = psgrid('amery ice shelf',[900 250],10,'xy'); 
+
+%% 
+% The grid can be shown as blue dots in cartesian coordinates like this: 
+
+figure
+bedmap2('patchshelves','xy') 
+hold on
+bedmap2('patchgl','xy') 
+plot(X,Y,'b.')
+axis(1000*[757 3093 -170 1673])
+
+%% Citing AMT
+% If this function or any other part of Antarctic Mapping Tools is useful for you, please
+% cite the paper that describes AMT.  
+% 
+% Greene, C. A., Gwyther, D. E., & Blankenship, D. D. Antarctic Mapping Tools for Matlab. 
+% _Computers & Geosciences_. 104 (2017) pp.151-157. <http://dx.doi.org/10.1016/j.cageo.2016.08.003 doi:10.1016/j.cageo.2016.08.003>.
+% 
+%% Author Info
+% This function was written by <http://www.chadagreene.com Chad Greene> of
+% the Uninversity of Texas Institute for Geophysics (UTIG), September 2015.
+
+
+
+##### SOURCE END #####
+--></body></html>

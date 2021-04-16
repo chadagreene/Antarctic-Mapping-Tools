@@ -1,0 +1,365 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>freeboard2thickness documentation</title><meta name="generator" content="MATLAB 8.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-05-23"><meta name="DC.source" content="freeboard2thickness_documentation.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>freeboard2thickness</tt> documentation</h1><!--introduction--><p><tt>freeboard2thickness</tt> is part of Antarctic Mapping Tools for Matlab (Greene et al., 2017). <a href="List_of_functions.html">Click here for a complete list of functions in AMT</a>.</p><p><tt>freeboard2thickness</tt> estimates ice thickness from surface height above sea level, assuming hyrostatic equilibrium.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Example 1:</a></li><li><a href="#5">Example 2:</a></li><li><a href="#6">Example 3: When PIGs float</a></li><li><a href="#11">Glacier thinning and grounding line retreat</a></li><li><a href="#15">Citing AMT</a></li><li><a href="#16">Author Info</a></li></ul></div><h2>Syntax<a name="1"></a></h2><pre>T = freeboard2thickness(F)
+T = freeboard2thickness(...,'rhoi',iceDensity)
+T = freeboard2thickness(...,'rhow',waterDensity)
+T = freeboard2thickness(...,'rhos',snowDensity)
+T = freeboard2thickness(...,'Ts',snowThickness)</pre><h2>Description<a name="2"></a></h2><p><tt>T = freeboard2thickness(F)</tt> estimates the ice thickness <tt>T</tt> in meters from height above the geoid F in meters.</p><p><tt>T = freeboard2thickness(...,'rhoi',iceDensity)</tt> specifies ice density in kg/m^3. Default ice density is 917 kg/m^3.</p><p><tt>T = freeboard2thickness(...,'rhow',waterDensity)</tt> specifies water density in kg/m^3. Default water density is 1027 kg/m^3.</p><p><tt>T = freeboard2thickness(...,'rhos',snowDensity)</tt> specifies snow density in kg/m^3. Default snow density is 350 kg/m^3, however the default snow thickness is 0 m, so the snow density value will only affect calculations if snow thickness is specified.</p><p><tt>T = freeboard2thickness(...,'Ts',snowThickness)</tt> specifies snow thickness in meters. Default snow thickness is 0 m.</p><h2>Example 1:<a name="3"></a></h2><p>The surface of an iceberg is 80 cm above sea level and it's pure ice. How thick is the iceberg?</p><pre class="codeinput">T = freeboard2thickness(0.8)
+</pre><pre class="codeoutput">T =
+    7.4691
+</pre><p>And you can go back the other way with the sister function:</p><pre class="codeinput">F = thickness2freeboard(7.47)
+</pre><pre class="codeoutput">F =
+    0.8001
+</pre><h2>Example 2:<a name="5"></a></h2><p>The surface of an iceberg is 80 cm above sea level, including 40 cm of snow which has a density of 300 kg/m^3.  How thick is the iceberg?</p><pre class="codeinput">T = freeboard2thickness(0.8,<span class="string">'Ts'</span>,0.4,<span class="string">'rhos'</span>,300)
+</pre><pre class="codeoutput">T =
+    4.8255
+</pre><h2>Example 3: When PIGs float<a name="6"></a></h2><p>This example looks at a flowline down Pine Island Glacier. To get the coordinates of an actual flowline based on surface velocities you can use the <a href="https://www.mathworks.com/matlabcentral/fileexchange/53152-ice-flowlines"><tt>flowline</tt></a> function, but for now let's just enter some manual points and plot them with a <a href="https://www.mathworks.com/matlabcentral/fileexchange/47282">MODIS Mosaic of Antarctica</a> background image. I'm densifying the points along the flowline to 100 m spacing with the <a href="pspath_documentation.html"><tt>pspath</tt></a> function:</p><pre class="codeinput">[lat,lon] = pspath([-75.3585  -75.2041  -75.0089  -74.8032],<span class="keyword">...</span>
+                    [-98.0220  -99.4048 -100.7342 -101.5879],<span class="keyword">...</span>
+                    100); <span class="comment">% (100 m spacing along track)</span>
+
+plotps(lat,lon,<span class="string">'b-'</span>,<span class="string">'linewidth'</span>,2)
+modismoaps
+axis <span class="string">off</span>
+</pre><img vspace="5" hspace="5" src="freeboard2thickness_documentation_01.png" alt=""> <p>If you have the <a href="https://www.mathworks.com/matlabcentral/fileexchange/42353">Bedmap2 plugin for AMT</a> making elevation profiles along a line is pretty easy:</p><pre class="codeinput">figure
+bedmap2_profile(lat,lon);
+</pre><img vspace="5" hspace="5" src="freeboard2thickness_documentation_02.png" alt=""> <p>This might seem a bit reduntant, but let's plot the Bedmap2 surface in red. We'll also need to plot it as a function of distance along the lat,lon path the same way <tt>bedmap2_profile</tt> plotted the distance above. So use <a href="pathdistps_documentation"><tt>pathdistps</tt></a> to get the cumulative distance along track:</p><pre class="codeinput"><span class="comment">% Get surface elevation from Bedmap2:</span>
+sfz = bedmap2_interp(lat,lon,<span class="string">'surface'</span>);
+
+<span class="comment">% Calculate distance along the flowline in kilometers:</span>
+d = pathdistps(lat,lon,<span class="string">'km'</span>);
+
+<span class="comment">% Plot the interpolated Bedmap2 surface as a thick red line:</span>
+plot(d,sfz,<span class="string">'r'</span>,<span class="string">'linewidth'</span>,2)
+</pre><img vspace="5" hspace="5" src="freeboard2thickness_documentation_03.png" alt=""> <p>Now we can estimate the base of the ice using the hydrostatic assumption. Start by assuming the ice shelf is made of pure ice with a density of 917 kg/m^3.</p><pre class="codeinput"><span class="comment">% Calculate ice thickness from freeboard:</span>
+thickness = freeboard2thickness(sfz);
+
+<span class="comment">% The base elevation is the surface minus thickness:</span>
+base = sfz-thickness;
+
+<span class="comment">% Plot the hydrostatic ice base as a thick red line:</span>
+plot(d,base,<span class="string">'r'</span>,<span class="string">'linewidth'</span>,2)
+
+<span class="comment">% Find the index of the last finite surface elevation measurement:</span>
+ind = find(isfinite(base),1,<span class="string">'last'</span>);
+
+<span class="comment">% Place a text label:</span>
+text(d(ind),base(ind),<span class="string">' 0 m FAC'</span>,<span class="string">'fontweight'</span>,<span class="string">'bold'</span>,<span class="string">'color'</span>,<span class="string">'r'</span>)
+</pre><img vspace="5" hspace="5" src="freeboard2thickness_documentation_04.png" alt=""> <p>That's not a fantastic match! As I recall, to get ice shelf base elevations, Bedmap2 used the hydrostatic assumption <i>after</i> accounting for some amount of firn air content in the ice column. We can do the same by setting the "snow" thickness to 20 m and set the density of the snow to 0 kg/m3. I think Ligtenberg's data show that firn air content is something like 20 m for PIG. So let's try this again with 20 m FAC:</p><pre class="codeinput">thickness2 = freeboard2thickness(sfz,<span class="string">'Ts'</span>,20,<span class="string">'rhos'</span>,0);
+base2 = sfz-thickness2;
+plot(d,base2,<span class="string">'b'</span>,<span class="string">'linewidth'</span>,2)
+text(d(ind),base2(ind),<span class="string">' 20 m FAC'</span>,<span class="string">'fontweight'</span>,<span class="string">'bold'</span>,<span class="string">'color'</span>,<span class="string">'b'</span>)
+</pre><img vspace="5" hspace="5" src="freeboard2thickness_documentation_05.png" alt=""> <h2>Glacier thinning and grounding line retreat<a name="11"></a></h2><pre class="codeinput">bed = bedmap2_interp(lat,lon,<span class="string">'bed'</span>);
+base = sfz - freeboard2thickness(sfz,<span class="string">'Ts'</span>,15,<span class="string">'rhos'</span>,0);
+
+<span class="comment">% find the index where the ice base lifts off the bed:</span>
+ind = find(base&gt;=bed,1,<span class="string">'first'</span>) ;
+
+<span class="comment">% Plot a red circle at hydrostatic grounding line:</span>
+plot(d(ind),base(ind),<span class="string">'ro'</span>,<span class="string">'markersize'</span>,10)
+</pre><img vspace="5" hspace="5" src="freeboard2thickness_documentation_06.png" alt=""> <p>Here's a crude approximation of grounding line retreat as a function of glacier thinning. We'll loop through, finding the grounding line location just as above, but for an ever-thinning PIG:</p><pre class="codeinput"><span class="comment">% Steps of 10 cm surface elevation change from 0 to 40 m:</span>
+dh = 0:0.1:40;
+
+<span class="comment">% Preallocate grounding line location vector:</span>
+gl = nan(size(dh));
+
+<span class="comment">% Make a new profile figure</span>
+figure
+bedmap2_profile(lat,lon);
+
+<span class="comment">% make a colormap:</span>
+colors = jet(length(dh));
+
+<span class="comment">% Loop through each thinning value:</span>
+<span class="keyword">for</span> k = 1:length(dh);
+
+   <span class="comment">% Surface elevation with k amount of thinning:</span>
+   sfzi = sfz - dh(k);
+
+   <span class="comment">% Hydrostatic base elevation with thinning:</span>
+   basei = sfzi - freeboard2thickness(sfzi,<span class="string">'Ts'</span>,15,<span class="string">'rhos'</span>,0);
+
+   <span class="comment">% Plot surface and ice base elevations:</span>
+   plot(d,sfzi,<span class="string">'-'</span>,<span class="string">'color'</span>,colors(k,:))
+   plot(d,basei,<span class="string">'-'</span>,<span class="string">'color'</span>,colors(k,:))
+
+   <span class="comment">% find the index where the ice base lifts off the bed:</span>
+   ind = find(basei&gt;=bed,1,<span class="string">'first'</span>);
+
+   <span class="comment">% log the grounding line location:</span>
+   gl(k) = d(ind);
+<span class="keyword">end</span>
+</pre><img vspace="5" hspace="5" src="freeboard2thickness_documentation_07.png" alt=""> <p>Now we can plot grounding line location as a function of surface elevation change.</p><pre class="codeinput">figure
+plot(gl,-dh)
+axis <span class="string">tight</span>
+box <span class="string">off</span>
+xlabel({<span class="string">'grounding line location'</span>;<span class="string">'distance along flowline (km)'</span>})
+ylabel <span class="string">'ice shelf surface elevation change (m) '</span>
+</pre><img vspace="5" hspace="5" src="freeboard2thickness_documentation_08.png" alt=""> <p>I should stress that the analysis above is mighty crude. I would not trust these exact numbers because we've completely neglected stress within the ice, grounding zone dynamics, bed uncertainty, ice thickness uncertainty, etc., but a basic principle of glaciology is shown: Starting from the top right corner of the plot, as the ice thins, the grounding line retreats. And sometimes, a little bit of thinning can cause a lot of grounding line retreat.</p><h2>Citing AMT<a name="15"></a></h2><p>If this function or any other part of Antarctic Mapping Tools is useful for you, please cite the paper that describes AMT.</p><p>Greene, C. A., Gwyther, D. E., &amp; Blankenship, D. D. Antarctic Mapping Tools for Matlab. <i>Computers &amp; Geosciences</i>. 104 (2017) pp.151-157. <a href="http://dx.doi.org/10.1016/j.cageo.2016.08.003">doi:10.1016/j.cageo.2016.08.003</a>.</p><h2>Author Info<a name="16"></a></h2><p>This function was written by <a href="http://www.chadagreene.com">Chad A. Greene</a> of the University of Texas Institute for Geophysics (UTIG), April 2017, for inclusion in the Antarctic Mapping Tools package.</p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2012b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |freeboard2thickness| documentation
+% |freeboard2thickness| is part of Antarctic Mapping Tools for Matlab (Greene et al., 2017). <List_of_functions.html 
+% Click here for a complete list of functions in AMT>. 
+% 
+% |freeboard2thickness| estimates ice thickness from surface height above sea level, assuming
+% hyrostatic equilibrium. 
+% 
+%% Syntax 
+% 
+%  T = freeboard2thickness(F) 
+%  T = freeboard2thickness(...,'rhoi',iceDensity) 
+%  T = freeboard2thickness(...,'rhow',waterDensity) 
+%  T = freeboard2thickness(...,'rhos',snowDensity) 
+%  T = freeboard2thickness(...,'Ts',snowThickness) 
+%  
+%% Description 
+% 
+% |T = freeboard2thickness(F)| estimates the ice thickness |T| in meters from height
+% above the geoid F in meters. 
+% 
+% |T = freeboard2thickness(...,'rhoi',iceDensity)| specifies ice density in kg/m^3. 
+% Default ice density is 917 kg/m^3. 
+% 
+% |T = freeboard2thickness(...,'rhow',waterDensity)| specifies water density in kg/m^3. 
+% Default water density is 1027 kg/m^3. 
+% 
+% |T = freeboard2thickness(...,'rhos',snowDensity)| specifies snow density in kg/m^3.
+% Default snow density is 350 kg/m^3, however the default snow thickness is 0 m, so
+% the snow density value will only affect calculations if snow thickness is specified.
+% 
+% |T = freeboard2thickness(...,'Ts',snowThickness)| specifies snow thickness in meters. 
+% Default snow thickness is 0 m. 
+%  
+%% Example 1: 
+% The surface of an iceberg is 80 cm above sea level and it's pure ice. How thick
+% is the iceberg? 
+
+T = freeboard2thickness(0.8)
+
+%%
+% And you can go back the other way with the sister function: 
+
+F = thickness2freeboard(7.47)
+
+%% Example 2: 
+% The surface of an iceberg is 80 cm above sea level, including 40 cm of snow which 
+% has a density of 300 kg/m^3.  How thick is the iceberg? 
+
+T = freeboard2thickness(0.8,'Ts',0.4,'rhos',300)
+
+%% Example 3: When PIGs float
+% This example looks at a flowline down Pine Island Glacier. To get the coordinates
+% of an actual flowline based on surface velocities you can use the <https://www.mathworks.com/matlabcentral/fileexchange/53152-ice-flowlines 
+% |flowline|> function, but for now let's just enter some manual points and plot them with a <https://www.mathworks.com/matlabcentral/fileexchange/47282
+% MODIS Mosaic of Antarctica> background image. I'm densifying the points along the flowline
+% to 100 m spacing with the <pspath_documentation.html |pspath|> function: 
+
+[lat,lon] = pspath([-75.3585  -75.2041  -75.0089  -74.8032],...
+                    [-98.0220  -99.4048 -100.7342 -101.5879],...
+                    100); % (100 m spacing along track)
+
+plotps(lat,lon,'b-','linewidth',2) 
+modismoaps
+axis off
+
+%% 
+% If you have the <https://www.mathworks.com/matlabcentral/fileexchange/42353 Bedmap2 plugin for AMT>
+% making elevation profiles along a line is pretty easy: 
+
+figure
+bedmap2_profile(lat,lon); 
+
+%% 
+% This might seem a bit reduntant, but let's plot the Bedmap2 surface in red. We'll 
+% also need to plot it as a function of distance along the lat,lon path the same way
+% |bedmap2_profile| plotted the distance above. So use <pathdistps_documentation |pathdistps|>
+% to get the cumulative distance along track:
+
+% Get surface elevation from Bedmap2: 
+sfz = bedmap2_interp(lat,lon,'surface'); 
+
+% Calculate distance along the flowline in kilometers: 
+d = pathdistps(lat,lon,'km');
+
+% Plot the interpolated Bedmap2 surface as a thick red line: 
+plot(d,sfz,'r','linewidth',2)
+
+%% 
+% Now we can estimate the base of the ice using the hydrostatic assumption. Start by 
+% assuming the ice shelf is made of pure ice with a density of 917 kg/m^3.
+
+% Calculate ice thickness from freeboard: 
+thickness = freeboard2thickness(sfz); 
+
+% The base elevation is the surface minus thickness: 
+base = sfz-thickness; 
+
+% Plot the hydrostatic ice base as a thick red line:
+plot(d,base,'r','linewidth',2)
+
+% Find the index of the last finite surface elevation measurement: 
+ind = find(isfinite(base),1,'last'); 
+
+% Place a text label: 
+text(d(ind),base(ind),' 0 m FAC','fontweight','bold','color','r')
+
+%% 
+% That's not a fantastic match! As I recall, to get ice shelf base elevations, 
+% Bedmap2 used the hydrostatic assumption _after_ accounting for some amount of 
+% firn air content in the ice column. We can do the same by setting the "snow" thickness
+% to 20 m and set the density of the snow to 0 kg/m3. I think Ligtenberg's data 
+% show that firn air content is something like 20 m for PIG. So let's try this again
+% with 20 m FAC: 
+
+thickness2 = freeboard2thickness(sfz,'Ts',20,'rhos',0); 
+base2 = sfz-thickness2; 
+plot(d,base2,'b','linewidth',2)
+text(d(ind),base2(ind),' 20 m FAC','fontweight','bold','color','b')
+
+%% Glacier thinning and grounding line retreat 
+% 
+
+bed = bedmap2_interp(lat,lon,'bed'); 
+base = sfz - freeboard2thickness(sfz,'Ts',15,'rhos',0); 
+
+% find the index where the ice base lifts off the bed: 
+ind = find(base>=bed,1,'first') ; 
+
+% Plot a red circle at hydrostatic grounding line: 
+plot(d(ind),base(ind),'ro','markersize',10) 
+
+%%
+% Here's a crude approximation of grounding line retreat as a function of 
+% glacier thinning. We'll loop through, finding the grounding line location
+% just as above, but for an ever-thinning PIG: 
+
+% Steps of 10 cm surface elevation change from 0 to 40 m: 
+dh = 0:0.1:40; 
+
+% Preallocate grounding line location vector: 
+gl = nan(size(dh)); 
+
+% Make a new profile figure 
+figure
+bedmap2_profile(lat,lon); 
+
+% make a colormap:
+colors = jet(length(dh)); 
+
+% Loop through each thinning value: 
+for k = 1:length(dh);
+   
+   % Surface elevation with k amount of thinning: 
+   sfzi = sfz - dh(k); 
+   
+   % Hydrostatic base elevation with thinning: 
+   basei = sfzi - freeboard2thickness(sfzi,'Ts',15,'rhos',0); 
+   
+   % Plot surface and ice base elevations: 
+   plot(d,sfzi,'-','color',colors(k,:)) 
+   plot(d,basei,'-','color',colors(k,:)) 
+   
+   % find the index where the ice base lifts off the bed: 
+   ind = find(basei>=bed,1,'first'); 
+   
+   % log the grounding line location: 
+   gl(k) = d(ind); 
+end
+
+%% 
+% Now we can plot grounding line location as a function of surface elevation change. 
+
+figure
+plot(gl,-dh) 
+axis tight
+box off
+xlabel({'grounding line location';'distance along flowline (km)'})
+ylabel 'ice shelf surface elevation change (m) '
+
+%% 
+% I should stress that the analysis above is mighty crude. I would not trust these
+% exact numbers because we've completely neglected stress within the ice, grounding
+% zone dynamics, bed uncertainty, ice thickness uncertainty, etc., but a basic 
+% principle of glaciology is shown: Starting from the top right corner of the plot, 
+% as the ice thins, the grounding line retreats. And sometimes, a little bit of thinning
+% can cause a lot of grounding line retreat. 
+
+%% Citing AMT
+% If this function or any other part of Antarctic Mapping Tools is useful for you, please
+% cite the paper that describes AMT.  
+% 
+% Greene, C. A., Gwyther, D. E., & Blankenship, D. D. Antarctic Mapping Tools for Matlab. 
+% _Computers & Geosciences_. 104 (2017) pp.151-157. <http://dx.doi.org/10.1016/j.cageo.2016.08.003 doi:10.1016/j.cageo.2016.08.003>.
+% 
+%% Author Info
+% This function was written by <http://www.chadagreene.com Chad A. Greene> of the University of Texas
+% Institute for Geophysics (UTIG), April 2017, for inclusion in the
+% Antarctic Mapping Tools package.
+
+
+##### SOURCE END #####
+--></body></html>

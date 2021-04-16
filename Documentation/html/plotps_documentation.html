@@ -1,0 +1,150 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>plotps documentation</title><meta name="generator" content="MATLAB 8.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-05-22"><meta name="DC.source" content="plotps_documentation.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>plotps</tt> documentation</h1><!--introduction--><p><tt>plotps</tt> is part of Antarctic Mapping Tools for Matlab (Greene et al., 2017). Click <a href="List_of_functions.html">here</a> for a complete list of functions in AMT.</p><p>No Mapping Toolbox?  No problem. <tt>plotps</tt> works just like Matlab's <tt>plot</tt> function, but plots georeferenced data in Antarctic polar stereographic coordinates (true latitude 71&deg;S).</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Examples</a></li><li><a href="#4">Example: Markers</a></li><li><a href="#5">Example: Lines</a></li><li><a href="#6">Citing AMT</a></li><li><a href="#7">Author Info</a></li></ul></div><h2>Syntax<a name="1"></a></h2><pre>plotps(lat,lon)
+plotps(...,LineSpec)
+plotps(...,'PropertyName',PropertyValue,...)
+plotps(...,'km')
+h = plotps(...)</pre><h2>Description<a name="2"></a></h2><p><tt>plotps(lat,lon)</tt> plots georeferenced data in Antarctic polar stereographic eastings and northings.</p><p><tt>plotps(...,LineSpec)</tt> specifies line or marker style.</p><p><tt>plotps(...,'PropertyName',PropertyValue,...)</tt> specifies any number of line or marker properties.</p><p><tt>plotps(...,'km')</tt> plots in polar stereographic kilometers instead of the default meters.</p><p><tt>h = plotps(...)</tt> returns a column vector of handles to lineseries objects, one handle per line.</p><h2>Examples<a name="3"></a></h2><p>Start by plotting a grounding line inferred from <a href="http://www.mathworks.com/matlabcentral/fileexchange/42353-bedmap2-toolbox-for-matlab/content/bedmap2_toolbox_v4.0/Bedmap2_documentation/html/bedmap2_documentation.html">Bedmap2</a> for context:</p><pre class="codeinput">bedmap2(<span class="string">'gl'</span>,<span class="string">'xy'</span>)
+xlabel(<span class="string">'eastings (m)'</span>)
+ylabel(<span class="string">'northings (m)'</span>)
+</pre><img vspace="5" hspace="5" src="plotps_documentation_01.png" alt=""> <h2>Example: Markers<a name="4"></a></h2><p>Now use <tt>plotps</tt> to place a big red pentagram at (80&deg;S, 120&deg;W):</p><pre class="codeinput">plotps(-80,-120,<span class="string">'rp'</span>,<span class="string">'markersize'</span>,20)
+</pre><img vspace="5" hspace="5" src="plotps_documentation_02.png" alt=""> <h2>Example: Lines<a name="5"></a></h2><p>Now plot a line from the South Pole to McMurdo Station:</p><pre class="codeinput">[mcmlat,mcmlon] = scarloc(<span class="string">'mcmurdo station'</span>);
+scarlabel <span class="string">'South Pole'</span>
+scarlabel <span class="string">'McMurdo Station'</span>
+
+plotps([-90 mcmlat],[0 mcmlon])
+</pre><img vspace="5" hspace="5" src="plotps_documentation_03.png" alt=""> <h2>Citing AMT<a name="6"></a></h2><p>If this function or any other part of Antarctic Mapping Tools is useful for you, please cite the paper that describes AMT.</p><p>Greene, C. A., Gwyther, D. E., &amp; Blankenship, D. D. Antarctic Mapping Tools for Matlab. <i>Computers &amp; Geosciences</i>. 104 (2017) pp.151-157. <a href="http://dx.doi.org/10.1016/j.cageo.2016.08.003">doi:10.1016/j.cageo.2016.08.003</a>.</p><h2>Author Info<a name="7"></a></h2><p>This function was written by <a href="http://www.chadagreene.com">Chad A. Greene</a> of the University of Texas Institute for Geophysics (UTIG), February 2015, for inclusion in the Antarctic Mapping Tools package. Updated July 2015 to allow plotting in polar stereographic kilometers.</p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2012b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |plotps| documentation
+% |plotps| is part of Antarctic Mapping Tools for Matlab (Greene et al., 2017). Click <List_of_functions.html here>
+% for a complete list of functions in AMT. 
+% 
+% No Mapping Toolbox?  No problem. |plotps| works just like Matlab's |plot| function, but plots georeferenced
+% data in Antarctic polar stereographic coordinates (true latitude 71°S).
+% 
+%% Syntax
+% 
+%  plotps(lat,lon)
+%  plotps(...,LineSpec)
+%  plotps(...,'PropertyName',PropertyValue,...)
+%  plotps(...,'km')
+%  h = plotps(...)
+% 
+%% Description 
+% 
+% |plotps(lat,lon)| plots georeferenced data in Antarctic polar stereographic
+% eastings and northings. 
+% 
+% |plotps(...,LineSpec)| specifies line or marker style. 
+% 
+% |plotps(...,'PropertyName',PropertyValue,...)| specifies any number of
+% line or marker properties. 
+% 
+% |plotps(...,'km')| plots in polar stereographic kilometers instead of the
+% default meters. 
+% 
+% |h = plotps(...)| returns a column vector of handles to lineseries objects, 
+% one handle per line.
+% 
+%% Examples
+% Start by plotting a grounding line
+% inferred from <http://www.mathworks.com/matlabcentral/fileexchange/42353-bedmap2-toolbox-for-matlab/content/bedmap2_toolbox_v4.0/Bedmap2_documentation/html/bedmap2_documentation.html 
+% Bedmap2> for context: 
+
+bedmap2('gl','xy')
+xlabel('eastings (m)') 
+ylabel('northings (m)')
+
+%% Example: Markers
+% Now use |plotps| to place a big red pentagram at (80°S, 120°W):  
+
+plotps(-80,-120,'rp','markersize',20)
+
+%% Example: Lines
+% Now plot a line from the South Pole to McMurdo Station: 
+
+[mcmlat,mcmlon] = scarloc('mcmurdo station'); 
+scarlabel 'South Pole'
+scarlabel 'McMurdo Station'
+
+plotps([-90 mcmlat],[0 mcmlon])
+
+%% Citing AMT
+% If this function or any other part of Antarctic Mapping Tools is useful for you, please
+% cite the paper that describes AMT.  
+% 
+% Greene, C. A., Gwyther, D. E., & Blankenship, D. D. Antarctic Mapping Tools for Matlab. 
+% _Computers & Geosciences_. 104 (2017) pp.151-157. <http://dx.doi.org/10.1016/j.cageo.2016.08.003 doi:10.1016/j.cageo.2016.08.003>.
+% 
+
+%% Author Info
+% This function was written by <http://www.chadagreene.com Chad A. Greene> of the University of Texas
+% Institute for Geophysics (UTIG), February 2015, for inclusion in the Antarctic Mapping Tools package. 
+% Updated July 2015 to allow plotting in polar stereographic kilometers.
+##### SOURCE END #####
+--></body></html>

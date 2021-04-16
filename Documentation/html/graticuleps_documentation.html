@@ -1,0 +1,169 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>graticuleps documentation</title><meta name="generator" content="MATLAB 8.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-05-22"><meta name="DC.source" content="graticuleps_documentation.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>graticuleps</tt> documentation</h1><!--introduction--><p><tt>graticuleps</tt> is part of Antarctic Mapping Tools for Matlab (Greene et al., 2017). Click <a href="List_of_functions.html">here</a> for a complete list of functions in AMT.</p><p>The <tt>graticuleps</tt> places a graticule on a polar stereographic cartesian coordinate map of the southern hemisphere.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Example 1: Simplest case</a></li><li><a href="#5">Example 2: Specify parallels and meridians</a></li><li><a href="#6">Format lines and plot in polar stereographic kilometers</a></li><li><a href="#7">Citing AMT</a></li><li><a href="#8">Author Info</a></li></ul></div><h2>Syntax<a name="1"></a></h2><pre>graticuleps
+graticuleps(lats,lons)
+graticuleps(...,'km')
+graticuleps(...,LineProperty,LineValue)
+h = graticuleps(...)</pre><h2>Description<a name="2"></a></h2><p><tt>graticuleps</tt> places a grey graticule on a cartesian-coordinate map.</p><p><tt>graticuleps(lats,lons)</tt> specifies lines of latitude and longitude.  By default, <tt>lats = -80:10:-30</tt> and <tt>lons = -150:30:180</tt>.</p><p><tt>graticuleps(...,'km')</tt> plots in polar stereographic kilometers instead of the default meters.</p><p><tt>graticuleps(...,LineProperty,LineValue)</tt> formats line properties such as color, linewidth, linestyle, etc.</p><p><tt>h = graticuleps(...)</tt> returns a graphics handle <tt>h</tt> of the plotted graticule.</p><h2>Example 1: Simplest case<a name="3"></a></h2><p>Simply place a graticule on a cartesian coordinate map:</p><pre class="codeinput">graticuleps
+</pre><img vspace="5" hspace="5" src="graticuleps_documentation_01.png" alt=""> <p>And if you'd like, you can overlay a light blue (RGB values obtained with the <a href="http://www.mathworks.com/matlabcentral/fileexchange/46872-intuitive-rgb-color-values-from-xkcd/content//demo/html/rgb_demo.html"><tt>rgb</tt></a> function) <a href="patchps_documentation.html"><tt>patchps</tt></a> of the continent:</p><pre class="codeinput">load <span class="string">AMTdata</span>
+patchps(glat{1},glon{1},rgb(<span class="string">'light blue'</span>))
+xlabel <span class="string">'eastings (m)'</span>
+ylabel <span class="string">'northings (m)'</span>
+</pre><img vspace="5" hspace="5" src="graticuleps_documentation_02.png" alt=""> <h2>Example 2: Specify parallels and meridians<a name="5"></a></h2><p>Place labels every 5 degrees of latitude and every 45 degrees of longitude:</p><pre class="codeinput">figure
+graticuleps(-85:5:-60,-135:45:180)
+patchps(glat{1},glon{1},rgb(<span class="string">'toupe'</span>))
+</pre><img vspace="5" hspace="5" src="graticuleps_documentation_03.png" alt=""> <h2>Format lines and plot in polar stereographic kilometers<a name="6"></a></h2><p>Some data sets are in polar stereographic kilometers instead of meters. And sometimes you want your graticule to be a fat red dotted line placed atop the continent:</p><pre class="codeinput">figure
+patchps(glat{1},glon{1},rgb(<span class="string">'mauve'</span>),<span class="string">'km'</span>)
+graticuleps(-85:5:-60,<span class="keyword">...</span><span class="comment"> % Plot every 5 degrees latitude,</span>
+    -135:45:180,<span class="keyword">...</span><span class="comment">       % every 45 degrees longitude,</span>
+    <span class="string">'r:'</span>,<span class="keyword">...</span><span class="comment">              % garish red dotted line,</span>
+    <span class="string">'linewidth'</span>,2,<span class="keyword">...</span><span class="comment">     % make that a fat garish red dotted line,</span>
+    <span class="string">'km'</span>);                <span class="comment">% in polar stereographic kilometers.</span>
+xlabel <span class="string">'eastings (km)'</span>
+ylabel <span class="string">'northings (km)'</span>
+</pre><img vspace="5" hspace="5" src="graticuleps_documentation_04.png" alt=""> <h2>Citing AMT<a name="7"></a></h2><p>If this function or any other part of Antarctic Mapping Tools is useful for you, please cite the paper that describes AMT.</p><p>Greene, C. A., Gwyther, D. E., &amp; Blankenship, D. D. Antarctic Mapping Tools for Matlab. <i>Computers &amp; Geosciences</i>. 104 (2017) pp.151-157. <a href="http://dx.doi.org/10.1016/j.cageo.2016.08.003">doi:10.1016/j.cageo.2016.08.003</a>.</p><h2>Author Info<a name="8"></a></h2><p>This function was written by <a href="http://www.chadagreene.com">Chad A. Greene</a> of the University of Texas at Austin's Intitute for Geophysics, July 2015. It is included in Antarctic Mapping Tools for Matlab.</p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2012b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |graticuleps| documentation
+% |graticuleps| is part of Antarctic Mapping Tools for Matlab (Greene et al., 2017). Click <List_of_functions.html here>
+% for a complete list of functions in AMT. 
+% 
+% The |graticuleps| places a graticule on a polar stereographic cartesian
+% coordinate map of the southern hemisphere. 
+% 
+%% Syntax 
+% 
+%  graticuleps
+%  graticuleps(lats,lons) 
+%  graticuleps(...,'km') 
+%  graticuleps(...,LineProperty,LineValue) 
+%  h = graticuleps(...)
+% 
+%% Description  
+% 
+% |graticuleps| places a grey graticule on a cartesian-coordinate map. 
+% 
+% |graticuleps(lats,lons)| specifies lines of latitude and longitude.  By
+% default, |lats = -80:10:-30| and |lons = -150:30:180|. 
+%  
+% |graticuleps(...,'km')| plots in polar stereographic kilometers instead of
+% the default meters.  
+% 
+% |graticuleps(...,LineProperty,LineValue)| formats line properties such as 
+% color, linewidth, linestyle, etc. 
+% 
+% |h = graticuleps(...)| returns a graphics handle |h| of the plotted graticule. 
+% 
+%% Example 1: Simplest case 
+% Simply place a graticule on a cartesian coordinate map: 
+
+graticuleps 
+
+%% 
+% And if you'd like, you can overlay a light blue (RGB values obtained with the <http://www.mathworks.com/matlabcentral/fileexchange/46872-intuitive-rgb-color-values-from-xkcd/content//demo/html/rgb_demo.html
+% |rgb|> function) <patchps_documentation.html |patchps|> of the continent: 
+
+load AMTdata
+patchps(glat{1},glon{1},rgb('light blue'))
+xlabel 'eastings (m)'
+ylabel 'northings (m)' 
+
+%% Example 2: Specify parallels and meridians 
+% Place labels every 5 degrees of latitude and every 45 degrees of
+% longitude:
+
+figure
+graticuleps(-85:5:-60,-135:45:180)
+patchps(glat{1},glon{1},rgb('toupe'))
+
+%% Format lines and plot in polar stereographic kilometers
+% Some data sets are in polar stereographic kilometers instead of meters. And sometimes you want
+% your graticule to be a fat red dotted line placed atop the continent: 
+
+figure
+patchps(glat{1},glon{1},rgb('mauve'),'km')
+graticuleps(-85:5:-60,... % Plot every 5 degrees latitude,
+    -135:45:180,...       % every 45 degrees longitude,
+    'r:',...              % garish red dotted line, 
+    'linewidth',2,...     % make that a fat garish red dotted line,
+    'km');                % in polar stereographic kilometers. 
+xlabel 'eastings (km)'
+ylabel 'northings (km)' 
+
+%% Citing AMT
+% If this function or any other part of Antarctic Mapping Tools is useful for you, please
+% cite the paper that describes AMT.  
+% 
+% Greene, C. A., Gwyther, D. E., & Blankenship, D. D. Antarctic Mapping Tools for Matlab. 
+% _Computers & Geosciences_. 104 (2017) pp.151-157. <http://dx.doi.org/10.1016/j.cageo.2016.08.003 doi:10.1016/j.cageo.2016.08.003>.
+% 
+%% Author Info
+% This function was written by <http://www.chadagreene.com Chad A. Greene> of the University of Texas at
+% Austin's Intitute for Geophysics, July 2015. It is included in Antarctic Mapping
+% Tools for Matlab.
+##### SOURCE END #####
+--></body></html>

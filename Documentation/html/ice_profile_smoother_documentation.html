@@ -1,0 +1,199 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>ice_profile_smoother documentation</title><meta name="generator" content="MATLAB 9.9"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2020-12-23"><meta name="DC.source" content="ice_profile_smoother_documentation.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>ice_profile_smoother</tt> documentation</h1><!--introduction--><p><tt>ice_profile_smoother</tt> smooths any variable along a glacier flowline, as a function of local ice thickness. The smoothing window is an exponential shape, which is the best approximation of that stress the ice "feels", and unlike the jittery profiles produced by a simple unweighted (boxcar) filter, the exponential window produces smooth profiles.</p><p>Usage note: This function assumes that postings along d are at least somewhat equally spaced. If the gradient(d) varies wildly, the weighting of the moving window may not be accurate. Try using pathdistps or pathdistpsn if you want to ensure the spacing along your flowline is equally spaced.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Example</a></li><li><a href="#5">Citing this function</a></li></ul></div><h2 id="1">Syntax</h2><pre>zs = ice_profile_smoother(d,z,H)
+zs = ice_profile_smoother(...,'CouplingLength',Nthck)
+zs = ice_profile_smoother(...,'endpoints','fill')
+zs = ice_profile_smoother(...,'weights',w)</pre><h2 id="2">Description</h2><p><tt>zs = ice_profile_smoother(d,z,H)</tt> smooths the variable <tt>z</tt> along a flowline where <tt>d</tt> specifies distance in meters along the flowline and <tt>H</tt> is the corresponding ice thickness.</p><p><tt>zs = ice_profile_smoother(...,'CouplingLength',Nthck)</tt> specifies a longitudinal coupling length as a multiple of ice thickesses. This is equivalent to l/H in Kamb &amp; Echelmeyer's  paper cited below. Important: <tt>Nthick</tt> is not the same thing as the total window width. The Kamb &amp; Echelmeyer paper describes it in detail, but the "averaging length" is the full width of a boxcar window and is equal to 4*l. In this function, the default value of <tt>Nthck</tt> is 2.5, which is equivalent to a moving average window width of 10 ice thicknesses.</p><div><ul><li>For guidance on choosing a value of <tt>Nthck</tt>, Kamb &amp; Echelmeyer state that   "l/H ranges from about 1.5 to 10...for temperate valley glaciers, with f   near 0.5 and with longitudinal strain-rates typically of order 0.01-0.05 /yr,   l/H should be in the range from about 1 to 3, whereas for ice sheets ...   the expected l/H is in the range from about 4 to 10, distinctly higher   than for valley glaciers."</li></ul></div><p><tt>zs = ice_profile_smoother(...,'endpoints','fill')</tt> similar to the <tt>'endpoints'</tt> option in the movmean function, the <tt>'fill'</tt> option sets the ends of the profile to <tt>NaN</tt>. This option means you'll lose some data at the end of a profile, particularly where ice is thick and when <tt>Nthck</tt> is large, but it ensures that all resulting data are properly weighted and smoothed. The <tt>'fill'</tt> option will also mean you'll lose data anywhere near any <tt>NaN</tt> values in the input thickness <tt>H</tt>.</p><p><tt>zs = ice_profile_smoother(...,'weights',w)</tt> applies weights to each observation within the smoothing window. This is useful if each measurement along a flowline has its own error estimate. The variable <tt>w</tt> must be the same size as <tt>d</tt>, <tt>z</tt>, and <tt>H</tt>, and typically if your measurements <tt>z</tt> have corresponding 1-sigma error estimates <tt>z_err</tt>, then <tt>w=1./z_err.^2</tt>.</p><h2 id="3">Example</h2><p>Smooth a surface elevation profile to a coupling length of the default 2.5 ice thicknesses:</p><pre class="codeinput">load <span class="string">Kangilerngata_Sermia_flowline</span>
+
+<span class="comment">% Convert the flowline coordines to a distance along the flowline:</span>
+d = pathdistpsn(xfl,yfl);
+
+<span class="comment">% Get thickness and surface elevation along the flowline:</span>
+H = bedmachine_interp(<span class="string">'thickness'</span>,xfl,yfl,<span class="string">'greenland'</span>);
+sfz = bedmachine_interp(<span class="string">'surface'</span>,xfl,yfl,<span class="string">'greenland'</span>);
+
+<span class="comment">% Smooth the surface profile:</span>
+sfz_smooth = ice_profile_smoother(d,sfz,H);
+
+<span class="comment">% Plot:</span>
+figure
+plot(d/1000,sfz)
+hold <span class="string">on</span>
+plot(d/1000,sfz_smooth,<span class="string">'linewidth'</span>,2)
+xlabel <span class="string">'distance along profile (km)'</span>
+ylabel <span class="string">'surface elevation (m)'</span>
+axis <span class="string">tight</span>
+box <span class="string">off</span>
+</pre><img vspace="5" hspace="5" src="ice_profile_smoother_documentation_01.png" alt=""> <p>Try a longer coupling length, and avoid any potential errors at the edges of the window by filling the endpoints with <tt>NaN</tt> (rather than the default, which shrinks the moving window size at the edges of the profile):</p><pre class="codeinput">sfz_smooth2 = ice_profile_smoother(d,sfz,H,<span class="string">'CouplingLength'</span>,4,<span class="string">'endpoints'</span>,<span class="string">'fill'</span>);
+plot(d/1000,sfz_smooth2,<span class="string">'.'</span>)
+</pre><img vspace="5" hspace="5" src="ice_profile_smoother_documentation_02.png" alt=""> <h2 id="5">Citing this function</h2><p>The theory in this function is entirely taken from Kamb and Echelmeyer's 1986 paper. Please cite it. And for repeatability, and to do me a kindness, please also cite my Antarctic Mapping Tools paper:</p><p>Kamb, B., &amp; Echelmeyer, K. (1986). Stress-Gradient Coupling in Glacier Flow: I. Longitudinal Averaging of the Influence of Ice Thickness and Surface Slope. Journal of Glaciology, 32(111), 267-284. doi:10.3189/S0022143000015604</p><p>Greene, C. A., Gwyther, D. E., &amp; Blankenship, D. D. (2017). Antarctic Mapping Tools for MATLAB. Computers &amp; Geosciences, 104, 151-157. <a href="https://doi.org/10.1016/j.cageo.2016.08.003">https://doi.org/10.1016/j.cageo.2016.08.003</a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2020b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |ice_profile_smoother| documentation 
+% |ice_profile_smoother| smooths any variable along a glacier flowline, as a 
+% function of local ice thickness. The smoothing window is an exponential 
+% shape, which is the best approximation of that stress the ice "feels", and 
+% unlike the jittery profiles produced by a simple unweighted (boxcar) filter, 
+% the exponential window produces smooth profiles. 
+% 
+% Usage note: This function assumes that postings along d are at least somewhat
+% equally spaced. If the gradient(d) varies wildly, the weighting of the moving
+% window may not be accurate. Try using pathdistps or pathdistpsn if you want 
+% to ensure the spacing along your flowline is equally spaced. 
+% 
+%% Syntax
+% 
+%  zs = ice_profile_smoother(d,z,H)
+%  zs = ice_profile_smoother(...,'CouplingLength',Nthck)
+%  zs = ice_profile_smoother(...,'endpoints','fill')
+%  zs = ice_profile_smoother(...,'weights',w)
+% 
+%% Description 
+% 
+% |zs = ice_profile_smoother(d,z,H)| smooths the variable |z| along a flowline where
+% |d| specifies distance in meters along the flowline and |H| is the corresponding
+% ice thickness. 
+%
+% |zs = ice_profile_smoother(...,'CouplingLength',Nthck)| specifies a longitudinal 
+% coupling length as a multiple of ice thickesses. This is equivalent to l/H
+% in Kamb & Echelmeyer's  paper cited below. Important: |Nthick| is not the same 
+% thing as the total window width. The Kamb & Echelmeyer paper describes it 
+% in detail, but the "averaging length" is the full width of a boxcar window 
+% and is equal to 4*l. In this function, the default value of |Nthck| is 2.5, 
+% which is equivalent to a moving average window width of 10 ice thicknesses. 
+% 
+% * For guidance on choosing a value of |Nthck|, Kamb & Echelmeyer state that
+%   "l/H ranges from about 1.5 to 10...for temperate valley glaciers, with f 
+%   near 0.5 and with longitudinal strain-rates typically of order 0.01-0.05 /yr, 
+%   l/H should be in the range from about 1 to 3, whereas for ice sheets ...
+%   the expected l/H is in the range from about 4 to 10, distinctly higher
+%   than for valley glaciers."
+% 
+% |zs = ice_profile_smoother(...,'endpoints','fill')| similar to the |'endpoints'|
+% option in the movmean function, the |'fill'| option sets the ends of the profile 
+% to |NaN|. This option means you'll lose some data at the end of a profile,
+% particularly where ice is thick and when |Nthck| is large, but it ensures that 
+% all resulting data are properly weighted and smoothed. The |'fill'| option 
+% will also mean you'll lose data anywhere near any |NaN| values in the input 
+% thickness |H|. 
+%
+% |zs = ice_profile_smoother(...,'weights',w)| applies weights to each observation
+% within the smoothing window. This is useful if each measurement along a flowline
+% has its own error estimate. The variable |w| must be the same size as |d|, |z|, and |H|, 
+% and typically if your measurements |z| have corresponding 1-sigma error estimates
+% |z_err|, then |w=1./z_err.^2|. 
+% 
+%% Example 
+% Smooth a surface elevation profile to a coupling length of the default
+% 2.5 ice thicknesses:
+
+load Kangilerngata_Sermia_flowline 
+
+% Convert the flowline coordines to a distance along the flowline: 
+d = pathdistpsn(xfl,yfl); 
+
+% Get thickness and surface elevation along the flowline: 
+H = bedmachine_interp('thickness',xfl,yfl,'greenland'); 
+sfz = bedmachine_interp('surface',xfl,yfl,'greenland'); 
+
+% Smooth the surface profile: 
+sfz_smooth = ice_profile_smoother(d,sfz,H); 
+
+% Plot: 
+figure
+plot(d/1000,sfz)
+hold on
+plot(d/1000,sfz_smooth,'linewidth',2)
+xlabel 'distance along profile (km)' 
+ylabel 'surface elevation (m)' 
+axis tight 
+box off
+
+%% 
+% Try a longer coupling length, and avoid any potential errors at the edges
+% of the window by filling the endpoints with |NaN| (rather than the default, 
+% which shrinks the moving window size at the edges of the profile): 
+
+sfz_smooth2 = ice_profile_smoother(d,sfz,H,'CouplingLength',4,'endpoints','fill'); 
+plot(d/1000,sfz_smooth2,'.')
+
+%% Citing this function
+% The theory in this function is entirely taken from Kamb and Echelmeyer's 
+% 1986 paper. Please cite it. And for repeatability, and to do me a kindness, 
+% please also cite my Antarctic Mapping Tools paper: 
+% 
+% Kamb, B., & Echelmeyer, K. (1986). Stress-Gradient Coupling in Glacier Flow: 
+% I. Longitudinal Averaging of the Influence of Ice Thickness and Surface Slope. 
+% Journal of Glaciology, 32(111), 267-284. doi:10.3189/S0022143000015604
+% 
+% Greene, C. A., Gwyther, D. E., & Blankenship, D. D. (2017). Antarctic Mapping 
+% Tools for MATLAB. Computers & Geosciences, 104, 151-157. 
+% https://doi.org/10.1016/j.cageo.2016.08.003
+##### SOURCE END #####
+--></body></html>

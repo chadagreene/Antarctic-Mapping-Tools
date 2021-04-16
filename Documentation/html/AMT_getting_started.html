@@ -1,0 +1,455 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>AMT Getting Started</title><meta name="generator" content="MATLAB 9.10"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2021-04-15"><meta name="DC.source" content="AMT_getting_started.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>AMT Getting Started</h1><!--introduction--><p>There are an awful lot of polar datasets out there, and each one seems to be packaged in a different format. Antarctic Mapping Tools is a collection of functions intended to streamline the processes of importing, analyzing, and mapping Antarctica-related data.</p><p>Some tools in this package have been designed for daily use by you, while others are included as helper functions for the data-specific AMT plugins.  This page walks you through the process of getting AMT installed on your computer and then highlights a few AMT tools that you may find useful.</p><p><b><a href="List_of_Functions.html">Click here for a current list of functions in AMT.</a></b></p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">How to get AMT working on your computer</a></li><li><a href="#2">Recommended plugins</a></li><li><a href="#3">Accessing documentation</a></li><li><a href="#4">Location lookup</a></li><li><a href="#6">Coordinate transformations</a></li><li><a href="#9">Distance calculation</a></li><li><a href="#11">Making maps</a></li><li><a href="#18">Data-specific plugins</a></li><li><a href="#24">Beyond mapmaking</a></li><li><a href="#31">Author Info</a></li></ul></div><h2 id="1">How to get AMT working on your computer</h2><p>The only tricky part about installing AMT is making sure Matlab can find it. Newer versions of Matlab have attempted to solve this part with the advent of "Toolbox" file formats, but you may not have a new version of Matlab, so here's how you can do it on any version of Matlab:</p><p>1. Download the AMT file from File Exchange.</p><p>2. Unzip the AMT file. # Move the unzipped AMT folder to wherever you want it to live.  I made an AMT folder under MATLAB in my file structure specifically for AMT functions and plugins.</p><p>3. Add a path to the AMT folder from Matlab. You can do this by right-clicking on the folder and selecting Add To Path, but that will only work until you close Matlab.  A more permanent solution is to create a file called <tt>startup.m</tt> in your MATLAB directory then inside <tt>startup.m</tt> include the line</p><pre>addpath(genpath('/Users/chadgreene/Documents/MATLAB/AMT'));</pre><p>but of course you'll want to change the file path to wherever you put your AMT folder. All versions of Matlab know to look for and run a file called <tt>startup.m</tt> in the MATLAB directory when it starts up, so that's a place where you can also change settings, like setting the default axis font to Curlz MT.</p><p>4. Download plugins for specific datasets that you may need (optional).</p><h2 id="2">Recommended plugins</h2><p>AMT has grown bit-by-bit, and I realize the overall documentation hasn't necessarily kept up in terms of presenting a coherent picture of which plugins are important and which ones are lousy.  If all the plugins and installation procedures feel overwhelming, don't worry about installing them all at once.  Instead, wait until you need a specific type of data before looking to see which datasets are available as plugins for AMT.  That way you'll know you have the latest and greatest version of any plugin you find.</p><p>If you're just getting started with AMT and you're eager to begin working with some common datasets, I recommend downloading the following plugins which I find quite helpful in my day-to-day analyses:</p><div><ol><li><a href="http://www.mathworks.com/matlabcentral/fileexchange/60246.html">Antarctic boundaries and masks</a> from Mouginot et al. 2016. This is a simple dataset with continent-wide grounding lines, coast lines, and the outlines of every ice shelf which you can look up by name.  The grounding lines and coastlines are useful for plotting, but this dataset also has something very useful in geospatial data analyses--masks.  Functions like <tt>isiceshelf</tt> or <tt>isgrounded</tt> quickly tell you whether any particular point in your dataset is part of an ice shelf or part of the grounded ice sheet. I highly recommend getting this plugin and going through the examples in the documentation.  Developing an intuition for how to use these masks will serve you well in the long run.</li><li><a href="http://www.mathworks.com/matlabcentral/fileexchange/47282.html">MODIS Mosaic of Antarctica</a> is that beautiful grayscale image of Antarctica you see in the background of so many figures. Turn up the contrast to see detailed surface features or turn down the contrast to get a nice contextual background that isn't too busy.</li><li><a href="http://www.mathworks.com/matlabcentral/fileexchange/69159.html">BedMachine</a> ice geometry. This dataset represents the current state-of-the-art.</li><li><a href="http://www.mathworks.com/matlabcentral/fileexchange/72701.html">ITS_LIVE</a> ice velocities from Gardner et al.</li></ol></div><h2 id="3">Accessing documentation</h2><p>The AMT package is described in a Computers &amp; Geosciences article found here: <a href="http://dx.doi.org/10.1016/j.cageo.2016.08.003">http://dx.doi.org/10.1016/j.cageo.2016.08.003</a>. The article gives a general overview of the AMT architecture, but does not provide many specific examples of how to actually use AMT.  To start, you can always access an up-to-date list of functions and data-specific plugins by typing</p><pre>amt</pre><p>into your Command Window.  Or you can view the list of functions <a href="List_of_functions.html">here</a>. If you know what function you want to use, but you don't know how to use it, there are two ways you can access documentation from Matlab.  One way is to use the <tt>help</tt> command, followed by the function name.  For example,</p><pre>help plotps</pre><p>displays plain-text help in the Command Window.  For formatted documentation with images, type <tt>amt</tt> followed by any function name. For example,</p><pre>amt plotps</pre><h2 id="4">Location lookup</h2><p>One of the most common questions I encounter in my research is, "where is such-and-such?"  For example, where is Taylor Dome?  The <a href="scarloc_documentation.html"><tt>scarloc</tt></a> function searches the SCAR gazetteer and gives the geographic coordinates of about 25,000 places in Antarctica.  Just type <tt>scarloc</tt> followed by the name of any place you want the geographic coordinates of.  For example:</p><pre class="codeinput">scarloc <span class="string">'taylor dome'</span>
+</pre><pre class="codeoutput">ans =
+        -77.67        157.67
+</pre><p>That tells us that Taylor Dome is located at (77.67&deg;S,157.67&deg;E).</p><h2 id="6">Coordinate transformations</h2><p>Two functions you might end up using frequently are <a href="ll2ps_documentation.html"><tt>ll2ps</tt></a> and <a href="ps2ll_documentation.html"><tt>ps2ll</tt></a>, which allow seamless transition between geographic (lat,lon) coordinates and polar stereographic (x,y) coordinates in meters. Polar stereographic coordinates are useful because they are equally spaced, meaning interpolation and regridding are best performed in polar stereographic coodinates.  On the other hand, we're more likely to know locations by their geographic coordinates, so sometimes it makes more sense to use latitude and longitude instead of <i>x</i> and <i>y</i>.</p><p>The <tt>ll2ps</tt> and <tt>ps2ll</tt> functions can be used for a single point, line, or grid.  As an example of a single point, if you want to know the polar stereographic "eastings" and "northings" of Taylor Dome, use <tt>ll2ps</tt>:</p><pre class="codeinput">[easting,northing] = ll2ps(-77.67,157.67)
+</pre><pre class="codeoutput">easting =
+     510894.57
+northing =
+   -1243834.22
+</pre><p>The easting and northing values indicate that in a standard projection, Taylor Dome is about 511 km to the right of the prime meridian and 1244 km below the y=0 line.  So using trigonometry, Taylor Dome is</p><pre class="codeinput">hypot(easting,northing)/1000
+</pre><pre class="codeoutput">ans =
+       1344.67
+</pre><p>about 1345 km from the South Pole.</p><h2 id="9">Distance calculation</h2><p>When you need to know the distance from one place to another, it's not too hard to convert geographic coordinates to polar stereographic coordinates and do the trigonometry as above, but AMT also offers a <a href="pathdistps_documentation.html"><tt>pathdistps</tt></a> function to streamline the process. The <tt>pathdistps</tt> function was designed to calculate distance traveled along a flightline, but could just as easily be used for two points like the South Pole and Taylor Dome.  To get the distance traveled along a path from the South Pole (-90,0) to Taylor Dome (-77.67,157.67) enter the coordinates as arrays of lats and lons and specify that you want distance in kilometers:</p><pre class="codeinput">pathdistps([-90 -77.67],[0 157.67],<span class="string">'km'</span>)
+</pre><pre class="codeoutput">ans =
+             0       1366.38
+</pre><p>That means, at your starting point at the South Pole, you've traveled 0 km, but taking a straight-line path to Taylor dome is about 1345 km.</p><p>Many AMT functions including <tt>pathdistps</tt> are smart enough to figure out whether you've entered geographic lat,lon coordinates or polar stereographic x,y coordinates in meters.  So for example, we can get the same answer we got above by entering the eastings and northings</p><pre class="codeinput">pathdistps([0 510894],[0 -1243834],<span class="string">'km'</span>)
+</pre><pre class="codeoutput">ans =
+             0       1366.38
+</pre><h2 id="11">Making maps</h2><p>So far this discussion of coordinate transforms and distance calculations has been a bit theoretical. So to give you an idea of what all this looks like in the real world, let's make a map.</p><p>One simple mapmaking function in AMT is <a href="plotps_documentation.html"><tt>plotps</tt></a>, which is designed to behave just like Matlab's <tt>plot</tt> function, except that you'll give it geographic (lat,lon) input coordinates, and <tt>plotps</tt> performs a polar stereographic coordinate transformation before plotting.  We'll use Taylor Dome (77.67&deg;S,157.67&deg;E) again as an example, and place a blue circle on it:</p><pre class="codeinput">plotps(-77.67,157.67,<span class="string">'bo'</span>)
+</pre><img vspace="5" hspace="5" src="AMT_getting_started_01.png" alt=""> <p>Take a look at the values of the axes--they're on the order of 500,000 to a million meters.  Those are the easting and northing values we got from <tt>ll2ps</tt> above.  In other words, using <tt>plotps(lat,lon)</tt> is equivalent to manually transforming lat,lon values to polar stereographic coordinates via <tt>ll2ps</tt>, then using Matlab's <tt>plot</tt> function.  As proof, let's overlay a red square on top of the blue circle we plotted above:</p><pre class="codeinput">[easting,northing] = ll2ps(-77.67,157.67);
+
+hold <span class="string">on</span>
+plot(easting,northing,<span class="string">'rs'</span>)
+</pre><img vspace="5" hspace="5" src="AMT_getting_started_02.png" alt=""> <p>Above we discussed a straight-line distance from Taylor Dome to the South Pole.  Let's see that straight line:</p><pre class="codeinput">plotps([-90 -77.67],[0 157.67])
+</pre><img vspace="5" hspace="5" src="AMT_getting_started_03.png" alt=""> <p>And of course we see that the South Pole is located at the origin of the polar stereographic Cartesian coordinate system.</p><p>In addition to <tt>plotps</tt>, AMT offers most of Matlab's standard plotting functions in *<tt>ps</tt> form.  AMT has <tt>plotps</tt>, <tt>scatterps</tt>, <tt>surfps</tt>, <tt>pcolorps</tt>, etc.  For example, perhaps you have some scattered bed elevation measurements at some locations near the South Pole. Just as you might use Matlab's <tt>scatter</tt> command, you can use <a href="scatterps_documentation.html"><tt>scatterps</tt></a>:</p><pre class="codeinput">mylat = [-89 -89.5 -88.3 -88 -88.5 -88.7];
+mylon = [-50 -20 64 -85 123 -140];
+myz = [-200 -115 -138 234 261 491];
+scatterps(mylat,mylon,40,myz,<span class="string">'filled'</span>)
+</pre><img vspace="5" hspace="5" src="AMT_getting_started_04.png" alt=""> <p>There's even a <a href="textps_documentation.html"><tt>textps</tt></a> function, which works just like Matlab's <tt>text</tt> function, but instead of giving it x and y coordinates, you give it lats and lons. Even easier than using <tt>textps</tt>: if any location you want to label is in the SCAR database, it's easier to use <a href="scarlabel_documentation.html"><tt>scarlabel</tt></a>:</p><pre class="codeinput">scarlabel({<span class="string">'South Pole'</span>,<span class="string">'Taylor Dome'</span>})
+</pre><img vspace="5" hspace="5" src="AMT_getting_started_05.png" alt=""> <p>Even with labels, that map does look very map-like.  Let's put a box around the map, then use <a href="mapzoomps_documentation.html"><tt>mapzoomps</tt></a> to place an inset map in the upper-right-hand (<tt>'northeast'</tt> or <tt>'ne'</tt>) corner so we know where things are:</p><pre class="codeinput">box <span class="string">on</span>
+mapzoomps(<span class="string">'ne'</span>)
+</pre><img vspace="5" hspace="5" src="AMT_getting_started_06.png" alt=""> <p>And you may want some lines of longitude and latitude.  Cartographers call that a graticule, so use <a href="graticuleps_documentation.html"><tt>graticuleps</tt></a> and specify that you want lines every two degrees of latitude and every 30 degrees of longitude.  Also use <a href="scalebarps_documentation.html"><tt>scalebarps</tt></a> to place a graphical reference scale in the default lower left-hand corner:</p><pre class="codeinput">graticuleps(-88:2:-76,-150:30:180)
+scalebarps
+</pre><img vspace="5" hspace="5" src="AMT_getting_started_07.png" alt=""> <h2 id="18">Data-specific plugins</h2><p>The maps above are not very interesting in the absence of real data, but without AMT, importing some data formats into Matlab can be a headache. I've tried to simplify data importing through plugins developed for a number of datasets.  Typically, each dataset-specific plugin contains one function to load raw data, one function for interpolation, and one function to easily add a layer to maps.</p><p>For example, a BedMachine plugin enables access to Morlighem's 500 m resolution bed elevation, surface elevation, and ice thickness datasets.  If you want to load enough BedMachine bed elevation data to fill the map we made above, the <tt>bedmachine_data</tt> function lets you specify the spatial extents of the area of data you want, so here we use <tt>xlim</tt> and <tt>ylim</tt> as the spatial extents.  The <tt>xlim</tt> and <tt>ylim</tt> are built-in Matlab functions that return limits of a current set of axes.</p><pre class="codeinput">[bed,lat,lon] = bedmachine_data(<span class="string">'bed'</span>,xlim,ylim,<span class="string">'geo'</span>);
+</pre><p>Then use <a href="pcolorps_documentation.html"><tt>pcolorps</tt></a> to plot the BedMachine bed elevation as a pseudocolor plot:</p><pre class="codeinput">pcolorps(lat,lon,bed);
+</pre><img vspace="5" hspace="5" src="AMT_getting_started_08.png" alt=""> <p>Relief shading or "hillshading" can be a great way to give the viewer an intuitive understanding of what's going on topographically.  AMT has a <a href="shadem_documentation.html"><tt>shadem</tt></a> which is designed to make relief shading easy.  Depending on the resolution, extents, and vertical relief of your data, you might want exaggerated or muted relief shading, and you might want the light to come from a certain azimuth or elevation angle.  The first time I call <tt>shadem</tt> on any map, I always specify the user interface (<tt>'ui'</tt>) option, which lets me click around on the map and try out different light angles to get the settings just right.  The <tt>'ui'</tt> option looks like this:</p><pre>shadem('ui')</pre><p>After a little bit of clicking around, I find that these <tt>shadem</tt> settings look alright:</p><pre class="codeinput">shadem(3,[225 50])
+</pre><img vspace="5" hspace="5" src="AMT_getting_started_09.png" alt=""> <p>Instead of importing the BedMachine data via the <tt>bedmachine_data</tt> function then plotting with <tt>pcolorps</tt>, we could have just used the <tt>bedmachine</tt> plotting function, which can plot Bedmachine data as <tt>pcolor</tt> or contour data.  Here are some red contour lines corresponding to every 500 m of surface elevation:</p><pre class="codeinput">bedmachine(<span class="string">'surface'</span>,<span class="string">'contour'</span>,500:500:5000,<span class="string">'r'</span>)
+</pre><img vspace="5" hspace="5" src="AMT_getting_started_10.png" alt=""> <p>One nice thing about AMT is the way it lets you bring multiple datasets together.  For example, plot surface velocities with the ITS_LIVE plugin:</p><pre class="codeinput">itslive_quiver(<span class="string">'color'</span>,<span class="string">'black'</span>)
+</pre><img vspace="5" hspace="5" src="AMT_getting_started_11.png" alt=""> <h2 id="24">Beyond mapmaking</h2><p>Making maps in Matlab is good for science, because scripted science is repeatable science.  But AMT isn't just about maps.  Let's take a look at the path from the South Pole to Taylor Dome.  So far we've only been talking about the endpoints of the path, but for many types of analysis you may want measurements along the entire length of the path. The <a href="pspath_documentation.html"><tt>pspath</tt></a> function gives equally-spaced coordinates connecting any points.  Let's say we want the coordinates of a line from the South Pole to Taylor Dome, made up of points spaced 150 meters apart.</p><pre class="codeinput">[lati,loni] = pspath([-90 -77.67],[0 157.67],150);
+</pre><p>With the 150 m resolution coordinates of the straight line from South Pole to Taylor Dome, we can use <tt>bedmachine_interp</tt> to find out, say, how high an airplane must fly to avoid hitting any mountains:</p><pre class="codeinput">z = bedmachine_interp(<span class="string">'surface'</span>,lati,loni);
+</pre><p>It's common to plot pseudo-meridional paths relative to latitude, so we can do that here:</p><pre class="codeinput">figure
+plot(lati,z)
+xlabel <span class="string">'latitude'</span>
+ylabel <span class="string">'surface elevation (m)'</span>
+box <span class="string">off</span>
+axis <span class="string">tight</span>
+</pre><img vspace="5" hspace="5" src="AMT_getting_started_12.png" alt=""> <p>or we could have used <tt>pathdistps</tt> to plot surface elevation as a function of distance traveled:</p><pre class="codeinput">d = pathdistps(lati,loni,<span class="string">'km'</span>);
+plot(d,z)
+xlabel <span class="string">'distance traveled (km)'</span>
+ylabel <span class="string">'surface elevation (m)'</span>
+box <span class="string">off</span>
+axis <span class="string">tight</span>
+</pre><img vspace="5" hspace="5" src="AMT_getting_started_13.png" alt=""> <p>But you know, it just so happens that the BedMachine Toolbox has a fancy function called <tt>bedmachine_profile</tt>, which is made specifically for plotting elevation profiles along a transect:</p><pre class="codeinput">subplot(2,1,1)
+bedmachine_profile(lati,loni)
+</pre><img vspace="5" hspace="5" src="AMT_getting_started_14.png" alt=""> <p>To see the BedMachine profile in context with ice surface velocities, use <tt>itslive_interp</tt>:</p><pre class="codeinput">speed = itslive_interp(<span class="string">'v'</span>,lati,loni);
+
+subplot(2,1,2)
+plot(d,speed)
+axis <span class="string">tight</span>
+box <span class="string">off</span>
+xlabel <span class="string">'distance along track (km)'</span>
+ylabel <span class="string">'ice speed (m/yr)'</span>
+</pre><img vspace="5" hspace="5" src="AMT_getting_started_15.png" alt=""> <p>And wow, look how the ice flows through Byrd Glacier at around 1000 km! From this you can see how you might calculate ice volume flow rates by pairing ITS_LIVE velocity data with BedMachine ice thickness data.  See the <tt>itslive_interp</tt> documentation for an example of calculating mass loss across the winding grounding line at Thwaites Glacier.</p><h2 id="31">Author Info</h2><p><a href="http://www.chadagreene.com">Chad A. Greene</a> of the Institute for Geophysics at the University of Texas in Austin wrote the Antarctic Mapping Tools package with help from David E. Gwyther. Email me if you have any questions, comments, bug reports, or suggestions.</p><p>If AMT is useful for you, please cite our paper as:</p><p>Greene, C. A., Gwyther, D. E., &amp; Blankenship, D. D. Antarctic Mapping Tools for Matlab. <i>Computers &amp; Geosciences.</i> 104 (2017) pp. 151-157 <a href="http://dx.doi.org/10.1016/j.cageo.2016.08.003">doi:10.1016/j.cageo.2016.08.003</a>.</p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% AMT Getting Started
+% There are an awful lot of polar datasets out there, and each one seems to 
+% be packaged in a different format. Antarctic Mapping Tools is a collection
+% of functions intended to streamline the processes of importing, analyzing, and mapping
+% Antarctica-related data. 
+% 
+% Some tools in this package have been designed for daily use by you, while others
+% are included as helper functions for the data-specific AMT plugins.  This page 
+% walks you through the process of getting AMT installed on your computer and then 
+% highlights a few AMT tools that you may find useful.
+% 
+% *<List_of_Functions.html Click here for a current list of functions in AMT.>*
+
+%% How to get AMT working on your computer
+% The only tricky part about installing AMT is making sure Matlab can find it. Newer versions of Matlab
+% have attempted to solve this part with the advent of "Toolbox" file formats, but you may not have a new
+% version of Matlab, so here's how you can do it on any version of Matlab: 
+% 
+% 1. Download the AMT file from File Exchange. 
+% 
+% 2. Unzip the AMT file. 
+% # Move the unzipped AMT folder to wherever you want it to live.  I made an AMT folder under MATLAB in
+% my file structure specifically for AMT functions and plugins. 
+% 
+% 3. Add a path to the AMT folder from Matlab. You can do this by right-clicking on the folder and selecting 
+% Add To Path, but that will only work until you close Matlab.  A more permanent solution is to create a 
+% file called |startup.m| in your MATLAB directory then inside |startup.m| include the line
+% 
+%  addpath(genpath('/Users/chadgreene/Documents/MATLAB/AMT'));
+% 
+% but of course you'll want to change the file path to wherever you put your AMT folder. All versions of Matlab know to 
+% look for and run a file called |startup.m| in the MATLAB directory when it starts up, so that's a place where you 
+% can also change settings, like setting the default axis font to Curlz MT. 
+% 
+% 4. Download plugins for specific datasets that you may need (optional). 
+
+%% Recommended plugins 
+% AMT has grown bit-by-bit, and I realize the overall documentation hasn't necessarily kept up in terms of presenting 
+% a coherent picture of which plugins are important and which ones are lousy.  If all the plugins and installation procedures
+% feel overwhelming, don't worry about installing them all at once.  Instead, wait until you need a specific type 
+% of data before looking to see which datasets are available as plugins for AMT.  That way you'll know you have the latest
+% and greatest version of any plugin you find. 
+% 
+% If you're just getting started with AMT and you're eager to begin working with some common datasets, I recommend downloading
+% the following plugins which I find quite helpful in my day-to-day analyses: 
+% 
+% # <http://www.mathworks.com/matlabcentral/fileexchange/60246.html Antarctic boundaries and masks> from Mouginot et al. 2016. This is a simple dataset
+% with continent-wide grounding lines, coast lines, and the outlines of every ice shelf which you can look up by name.  The grounding lines
+% and coastlines are useful for plotting, but this dataset also has something very useful in geospatial data analysesREPLACE_WITH_DASH_DASHmasks.  Functions
+% like |isiceshelf| or |isgrounded| quickly tell you whether any particular point in your dataset is part of an ice shelf or part of
+% the grounded ice sheet. I highly recommend getting this plugin and going through the examples in the documentation.  Developing an 
+% intuition for how to use these masks will serve you well in the long run.  
+% # <http://www.mathworks.com/matlabcentral/fileexchange/47282.html MODIS Mosaic of Antarctica> is that beautiful grayscale image
+% of Antarctica you see in the background of so many figures. Turn up the contrast to see detailed surface features or turn down the
+% contrast to get a nice contextual background that isn't too busy.  
+% # <http://www.mathworks.com/matlabcentral/fileexchange/69159.html BedMachine> ice
+% geometry. This dataset represents the current state-of-the-art. 
+% # <http://www.mathworks.com/matlabcentral/fileexchange/72701.html ITS_LIVE> ice
+% velocities from Gardner et al.
+% 
+
+%% Accessing documentation 
+% The AMT package is described in a Computers & Geosciences article found here: <http://dx.doi.org/10.1016/j.cageo.2016.08.003>. 
+% The article gives a general overview of the AMT architecture, but does not provide many specific
+% examples of how to actually use AMT.  To start, you can always access an up-to-date list of functions
+% and data-specific plugins by typing
+% 
+%  amt
+% 
+% into your Command Window.  Or you can view the list of functions <List_of_functions.html here>. If 
+% you know what function you want to use, but you don't know how to use it, there are two ways you
+% can access documentation from Matlab.  One way is to use the |help| command, followed by the function
+% name.  For example, 
+% 
+%  help plotps 
+% 
+% displays plain-text help in the Command Window.  For formatted documentation with images, type
+% |amt| followed by any function name. For example, 
+% 
+%  amt plotps
+
+%% Location lookup
+% One of the most common questions I encounter in my research is, "where is such-and-such?"  For 
+% example, where is Taylor Dome?  The <scarloc_documentation.html |scarloc|> function searches the
+% SCAR gazetteer and gives the geographic coordinates of about 25,000 places in Antarctica.  Just type |scarloc| followed
+% by the name of any place you want the geographic coordinates of.  For example: 
+
+scarloc 'taylor dome'
+
+%% 
+% That tells us that Taylor Dome is located at (77.67°S,157.67°E).  
+
+%% Coordinate transformations
+% Two functions you might end up using frequently are <ll2ps_documentation.html |ll2ps|> and <ps2ll_documentation.html |ps2ll|>, 
+% which allow seamless transition between geographic (lat,lon) coordinates and polar stereographic
+% (x,y) coordinates in meters. Polar stereographic coordinates are useful because they are equally spaced, 
+% meaning interpolation and regridding are best performed in polar stereographic coodinates.  On 
+% the other hand, we're more likely to know locations by their geographic coordinates, so sometimes it 
+% makes more sense to use latitude and longitude instead of _x_ and _y_. 
+% 
+% The |ll2ps| and |ps2ll| functions can be used for a single point, line, or 
+% grid.  As an example of a single point, if you want to know the polar stereographic
+% "eastings" and "northings" of Taylor Dome, use |ll2ps|: 
+
+[easting,northing] = ll2ps(-77.67,157.67)
+
+%% 
+% The easting and northing values indicate that in a standard projection, Taylor Dome is about 511 km to the right
+% of the prime meridian and 1244 km below the y=0 line.  So using trigonometry, Taylor Dome is 
+
+hypot(easting,northing)/1000
+
+%% 
+% about 1345 km from the South Pole.
+
+%% Distance calculation
+% When you need to know the distance from one place to another, it's not too hard to convert geographic coordinates
+% to polar stereographic coordinates and do the trigonometry as above, but AMT also offers a <pathdistps_documentation.html |pathdistps|>
+% function to streamline the process. The |pathdistps| function was designed to calculate distance traveled along a 
+% flightline, but could just as easily be used for two points like the South Pole and Taylor Dome.  To get the distance
+% traveled along a path from the South Pole (-90,0) to Taylor Dome (-77.67,157.67) enter the coordinates as arrays of lats and lons
+% and specify that you want distance in kilometers: 
+
+pathdistps([-90 -77.67],[0 157.67],'km')
+
+%%
+% That means, at your starting point at the South Pole, you've traveled 0 km, but taking a straight-line path to Taylor
+% dome is about 1345 km.  
+% 
+% Many AMT functions including |pathdistps| are smart enough to figure out whether you've entered geographic 
+% lat,lon coordinates or polar stereographic x,y coordinates in meters.  So for example, we can get the same
+% answer we got above by entering the eastings and northings 
+
+pathdistps([0 510894],[0 -1243834],'km')
+
+%% Making maps
+% So far this discussion of coordinate transforms and distance calculations has been a bit theoretical. So to 
+% give you an idea of what all this looks like in the real world, let's make a map.  
+% 
+% One simple mapmaking function in AMT is <plotps_documentation.html |plotps|>, which is designed to behave
+% just like Matlab's |plot| function, except that you'll give it geographic (lat,lon) input coordinates, and |plotps| 
+% performs a polar stereographic coordinate transformation before plotting.  We'll use Taylor Dome (77.67°S,157.67°E)
+% again as an example, and place a blue circle on it:
+
+plotps(-77.67,157.67,'bo')
+
+%% 
+% Take a look at the values of the axesREPLACE_WITH_DASH_DASHthey're on the order of 500,000 to a million meters.  Those are the
+% easting and northing values we got from |ll2ps| above.  In other words, using |plotps(lat,lon)| 
+% is equivalent to manually transforming lat,lon values to polar stereographic coordinates via |ll2ps|, then 
+% using Matlab's |plot| function.  As proof, let's overlay a red square on top of the blue circle we plotted above: 
+
+[easting,northing] = ll2ps(-77.67,157.67);
+
+hold on
+plot(easting,northing,'rs')
+
+%% 
+% Above we discussed a straight-line distance from Taylor Dome to the South Pole.  Let's see that 
+% straight line: 
+
+plotps([-90 -77.67],[0 157.67])
+
+%% 
+% And of course we see that the South Pole is located at the origin of the polar stereographic Cartesian
+% coordinate system.  
+% 
+% In addition to |plotps|, AMT offers most of Matlab's standard plotting functions in *|ps| form.  AMT
+% has |plotps|, |scatterps|, |surfps|, |pcolorps|, etc.  For example, perhaps you have some scattered
+% bed elevation measurements at some locations near the South Pole. Just as you might use Matlab's 
+% |scatter| command, you can use <scatterps_documentation.html |scatterps|>:
+
+mylat = [-89 -89.5 -88.3 -88 -88.5 -88.7]; 
+mylon = [-50 -20 64 -85 123 -140]; 
+myz = [-200 -115 -138 234 261 491]; 
+scatterps(mylat,mylon,40,myz,'filled')
+
+%%
+% There's even a <textps_documentation.html |textps|> function, which works just like Matlab's |text|
+% function, but instead of giving it x and y coordinates, you give it lats and lons. Even easier than 
+% using |textps|: if any location you want to label is in the SCAR database, it's easier to use
+% <scarlabel_documentation.html |scarlabel|>: 
+
+scarlabel({'South Pole','Taylor Dome'})
+
+%% 
+% Even with labels, that map does look very map-like.  Let's put a box around the map, then
+% use <mapzoomps_documentation.html |mapzoomps|> to place an inset map in the upper-right-hand (|'northeast'|
+% or |'ne'|) corner so we know where things are:
+
+box on
+mapzoomps('ne')
+
+%% 
+% And you may want some lines of longitude and latitude.  Cartographers call that a graticule, so use
+% <graticuleps_documentation.html |graticuleps|> and specify that you want lines every two degrees of 
+% latitude and every 30 degrees of longitude.  Also use <scalebarps_documentation.html |scalebarps|> 
+% to place a graphical reference scale in the default lower left-hand corner: 
+
+graticuleps(-88:2:-76,-150:30:180)
+scalebarps 
+
+%% Data-specific plugins
+% The maps above are not very interesting in the absence of real data, but without AMT, importing some data formats into
+% Matlab can be a headache. I've tried to simplify data importing through plugins developed for a number of 
+% datasets.  Typically, each dataset-specific plugin contains one function to load raw data, one function for interpolation, and one 
+% function to easily add a layer to maps. 
+% 
+% For example, a BedMachine plugin enables access to Morlighem's 500 m resolution bed elevation, surface elevation, and ice thickness 
+% datasets.  If you want to load enough BedMachine bed elevation data to fill the map we made above, the |bedmachine_data| 
+% function lets you specify the spatial extents of the area of data you want, so here we use |xlim| and |ylim| as the 
+% spatial extents.  The |xlim| and |ylim| are built-in Matlab functions that return limits of a current set of axes. 
+
+[bed,lat,lon] = bedmachine_data('bed',xlim,ylim,'geo'); 
+
+%% 
+% Then use <pcolorps_documentation.html |pcolorps|> to plot the BedMachine bed elevation as a pseudocolor
+% plot: 
+
+pcolorps(lat,lon,bed); 
+
+%% 
+% Relief shading or "hillshading" can be a great way to give the viewer an intuitive understanding of what's going 
+% on topographically.  AMT has a <shadem_documentation.html |shadem|> which is designed to make relief shading
+% easy.  Depending on the resolution, extents, and vertical relief of your data, you might want exaggerated
+% or muted relief shading, and you might want the light to come from a certain azimuth or elevation angle.  The first
+% time I call |shadem| on any map, I always specify the user interface (|'ui'|) option, which lets me click around
+% on the map and try out different light angles to get the settings just right.  The |'ui'| option looks like this: 
+% 
+%  shadem('ui')
+%
+%% 
+% After a little bit of clicking around, I find that these |shadem| settings look alright: 
+
+shadem(3,[225 50])
+
+%% 
+% Instead of importing the BedMachine data via the |bedmachine_data| function then plotting with |pcolorps|, 
+% we could have just used the |bedmachine| plotting function, which can plot Bedmachine data as |pcolor| or 
+% contour data.  Here are some red contour lines corresponding to every 500 m of surface elevation:  
+
+bedmachine('surface','contour',500:500:5000,'r')
+
+%% 
+% One nice thing about AMT is the way it lets you bring multiple datasets together.  For example, plot surface velocities 
+% with the ITS_LIVE plugin: 
+
+itslive_quiver('color','black')
+
+%% Beyond mapmaking 
+% Making maps in Matlab is good for science, because scripted science is repeatable science.  But AMT isn't just about 
+% maps.  Let's take a look at the path from the South Pole to Taylor Dome.  So far we've only been talking about the
+% endpoints of the path, but for many types of analysis you may want measurements along the entire length of the path. 
+% The <pspath_documentation.html |pspath|> function gives equally-spaced coordinates connecting any points.  Let's say
+% we want the coordinates of a line from the South Pole to Taylor Dome, made up of points spaced 150 meters apart.  
+
+[lati,loni] = pspath([-90 -77.67],[0 157.67],150); 
+
+%% 
+% With the 150 m resolution coordinates of the straight line from South Pole to Taylor Dome, we can use |bedmachine_interp|
+% to find out, say, how high an airplane must fly to avoid hitting any mountains: 
+
+z = bedmachine_interp('surface',lati,loni); 
+
+%%
+% It's common to plot pseudo-meridional paths relative to latitude, so we can do that here: 
+
+figure
+plot(lati,z)
+xlabel 'latitude' 
+ylabel 'surface elevation (m)'
+box off
+axis tight
+
+%% 
+% or we could have used |pathdistps| to plot surface elevation as a function of distance traveled: 
+
+d = pathdistps(lati,loni,'km'); 
+plot(d,z)
+xlabel 'distance traveled (km)' 
+ylabel 'surface elevation (m)'
+box off
+axis tight
+
+%% 
+% But you know, it just so happens that the BedMachine Toolbox has a fancy function called |bedmachine_profile|, 
+% which is made specifically for plotting elevation profiles along a transect: 
+
+subplot(2,1,1)
+bedmachine_profile(lati,loni)
+
+%% 
+% To see the BedMachine profile in context with ice surface velocities, use |itslive_interp|: 
+
+speed = itslive_interp('v',lati,loni); 
+
+subplot(2,1,2)
+plot(d,speed) 
+axis tight
+box off
+xlabel 'distance along track (km)' 
+ylabel 'ice speed (m/yr)'
+
+%% 
+% And wow, look how the ice flows through Byrd Glacier at around 1000 km! From this you can see 
+% how you might calculate ice volume flow rates by pairing ITS_LIVE velocity data with BedMachine 
+% ice thickness data.  See the |itslive_interp| documentation for an example of calculating 
+% mass loss across the winding grounding line at Thwaites Glacier.  
+
+%% Author Info
+% <http://www.chadagreene.com Chad A. Greene> of the Institute for Geophysics 
+% at the University of Texas in Austin wrote the Antarctic Mapping
+% Tools package with help from David E. Gwyther. Email me 
+% if you have any questions, comments, bug reports, or suggestions.  
+% 
+% If AMT is useful for you, please cite our paper as: 
+% 
+% Greene, C. A., Gwyther, D. E., & Blankenship, D. D. Antarctic Mapping Tools for Matlab. 
+% _Computers & Geosciences._ 104 (2017) pp. 151-157 <http://dx.doi.org/10.1016/j.cageo.2016.08.003 doi:10.1016/j.cageo.2016.08.003>. 
+
+
+##### SOURCE END #####
+--></body></html>

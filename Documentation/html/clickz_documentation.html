@@ -1,0 +1,238 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>clickz documentation</title><meta name="generator" content="MATLAB 8.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2015-11-17"><meta name="DC.source" content="clickz_documentation.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>clickz</tt> documentation</h1><!--introduction--><p>This function temporarily prints <i>z</i> values corresponding to clicked points on a surface or image.  If multiple surfaces or images exist in the same axes, <tt>clickz</tt> first looks for surfaces and determines the one on the top of the graphical stack is the relevant one. If no surfaces exist, but an image or multiple images exist, <tt>clickz</tt> probes the image on the top of the graphical stack.</p><p>To find "z" values of an existing image or pcolor plot, simply type <tt>clickz</tt> and start clicking on areas of interest. Instead of clicking, you may also hit any key on the keyboard except the keys listed below which perform the following functions:</p><div><ul><li><b>Carriage return</b> terminates data entry.</li><li><b>+</b> or <b>z</b> zooms in, centered on current cursor location.</li><li><b>-</b> or <b>x</b> zooms out, centered on current cursor location.</li></ul></div><p>Above I put "z" in quotation marks for a reason. This function does not actually return plotted <i>z</i> values, but it probes the color data of surfaces and images and assumes color corresponds to <i>z</i> values. This is often true, but not always. For example, you may have some x,y,z data plotted as a surface and you're letting cdata represent some other variable. Accordingly, this function is probably best used with 2D pcolor or image plots, although it can sometimes be used with 3D surface plots.</p><p>Some gridded datasets do not play nicely with 2D interpolation. In such cases z is returned as the nearest neighbor.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Example 1: General Matlab Example</a></li><li><a href="#7">Example 2: Antarctic map with Matlab's Mapping Toolbox:</a></li><li><a href="#10">Author Info</a></li></ul></div><h2>Syntax<a name="1"></a></h2><pre>clickz
+clickz(N)
+clickz(...,ax)
+clickz(...,'keep')
+clickz(,...'TextProperty',TextValue)
+z = clickz(...)
+[x,y,z] = clickz(...)
+[x,y,z,h] = clickz(...)</pre><h2>Description<a name="2"></a></h2><p><tt>clickz</tt> temporarily prints a <i>z</i> value on a plot at each click location. Previous printed values are deleted with each new click. <tt>clickz</tt> continues to run until user hits Return on the keyboard.</p><p><tt>clickz(N)</tt> performs <tt>clickz</tt> <tt>N</tt> times or until the user hits Return on the keyboard. If <tt>N</tt> is specified with <tt>'keep'</tt> and/or text formatting, <tt>N</tt> must be the first input argument.</p><p><tt>clickz(...,ax)</tt> specifies an axis handle <tt>ax</tt> on which to use <tt>clickz</tt>.</p><p><tt>clickz(...,'keep')</tt> does not delete printed points.</p><p><tt>clickz(,...'TextProperty',TextValue)</tt> formats printed text. Multiple text properties and values may be specified, including fontsize, color, background, etc.</p><p><tt>z = clickz(...)</tt> returns an array of clicked <i>z</i> values.</p><p><tt>[x,y,z] = clickz(...)</tt> returns clicked x, y, and z values.</p><p><tt>[x,y,z,h] = clickz(...)</tt> also returns text object handle <tt>h</tt> when the <tt>'keep'</tt> command is used and all four outputs are requested by the user.</p><h2>Example 1: General Matlab Example<a name="3"></a></h2><p>Suppose you have this plot:</p><pre class="codeinput">pcolor(peaks);
+colorbar
+shading <span class="string">interp</span>
+</pre><img vspace="5" hspace="5" src="clickz_documentation_01.png" alt=""> <p>Simply type <tt>clickz</tt> to click around on the gridded data for <i>z</i> values and hit Enter when you're satisfied.  Here I'll click 4 times:</p><pre class="codeinput">clickz
+</pre><pre class="codeoutput">ans =
+          0.10
+         -2.59
+          7.81
+          3.31
+</pre><p>To retain the <i>z</i> values printed on the figure after hitting Enter, include the <tt>'keep'</tt> option.  You can also format the text.</p><pre class="codeinput">clickz(<span class="string">'color'</span>,<span class="string">'blue'</span>,<span class="string">'fontweight'</span>,<span class="string">'bold'</span>,<span class="string">'keep'</span>);
+</pre><img vspace="5" hspace="5" src="clickz_documentation_02.png" alt=""> <p>To return arrays of clicked x,y,z values, tell clickz that you want data like this.  Note, these values won't match the ones printed on the image above because I'm calling <tt>clickz</tt> again.</p><pre class="codeinput">[x,y,z] = clickz
+</pre><pre class="codeoutput">x =
+          8.73
+          9.48
+         21.29
+         23.18
+         27.58
+y =
+         13.14
+          9.91
+         18.61
+         12.44
+          8.37
+z =
+          0.07
+          0.07
+          3.35
+         -4.52
+         -4.24
+</pre><h2>Example 2: Antarctic map with Matlab's Mapping Toolbox:<a name="7"></a></h2><p>Quick check: What's the surface elevation around the center of Lake Vostok? Below we'll plot surface elevations, but set the colormap to pure white and apply topograpic relief shading to highlight the extents of Lake Vostok.</p><pre class="codeinput">figure
+mapzoom(<span class="string">'lake vostok'</span>,<span class="string">'inset'</span>)
+bedmap2(<span class="string">'surfw'</span>,<span class="string">'colorbar'</span>,<span class="string">'off'</span>)
+colormap([1 1 1])
+shadem(-15,[225 30])
+scalebar
+</pre><img vspace="5" hspace="5" src="clickz_documentation_03.png" alt=""> <p>The <tt>clickz</tt> function makes it easy to get surface elevations.  Here I'm using the <tt>'keep'</tt> option so you can see where I click.</p><pre class="codeinput">clickz(<span class="string">'keep'</span>)
+</pre><pre class="codeoutput">ans =
+       3496.83
+       3522.89
+</pre><img vspace="5" hspace="5" src="clickz_documentation_04.png" alt=""> <p>We can tell from the relief shading that Lake Vostok is pretty flat, and <tt>clickz</tt> confirms it doesn't vary much in surface elevation from one end to the other.</p><h2>Author Info<a name="10"></a></h2><p>This function and supporting documentation were written by <a href="http://www.chadagreene.com">Chad A. Greene</a> of the University of Texas at Austin's Institute for Geophysics (<a href="http://www.ig.utexas.edu/people/students/cgreene/">UTIG</a>), December 2014. The <tt>clickz</tt> function includes <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico's</a> <a href="http://www.mathworks.com/matlabcentral/fileexchange/4551-inpaint-nans"><tt>inpaint_nans</tt></a> function.</p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2012b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |clickz| documentation
+% This function temporarily prints _z_ values corresponding to clicked points
+% on a surface or image.  If multiple surfaces or images exist in the
+% same axes, |clickz| first looks for surfaces and determines the one on the 
+% top of the graphical stack is the relevant one. If no surfaces exist, 
+% but an image or multiple images exist, |clickz| probes the image on the
+% top of the graphical stack. 
+% 
+% To find "z" values of an existing image or pcolor plot, simply type
+% |clickz| and start clicking on areas of interest. Instead of clicking, 
+% you may also hit any key on the keyboard except the keys listed below
+% which perform the following functions:
+% 
+% * *Carriage return* terminates data entry.
+% * *+* or *z* zooms in, centered on current cursor location. 
+% * *-* or *x* zooms out, centered on current cursor location.  
+% 
+% Above I put "z" in quotation marks for a reason. This function does 
+% not actually return plotted _z_ values, but it probes the color data of surfaces
+% and images and assumes color corresponds to _z_ values. This is often
+% true, but not always. For example, you may have some x,y,z data plotted
+% as a surface and you're letting cdata represent some other variable. Accordingly,
+% this function is probably best used with 2D pcolor or image plots, 
+% although it can sometimes be used with 3D surface plots. 
+% 
+% Some gridded datasets do not play nicely with 2D interpolation. In such cases
+% z is returned as the nearest neighbor. 
+%
+%% Syntax
+% 
+%  clickz
+%  clickz(N)
+%  clickz(...,ax)
+%  clickz(...,'keep') 
+%  clickz(,...'TextProperty',TextValue)
+%  z = clickz(...)
+%  [x,y,z] = clickz(...)
+%  [x,y,z,h] = clickz(...)
+%
+%% Description
+% 
+% |clickz| temporarily prints a _z_ value on a plot at each click location.
+% Previous printed values are deleted with each new click. |clickz| continues to
+% run until user hits Return on the keyboard. 
+%
+% |clickz(N)| performs |clickz| |N| times or until the user hits Return on the
+% keyboard. If |N| is specified with |'keep'| and/or text formatting, |N| must 
+% be the first input argument. 
+% 
+% |clickz(...,ax)| specifies an axis handle |ax| on which to use |clickz|. 
+%
+% |clickz(...,'keep')| does not delete printed points. 
+%
+% |clickz(,...'TextProperty',TextValue)| formats printed text. Multiple text
+% properties and values may be specified, including fontsize, color,
+% background, etc. 
+%
+% |z = clickz(...)| returns an array of clicked _z_ values. 
+%
+% |[x,y,z] = clickz(...)| returns clicked x, y, and z values. 
+% 
+% |[x,y,z,h] = clickz(...)| also returns text object handle |h| when the
+% |'keep'| command is used and all four outputs are requested by the user. 
+% 
+%% Example 1: General Matlab Example 
+% Suppose you have this plot: 
+
+pcolor(peaks);
+colorbar
+shading interp
+
+%% 
+% Simply type |clickz| to click around on the gridded data for _z_ values
+% and hit Enter when you're satisfied.  Here I'll click 4 times: 
+
+clickz 
+
+%% 
+% To retain the _z_ values printed on the figure after hitting Enter,
+% include the |'keep'| option.  You can also format the text.  
+
+clickz('color','blue','fontweight','bold','keep');
+
+%% 
+% To return arrays of clicked x,y,z values, tell clickz that you want data
+% like this.  Note, these values won't match the ones printed on the image
+% above because I'm calling |clickz| again. 
+
+[x,y,z] = clickz
+
+%% Example 2: Antarctic map with Matlab's Mapping Toolbox: 
+% Quick check: What's the surface elevation around the center of Lake Vostok?  
+% Below we'll plot surface elevations, but set the colormap to pure white 
+% and apply topograpic relief shading to highlight the extents of Lake
+% Vostok. 
+
+figure
+mapzoom('lake vostok','inset')
+bedmap2('surfw','colorbar','off') 
+colormap([1 1 1]) 
+shadem(-15,[225 30])
+scalebar
+
+%% 
+% The |clickz| function makes it easy to get surface elevations.  Here I'm
+% using the |'keep'| option so you can see where I click. 
+
+clickz('keep')
+
+%% 
+% We can tell from the relief shading that Lake Vostok is pretty flat, and
+% |clickz| confirms it doesn't vary much in surface elevation from one end
+% to the other. 
+
+%% Author Info 
+% This function and supporting documentation were written by <http://www.chadagreene.com Chad A. Greene> of the University
+% of Texas at Austin's Institute for Geophysics (<http://www.ig.utexas.edu/people/students/cgreene/ 
+% UTIG>), December 2014. The |clickz| function includes <http://www.mathworks.com/matlabcentral/fileexchange/authors/679 
+% John D'Errico's>
+% <http://www.mathworks.com/matlabcentral/fileexchange/4551-inpaint-nans |inpaint_nans|> function.
+
+##### SOURCE END #####
+--></body></html>

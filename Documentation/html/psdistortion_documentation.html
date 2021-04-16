@@ -1,0 +1,185 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>psdistortion documentation</title><meta name="generator" content="MATLAB 9.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2018-10-31"><meta name="DC.source" content="psdistortion_documentation.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>psdistortion</tt> documentation</h1><!--introduction--><p><tt>psdistortion</tt> approximates the map scale factor for a polar stereographic projection. It is the ratio of distance on a ps projection to distance on a sphere.</p><p>The equation is:</p><pre>     1 + sin(TrueLat)
+m = -------------------
+       1 + sin(lat)</pre><p>and is from Eq 3.3 of Numerical Weather and Climate Prediction by Thomas Tomkins Warner (2011). Cambridge Univ. Press.</p><p>This function is part of Antarctic Mapping Tools for Matlab (Greene et al., 2017). <a href="List_of_functions.html">Click here for a complete list of functions in AMT.</a></p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Example 1: Distance</a></li><li><a href="#5">Example 2: Area</a></li><li><a href="#6">Citing AMT</a></li><li><a href="#7">Author Info</a></li></ul></div><h2 id="1">Syntax</h2><pre>m = psdistortion(lat)
+m = psdistortion(lat,TrueLat)</pre><h2 id="2">Description</h2><p><tt>m = psdistortion(lat)</tt> gives the ratio of distance on a polar stereographic projected map to distance on a sphere. Where <tt>m</tt> is greater than 1, the polar stereographic projection exaggerates (lengthens) the distance compared to reality. Where <tt>m</tt> is less than 1, projected distances are shrunk compared to reality.</p><p><tt>m = psdistortion(lat,TrueLat)</tt> specifies a latitude of true scale. Default is the standard <tt>-71</tt> degrees.</p><h2 id="3">Example 1: Distance</h2><p>Here's a grid that is 7000 km wide, at 5 km spacing, centered on the South Pole. Get the map scale factor at each grid point:</p><pre class="codeinput">[lat,lon] = psgrid(-90,0,7000,5);
+
+m = psdistortion(lat);
+
+pcolorps(lat,lon,m)
+axis <span class="string">tight</span> <span class="string">off</span>
+cb = colorbar;
+ylabel(cb,<span class="string">'map scale factor'</span>)
+cmocean(<span class="string">'bal'</span>,<span class="string">'pivot'</span>,1) <span class="comment">% optional colormap, centered on 1</span>
+
+antbounds <span class="string">gl</span>
+antbounds <span class="string">coast</span>
+graticuleps
+</pre><img vspace="5" hspace="5" src="psdistortion_documentation_01.png" alt=""> <p>Not surprisingly, the map scale factor is 1 at 71 S, because that's the latitude of true scale.</p><h2 id="5">Example 2: Area</h2><p>Of course, area distortion is related to distance distortion squared. Below let's plot just the percentage of distortion</p><pre class="codeinput"><span class="comment">% Percent Area distortion:</span>
+A = 100*(m.^2 - 1);
+
+figure
+pcolorps(lat,lon,A)
+axis <span class="string">tight</span> <span class="string">off</span>
+cb = colorbar;
+ylabel(cb,<span class="string">'percent distortion of area'</span>)
+cmocean(<span class="string">'bal'</span>,<span class="string">'pivot'</span>) <span class="comment">% optional colormap, centered on 0</span>
+
+antbounds <span class="string">gl</span>
+antbounds <span class="string">coast</span>
+graticuleps
+</pre><img vspace="5" hspace="5" src="psdistortion_documentation_02.png" alt=""> <h2 id="6">Citing AMT</h2><p>If this function or any other part of Antarctic Mapping Tools is useful for you, please cite the paper that describes AMT.</p><p>Greene, C. A., Gwyther, D. E., &amp; Blankenship, D. D. Antarctic Mapping Tools for Matlab. <i>Computers &amp; Geosciences</i>. 104 (2017) pp.151-157. <a href="http://dx.doi.org/10.1016/j.cageo.2016.08.003">doi:10.1016/j.cageo.2016.08.003</a>.</p><h2 id="7">Author Info</h2><p>This function was written by <a href="http://www.chadagreene.com">Chad A. Greene</a> of the University of Texas Institute for Geophysics (UTIG), April 2017, for inclusion in the Antarctic Mapping Tools package.</p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |psdistortion| documentation
+% |psdistortion| approximates the map scale factor for a polar stereographic projection. 
+% It is the ratio of distance on a ps projection to distance on a sphere. 
+% 
+% The equation is: 
+% 
+%       1 + sin(TrueLat) 
+%  m = REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH-
+%         1 + sin(lat) 
+% 
+% and is from Eq 3.3 of Numerical Weather and Climate Prediction 
+% by Thomas Tomkins Warner (2011). Cambridge Univ. Press.
+% 
+% This function is part of Antarctic Mapping Tools for Matlab (Greene et al., 2017).  
+% <List_of_functions.html Click here for a complete list of functions in AMT.>
+%% Syntax
+% 
+%  m = psdistortion(lat)
+%  m = psdistortion(lat,TrueLat)
+% 
+%% Description 
+% 
+% |m = psdistortion(lat)| gives the ratio of distance on a polar stereographic 
+% projected map to distance on a sphere. Where |m| is greater than 1, the polar 
+% stereographic projection exaggerates (lengthens) the distance compared to 
+% reality. Where |m| is less than 1, projected distances are shrunk compared 
+% to reality. 
+% 
+% |m = psdistortion(lat,TrueLat)| specifies a latitude of true scale. Default
+% is the standard |-71| degrees. 
+% 
+%% Example 1: Distance 
+% Here's a grid that is 7000 km wide, at 5 km spacing, centered on the South Pole. 
+% Get the map scale factor at each grid point: 
+
+[lat,lon] = psgrid(-90,0,7000,5); 
+
+m = psdistortion(lat); 
+
+pcolorps(lat,lon,m)
+axis tight off 
+cb = colorbar; 
+ylabel(cb,'map scale factor') 
+cmocean('bal','pivot',1) % optional colormap, centered on 1 
+
+antbounds gl 
+antbounds coast 
+graticuleps 
+
+%% 
+% Not surprisingly, the map scale factor is 1 at 71 S, because that's the 
+% latitude of true scale. 
+
+%% Example 2: Area
+% Of course, area distortion is related to distance distortion squared. 
+% Below let's plot just the percentage of distortion 
+
+% Percent Area distortion: 
+A = 100*(m.^2 - 1); 
+
+figure
+pcolorps(lat,lon,A)
+axis tight off 
+cb = colorbar; 
+ylabel(cb,'percent distortion of area') 
+cmocean('bal','pivot') % optional colormap, centered on 0 
+
+antbounds gl 
+antbounds coast 
+graticuleps 
+
+%% Citing AMT
+% If this function or any other part of Antarctic Mapping Tools is useful for you, please
+% cite the paper that describes AMT.  
+% 
+% Greene, C. A., Gwyther, D. E., & Blankenship, D. D. Antarctic Mapping Tools for Matlab. 
+% _Computers & Geosciences_. 104 (2017) pp.151-157. <http://dx.doi.org/10.1016/j.cageo.2016.08.003 doi:10.1016/j.cageo.2016.08.003>.
+% 
+%% Author Info
+% This function was written by <http://www.chadagreene.com Chad A. Greene> of the University of Texas
+% Institute for Geophysics (UTIG), April 2017, for inclusion in the
+% Antarctic Mapping Tools package.
+
+
+##### SOURCE END #####
+--></body></html>

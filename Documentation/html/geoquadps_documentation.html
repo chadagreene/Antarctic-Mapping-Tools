@@ -1,0 +1,235 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>geoquadps documentation</title><meta name="generator" content="MATLAB 9.3"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2018-08-30"><meta name="DC.source" content="geoquadps_documentation.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>geoquadps</tt> documentation</h1><!--introduction--><p><tt>geoquadps</tt> plots a geographic quadrangle in polar stereographic units.</p><p>This function is part of Antarctic Mapping Tools for Matlab (Greene et al., 2017). Click <a href="List_of_functions.html">here</a> for a complete list of functions in AMT.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Example 1: Standard projection</a></li><li><a href="#6">Example 2: Rotated projection</a></li><li><a href="#13">Citing AMT</a></li><li><a href="#14">Author Info</a></li></ul></div><h2 id="1">Syntax</h2><pre>geoquadps(latlim,lonlim)
+geoquadps(...,LineProperty,LineValue)
+geoquadps(...,'meridian',meridian)
+h = geoquadps(...)</pre><h2 id="2">Description</h2><p><tt>geoquadps(latlim,lonlim)</tt> plots a geographic quadrangle bound by the limits of the two-element vectors <tt>latlim,lonlim</tt>. The <tt>latlim</tt> variable must be <tt>[SouthernLimit NorthernLimit]</tt> and <tt>lonlim</tt> must be <tt>[WesternLimit EasternLimit]</tt>.</p><p><tt>geoquadps(...,LineProperty,LineValue)</tt> specifies any line properties.</p><p><tt>geoquadps(...,'meridian',meridian)</tt> specifies a meridian longitude along which the polar stereographic projection is centered. Default meridian is 0, which puts Fimbul Ice Shelf at the top of the map. To center the map on your quandrangle, try <tt>mean(lonlim)</tt> as the meridian value.</p><p><tt>h = geoquadps(...)</tt> returns a handle <tt>h</tt> of the plotted object.</p><h2 id="3">Example 1: Standard projection</h2><p>Starting with an outline from <a href="https://www.mathworks.com/matlabcentral/fileexchange/60246"><tt>antbounds</tt></a>:</p><pre class="codeinput">antbounds(<span class="string">'gl'</span>,<span class="string">'polyshape'</span>)
+antbounds(<span class="string">'shelves'</span>,<span class="string">'polyshape'</span>)
+</pre><img vspace="5" hspace="5" src="geoquadps_documentation_01.png" alt=""> <p>Say you want to mark a quadrangle around Ross Ice Shelf, which extends from about 77S to 86S, and from 159E to 147W:</p><pre class="codeinput">geoquadps([-77 -86],[159 -147])
+</pre><img vspace="5" hspace="5" src="geoquadps_documentation_02.png" alt=""> <p>The default thin line is tough to see in this context. Want to format it to make it more clear? Make it a big fat red line like this:</p><pre class="codeinput">geoquadps([-77 -86],[159 -147],<span class="string">'linewidth'</span>,3,<span class="string">'color'</span>,<span class="string">'red'</span>)
+</pre><img vspace="5" hspace="5" src="geoquadps_documentation_03.png" alt=""> <h2 id="6">Example 2: Rotated projection</h2><p>Sometimes you might want to plot things with a different projection than the standard polar stereographic with the prime meridian at the top of the page. Getz Ice Shelf in particular is like this, because if you take a look,</p><pre class="codeinput">figure
+antbounds(<span class="string">'getz'</span>,<span class="string">'polyshape'</span>)
+geoquadps([-75 -72.5],[-137 -113])
+axis <span class="string">tight</span> <span class="string">off</span>
+modismoaps(<span class="string">'contrast'</span>,<span class="string">'low'</span>)
+scalebarps(<span class="string">'color'</span>,<span class="string">'w'</span>)
+mapzoomps(<span class="string">'ne'</span>,<span class="string">'frame'</span>,<span class="string">'off'</span>)
+title <span class="string">'Getz too angled for ya?'</span>
+</pre><img vspace="5" hspace="5" src="geoquadps_documentation_04.png" alt=""> <p>Getz is at a ~45 degree angle in the standard projection and you might instead want it long-ways or tall-ways. Above, I called <tt>geoquadps</tt> with the latitude and longitude limits that we'll use for the next projection.</p><pre class="codeinput">figure
+h = mapzoomps([-75 -72.5],[-137 -113],<span class="string">'ne'</span>,<span class="string">'frame'</span>,<span class="string">'off'</span>);
+geoquadps([-75 -72.5],[-137 -113],<span class="string">'meridian'</span>,-125,<span class="keyword">...</span>
+   <span class="string">'linewidth'</span>,2,<span class="string">'color'</span>,<span class="string">'k'</span>)
+</pre><img vspace="5" hspace="5" src="geoquadps_documentation_05.png" alt=""> <p>In the figure above, you see the same geoquad that encompasses Getz is now centered on x = 0 meters (and if you take a look at the y axis, it's worth noting that the South Pole is still at y = 0).</p><p>Here's the outline of Getz Ice Shelf with the meridian at 125 W:</p><pre class="codeinput"><span class="comment">% Get Getz outline data:</span>
+[lat,lon] = antbounds_data(<span class="string">'getz'</span>);
+
+<span class="comment">% Plot the Getz outline with the meridian at 125 W:</span>
+plotps(lat,lon,<span class="string">'meridian'</span>,-125,<span class="string">'linewidth'</span>,2)
+</pre><img vspace="5" hspace="5" src="geoquadps_documentation_06.png" alt=""> <p>For a little further context, plot the bathymetry from <a href="https://www.mathworks.com/matlabcentral/fileexchange/52333">IBCSO</a>.</p><pre class="codeinput">[Lat,Lon] = meshgrid(-75:0.01:-72.5,-137:0.01:-113);
+Z = ibcso_interp(Lat,Lon);
+
+pcolorps(Lat,Lon,Z,<span class="string">'meridian'</span>,-125);
+shadem(3)
+axis <span class="string">off</span>
+</pre><img vspace="5" hspace="5" src="geoquadps_documentation_07.png" alt=""> <p>Note the inset map is in an awkard position. To move it, make sure you get a handle when you call <tt>h = mapzoomps(...)</tt> as we did above. The position of the lower left corner of the inset map is defined by</p><pre class="codeinput">h.Position
+</pre><pre class="codeoutput">ans =
+    0.8084    0.6189    0.0966    0.1014
+</pre><p>Where that corresponds to</p><pre>[lowerleft_x lowerleft_y insetwidth insetheight]</pre><p>and units are from 0 to 1, relative to the width of the entire figure. So to move the inset map down a bit, try</p><pre class="codeinput">h.Position(2) = 0.56;
+</pre><img vspace="5" hspace="5" src="geoquadps_documentation_08.png" alt=""> <p>And similarly, you can set the inset map's horizontal location as well as its width and height with <tt>h.Position</tt>.</p><h2 id="13">Citing AMT</h2><p>If this function or any other part of Antarctic Mapping Tools is useful for you, please cite the paper that describes AMT.</p><p>Greene, C. A., Gwyther, D. E., &amp; Blankenship, D. D. Antarctic Mapping Tools for Matlab. <i>Computers &amp; Geosciences</i>. 104 (2017) pp.151-157. <a href="http://dx.doi.org/10.1016/j.cageo.2016.08.003">doi:10.1016/j.cageo.2016.08.003</a>.</p><h2 id="14">Author Info</h2><p>This function and supporting documentation were written by <a href="http://www.chadagreene.com">Chad A. Greene</a> of the University of Texas Institute for Geophysics (UTIG), August 2018, for inclusion in the Antarctic Mapping Tools package.</p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2017b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |geoquadps| documentation
+% |geoquadps| plots a geographic quadrangle in polar stereographic units.
+% 
+% This function is part of Antarctic Mapping Tools for Matlab (Greene et al., 2017). Click <List_of_functions.html here>
+% for a complete list of functions in AMT. 
+%% Syntax
+% 
+%  geoquadps(latlim,lonlim)
+%  geoquadps(...,LineProperty,LineValue)
+%  geoquadps(...,'meridian',meridian)
+%  h = geoquadps(...)
+% 
+%% Description 
+% 
+% |geoquadps(latlim,lonlim)| plots a geographic quadrangle bound by the 
+% limits of the two-element vectors |latlim,lonlim|. The |latlim| variable
+% must be |[SouthernLimit NorthernLimit]| and |lonlim| must be |[WesternLimit EasternLimit]|.
+% 
+% |geoquadps(...,LineProperty,LineValue)| specifies any line properties. 
+% 
+% |geoquadps(...,'meridian',meridian)| specifies a meridian longitude along
+% which the polar stereographic projection is centered. Default meridian
+% is 0, which puts Fimbul Ice Shelf at the top of the map. To center the 
+% map on your quandrangle, try |mean(lonlim)| as the meridian value. 
+% 
+% |h = geoquadps(...)| returns a handle |h| of the plotted object. 
+% 
+%% Example 1: Standard projection
+% Starting with an outline from <https://www.mathworks.com/matlabcentral/fileexchange/60246
+% |antbounds|>: 
+
+antbounds('gl','polyshape') 
+antbounds('shelves','polyshape') 
+
+%% 
+% Say you want to mark a quadrangle around Ross Ice Shelf, which 
+% extends from about 77S to 86S, and from 159E to 147W: 
+
+geoquadps([-77 -86],[159 -147])
+
+%% 
+% The default thin line is tough to see in this context. Want to format it 
+% to make it more clear? Make it a big fat red line like this: 
+
+geoquadps([-77 -86],[159 -147],'linewidth',3,'color','red')
+
+%% Example 2: Rotated projection 
+% Sometimes you might want to plot things with a different projection
+% than the standard polar stereographic with the prime meridian at the
+% top of the page. Getz Ice Shelf in particular is like this, because if you
+% take a look, 
+
+figure
+antbounds('getz','polyshape') 
+geoquadps([-75 -72.5],[-137 -113])
+axis tight off
+modismoaps('contrast','low') 
+scalebarps('color','w')
+mapzoomps('ne','frame','off') 
+title 'Getz too angled for ya?'
+
+%% 
+% Getz is at a ~45 degree angle in the standard projection and you might 
+% instead want it long-ways or tall-ways. Above, I called |geoquadps|
+% with the latitude and longitude limits that we'll use for the next 
+% projection. 
+
+figure
+h = mapzoomps([-75 -72.5],[-137 -113],'ne','frame','off'); 
+geoquadps([-75 -72.5],[-137 -113],'meridian',-125,...
+   'linewidth',2,'color','k')
+
+%% 
+% In the figure above, you see the same geoquad that encompasses Getz is now 
+% centered on x = 0 meters (and if you take a look at the y axis, it's worth 
+% noting that the South Pole is still at y = 0). 
+% 
+% Here's the outline of Getz Ice Shelf with the meridian at 125 W: 
+
+% Get Getz outline data: 
+[lat,lon] = antbounds_data('getz'); 
+
+% Plot the Getz outline with the meridian at 125 W: 
+plotps(lat,lon,'meridian',-125,'linewidth',2)
+
+%% 
+% For a little further context, plot the bathymetry from <https://www.mathworks.com/matlabcentral/fileexchange/52333 
+% IBCSO>. 
+
+[Lat,Lon] = meshgrid(-75:0.01:-72.5,-137:0.01:-113); 
+Z = ibcso_interp(Lat,Lon); 
+
+pcolorps(Lat,Lon,Z,'meridian',-125);
+shadem(3)
+axis off
+
+%% 
+% Note the inset map is in an awkard position. To move it, 
+% make sure you get a handle when you call |h = mapzoomps(...)| as 
+% we did above. The position of the lower left corner of the inset
+% map is defined by 
+
+h.Position
+
+%% 
+% Where that corresponds to 
+% 
+%  [lowerleft_x lowerleft_y insetwidth insetheight]
+% 
+% and units are from 0 to 1, relative to the width of the entire figure.
+% So to move the inset map down a bit, try 
+
+h.Position(2) = 0.56; 
+
+%% 
+% And similarly, you can set the inset map's horizontal location
+% as well as its width and height with |h.Position|. 
+
+%% Citing AMT
+% If this function or any other part of Antarctic Mapping Tools is useful for you, please
+% cite the paper that describes AMT.  
+% 
+% Greene, C. A., Gwyther, D. E., & Blankenship, D. D. Antarctic Mapping Tools for Matlab. 
+% _Computers & Geosciences_. 104 (2017) pp.151-157. <http://dx.doi.org/10.1016/j.cageo.2016.08.003 doi:10.1016/j.cageo.2016.08.003>.
+% 
+%% Author Info
+% This function and supporting documentation were written by <http://www.chadagreene.com Chad A. Greene> of the University of Texas
+% Institute for Geophysics (UTIG), August 2018, for inclusion in the Antarctic Mapping Tools package.
+
+##### SOURCE END #####
+--></body></html>

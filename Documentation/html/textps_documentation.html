@@ -1,0 +1,144 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>textps documentation</title><meta name="generator" content="MATLAB 9.3"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2018-08-30"><meta name="DC.source" content="textps_documentation.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>textps</tt> documentation</h1><!--introduction--><p><tt>textps</tt> is part of Antarctic Mapping Tools for Matlab (Greene et al., 2017).  <a href="List_of_functions.html">Click here for a complete list of functions in AMT.</a></p><p>The <tt>textps</tt> function works just like Matlab's <tt>text</tt> or <tt>textm</tt> functions, but places georeferenced text labels in Antarctic polar stereographic cartesian coordinates (true latitude 71&deg;S). For example,</p><pre>textps(lat,lon,'My text')</pre><p>is equivalent to:</p><pre>[x,y] = ll2ps(lat,lon);
+plot(x,y,'My text')</pre><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Example</a></li><li><a href="#4">Citing AMT</a></li><li><a href="#5">Author Info</a></li></ul></div><h2 id="1">Syntax</h2><pre>textps(lat,lon,'string')
+textps(...,'PropertyName',PropertyValue,...)
+textps(...,'km')
+textps(...,'meridian',meridian)
+h = textps(...)</pre><h2 id="2">Description</h2><p><tt>textps(lat,lon,'string')</tt> adds the string in quotes to the location specified by the point (lat,lon) polar stereographic eastings and northings.</p><p><tt>textps(...,'PropertyName',PropertyValue,...)</tt> formats the string with any name-value pairs of text properties.</p><p><tt>textps(...,'km')</tt> plots in polar stereographic kilometers instead of the default meters.</p><p><tt>textps(...,'meridian',meridian)</tt> specifies a meridian longitude in the polar stereographic coordinate conversion. Default <tt>meridian</tt> is <tt>0</tt>.</p><p><tt>h = textps(...)</tt> returns a column vector of handles to text objects, one handle per object.</p><h2 id="3">Example</h2><p>Place text labels in East and West Antarctica:</p><pre class="codeinput">antbounds(<span class="string">'gl'</span>)
+textps(-80,-105,<span class="string">'West Antarctica'</span>)
+textps(-75,90,<span class="string">'East Antarctica'</span>,<span class="keyword">...</span>
+  <span class="string">'fontangle'</span>,<span class="string">'italic'</span>,<span class="string">'color'</span>,<span class="string">'red'</span>)
+xlabel <span class="string">'eastings (m)'</span>
+ylabel <span class="string">'northings (m)'</span>
+</pre><img vspace="5" hspace="5" src="textps_documentation_01.png" alt=""> <h2 id="4">Citing AMT</h2><p>If this function or any other part of Antarctic Mapping Tools is useful for you, please cite the paper that describes AMT.</p><p>Greene, C. A., Gwyther, D. E., &amp; Blankenship, D. D. Antarctic Mapping Tools for Matlab. <i>Computers &amp; Geosciences</i>. 104 (2017) pp.151-157. <a href="http://dx.doi.org/10.1016/j.cageo.2016.08.003">doi:10.1016/j.cageo.2016.08.003</a>.</p><h2 id="5">Author Info</h2><p>This function was written by <a href="http://www.chadagreene.com">Chad A. Greene</a> of the University of Texas Institute for Geophysics (UTIG), July 2015, for inclusion in the Antarctic Mapping Tools package.</p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2017b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |textps| documentation
+% |textps| is part of Antarctic Mapping Tools for Matlab (Greene et al., 2017).  <List_of_functions.html Click here
+% for a complete list of functions in AMT.>
+% 
+% The |textps| function works just like Matlab's |text| or |textm| functions, but places georeferenced
+% text labels in Antarctic polar stereographic cartesian coordinates (true
+% latitude 71°S). For example, 
+% 
+%  textps(lat,lon,'My text') 
+% 
+% is equivalent to: 
+% 
+%  [x,y] = ll2ps(lat,lon); 
+%  plot(x,y,'My text') 
+% 
+%% Syntax
+% 
+%  textps(lat,lon,'string')
+%  textps(...,'PropertyName',PropertyValue,...)
+%  textps(...,'km')
+%  textps(...,'meridian',meridian) 
+%  h = textps(...)
+% 
+%% Description 
+% 
+% |textps(lat,lon,'string')| adds the string in quotes to the location specified 
+% by the point (lat,lon) polar stereographic eastings and northings. 
+% 
+% |textps(...,'PropertyName',PropertyValue,...)| formats the string with any
+% name-value pairs of text properties. 
+% 
+% |textps(...,'km')| plots in polar stereographic kilometers instead of the
+% default meters. 
+% 
+% |textps(...,'meridian',meridian)| specifies a meridian longitude in the 
+% polar stereographic coordinate conversion. Default |meridian| is |0|. 
+% 
+% |h = textps(...)| returns a column vector of handles to text objects, one handle 
+% per object.
+% 
+%% Example 
+% Place text labels in East and West Antarctica: 
+
+antbounds('gl') 
+textps(-80,-105,'West Antarctica') 
+textps(-75,90,'East Antarctica',...
+  'fontangle','italic','color','red')
+xlabel 'eastings (m)' 
+ylabel 'northings (m)' 
+
+%% Citing AMT
+% If this function or any other part of Antarctic Mapping Tools is useful for you, please
+% cite the paper that describes AMT.  
+% 
+% Greene, C. A., Gwyther, D. E., & Blankenship, D. D. Antarctic Mapping Tools for Matlab. 
+% _Computers & Geosciences_. 104 (2017) pp.151-157. <http://dx.doi.org/10.1016/j.cageo.2016.08.003 doi:10.1016/j.cageo.2016.08.003>.
+% 
+%% Author Info
+% This function was written by <http://www.chadagreene.com Chad A. Greene> of the University of Texas
+% Institute for Geophysics (UTIG), July 2015, for inclusion in the
+% Antarctic Mapping Tools package.
+##### SOURCE END #####
+--></body></html>

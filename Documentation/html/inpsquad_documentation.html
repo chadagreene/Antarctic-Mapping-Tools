@@ -1,0 +1,180 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>inpsquad documentation</title><meta name="generator" content="MATLAB 8.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-05-22"><meta name="DC.source" content="inpsquad_documentation.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>inpsquad</tt> documentation</h1><!--introduction--><p><tt>inpsquad</tt> is part of Antarctic Mapping Tools for Matlab (Greene et al., 2017). Click <a href="List_of_functions.html">here</a> for a complete list of functions in AMT.</p><p>This function returns <tt>true</tt> for points in a polar stereographic quadrangle.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Example</a></li><li><a href="#7">Citing AMT</a></li><li><a href="#8">Author Info</a></li></ul></div><h2>Syntax<a name="1"></a></h2><pre>tf = inpsquad(lat,lon,latlim,lonlim)
+tf = inpsquad(lat,lon,xlim,ylim)
+tf = inpsquad(x,y,latlim,lonlim)
+tf = inpsquad(x,y,xlim,ylim)
+tf = inpsquad(...,'inclusive')
+[rows,cols] = inpsquad(...)</pre><h2>Description<a name="2"></a></h2><p><tt>tf = inpsquad(lat,lon,latlim,lonlim)</tt> returns logical matrix <tt>tf</tt>, which is the same size as <tt>lat</tt> and <tt>lon</tt>.  <tt>tf</tt> is <tt>true</tt> for all points inside the polar stereographic extents of all points in <tt>latlim</tt>, <tt>lonlim</tt>.  <tt>lat</tt> and <tt>lon</tt> must be the same size.  <tt>latlim</tt> and <tt>lonlim</tt> must be the same size.  With this syntax, all points are converted to polar stereographic (re 71&deg;) meters and limits are taken as the limits of the projected values before performing <tt>inpolygon</tt> calculation.</p><p><tt>tf = inpsquad(lat,lon,xlim,ylim)</tt> as above, but data limits are defined by polar stereographic meters. Polar stereographic units are determined based on the ranges of inputs with the islatlon function.</p><p><tt>tf = inpsquad(x,y,latlim,lonlim)</tt> Input data points can be polar stereographic meters. Polar stereographic units are determined based on the ranges of inputs with the islatlon function.</p><p><tt>tf = inpsquad(x,y,xlim,ylim)</tt> All inputs can be polar stereographic meters. Polar stereographic units are determined based on the ranges of inputs with the <tt>islatlon</tt> function.</p><p><tt>tf = inpsquad(...,'inclusive')</tt> includes points on the edge of the polygon defined by <tt>xlim,ylim</tt> or <tt>latlim,lonlim</tt>.</p><p><tt>[rows,cols] = inpsquad(...)</tt> returns rows and columns of <tt>lat,lon</tt> or <tt>x,y</tt> that have <i>any</i> points inside the polar stereographic quadrangle.  Note, a row or column needs only one point inside the quadrangle to return <tt>true</tt> for that row or column.</p><h2>Example<a name="3"></a></h2><p>Define a grid and some scattered data: This example includes a call to the highly-recommended <a href="https://www.mathworks.com/matlabcentral/fileexchange/60246"><tt>antbounds</tt></a> function, which plots the grounding line from Mouginot et al.</p><pre class="codeinput">[latgrid,longrid] = psgrid(<span class="string">'pine island glacier'</span>,500,2);
+scatlat = -75 + 1.5*randn(15,1);
+scatlon = -100 + 2*randn(15,1);
+mapzoomps(<span class="string">'pine island glacier'</span>,<span class="string">'mapwidth'</span>,1500)
+plotps(latgrid,longrid,<span class="string">'b.'</span>,<span class="string">'markersize'</span>,2)
+antbounds <span class="string">gl</span>
+plotps(scatlat,scatlon,<span class="string">'rh'</span>)
+</pre><img vspace="5" hspace="5" src="inpsquad_documentation_01.png" alt=""> <p>Find all scattered points inside the polar stereographic range of the gridded points and show them as magenta circles:</p><pre class="codeinput">in = inpsquad(scatlat,scatlon,latgrid,longrid);
+plotps(scatlat(in),scatlon(in),<span class="string">'mo'</span>)
+</pre><img vspace="5" hspace="5" src="inpsquad_documentation_02.png" alt=""> <p>Or find find all gridded points inside the range of scattered points and display them as black dots:</p><pre class="codeinput">in = inpsquad(latgrid,longrid,scatlat,scatlon);
+plotps(latgrid(in),longrid(in),<span class="string">'k.'</span>)
+</pre><img vspace="5" hspace="5" src="inpsquad_documentation_03.png" alt=""> <p>This function can be used to trim large datasets to a region of interest:</p><pre class="codeinput">[r,c] = inpsquad(latgrid,longrid,scatlat,scatlon);
+trimlat = latgrid(r,c);
+trimlon = longrid(r,c);
+</pre><h2>Citing AMT<a name="7"></a></h2><p>If this function or any other part of Antarctic Mapping Tools is useful for you, please cite the paper that describes AMT.</p><p>Greene, C. A., Gwyther, D. E., &amp; Blankenship, D. D. Antarctic Mapping Tools for Matlab. <i>Computers &amp; Geosciences</i>. 104 (2017) pp.151-157. <a href="http://dx.doi.org/10.1016/j.cageo.2016.08.003">doi:10.1016/j.cageo.2016.08.003</a>.</p><h2>Author Info<a name="8"></a></h2><p>The <tt>inpsquad</tt> function and supporting documentation were written for Antarctic Mapping Tools by <a href="http://www.chadagreene.com">Chad Greene</a> of the University of Texas at Austin's Institute for Geophysics (UTIG), September 2015.</p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2012b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |inpsquad| documentation 
+% |inpsquad| is part of Antarctic Mapping Tools for Matlab (Greene et al., 2017). Click <List_of_functions.html here>
+% for a complete list of functions in AMT. 
+% 
+% This function returns |true| for points in a polar stereographic quadrangle. 
+% 
+%% Syntax
+% 
+%  tf = inpsquad(lat,lon,latlim,lonlim) 
+%  tf = inpsquad(lat,lon,xlim,ylim)
+%  tf = inpsquad(x,y,latlim,lonlim)
+%  tf = inpsquad(x,y,xlim,ylim)
+%  tf = inpsquad(...,'inclusive')
+%  [rows,cols] = inpsquad(...)
+% 
+%% Description 
+% 
+% |tf = inpsquad(lat,lon,latlim,lonlim)| returns logical matrix |tf|, which is
+% the same size as |lat| and |lon|.  |tf| is |true| for all points inside the
+% polar stereographic extents of all points in |latlim|, |lonlim|.  |lat|
+% and |lon| must be the same size.  |latlim| and |lonlim| must be the same size.  With
+% this syntax, all points are converted to polar stereographic (re 71°) meters 
+% and limits are taken as the limits of the projected values before performing 
+% |inpolygon| calculation. 
+% 
+% |tf = inpsquad(lat,lon,xlim,ylim)| as above, but data limits are defined
+% by polar stereographic meters. Polar stereographic units are determined based 
+% on the ranges of inputs with the islatlon function. 
+%
+% |tf = inpsquad(x,y,latlim,lonlim)| Input data points can be polar
+% stereographic meters. Polar stereographic units are determined based on the
+% ranges of inputs with the islatlon function. 
+%
+% |tf = inpsquad(x,y,xlim,ylim)| All inputs can be polar stereographic
+% meters. Polar stereographic units are determined based on the
+% ranges of inputs with the |islatlon| function. 
+%
+% |tf = inpsquad(...,'inclusive')| includes points on the edge of the
+% polygon defined by |xlim,ylim| or |latlim,lonlim|. 
+% 
+% |[rows,cols] = inpsquad(...)| returns rows and columns of |lat,lon| or |x,y| that have 
+% _any_ points inside the polar stereographic quadrangle.  Note, a row or column
+% needs only one point inside the quadrangle to return |true| for that row or
+% column. 
+%
+%% Example
+% Define a grid and some scattered data: This example includes a call to the highly-recommended 
+% <https://www.mathworks.com/matlabcentral/fileexchange/60246 |antbounds|> function, which plots the grounding line from Mouginot et al. 
+
+[latgrid,longrid] = psgrid('pine island glacier',500,2); 
+scatlat = -75 + 1.5*randn(15,1); 
+scatlon = -100 + 2*randn(15,1); 
+mapzoomps('pine island glacier','mapwidth',1500) 
+plotps(latgrid,longrid,'b.','markersize',2)
+antbounds gl
+plotps(scatlat,scatlon,'rh')
+
+%%
+% Find all scattered points inside the polar stereographic range of the gridded points 
+% and show them as magenta circles: 
+
+in = inpsquad(scatlat,scatlon,latgrid,longrid);
+plotps(scatlat(in),scatlon(in),'mo')
+
+%%
+% Or find find all gridded points inside the range of scattered points and display them as
+% black dots: 
+
+in = inpsquad(latgrid,longrid,scatlat,scatlon); 
+plotps(latgrid(in),longrid(in),'k.')
+
+%% 
+% This function can be used to trim large datasets to a region of interest: 
+
+[r,c] = inpsquad(latgrid,longrid,scatlat,scatlon);
+trimlat = latgrid(r,c); 
+trimlon = longrid(r,c); 
+
+%% Citing AMT
+% If this function or any other part of Antarctic Mapping Tools is useful for you, please
+% cite the paper that describes AMT.  
+% 
+% Greene, C. A., Gwyther, D. E., & Blankenship, D. D. Antarctic Mapping Tools for Matlab. 
+% _Computers & Geosciences_. 104 (2017) pp.151-157. <http://dx.doi.org/10.1016/j.cageo.2016.08.003 doi:10.1016/j.cageo.2016.08.003>.
+% 
+%% Author Info
+% The |inpsquad| function and supporting documentation were written for
+% Antarctic Mapping Tools by <http://www.chadagreene.com Chad Greene> of
+% the University of Texas at Austin's Institute for Geophysics (UTIG),
+% September 2015. 
+##### SOURCE END #####
+--></body></html>

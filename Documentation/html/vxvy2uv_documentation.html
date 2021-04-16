@@ -1,0 +1,221 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>vxvy2uv documentation</title><meta name="generator" content="MATLAB 8.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-05-22"><meta name="DC.source" content="vxvy2uv_documentation.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>vxvy2uv</tt> documentation</h1><!--introduction--><p><tt>vxvy2uv</tt> is part of Antarctic Mapping Tools for Matlab (Greene et al., 2017).  <a href="List_of_functions.html">Click here for a complete list of functions in AMT.</a></p><p>This function transforms polar stereographic vector components to georeferenced (zonal and meridional) vector components.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Example 1: Continental scale motion</a></li><li><a href="#9">Example 2: Glacier motion</a></li><li><a href="#15">Citing AMT</a></li><li><a href="#16">Author Info</a></li></ul></div><h2>Syntax<a name="1"></a></h2><pre>[U,V] = vxvy2uv(lat,lon,vx,vy)
+[U,V] = vxvy2uv(x,y,vx,vy)</pre><h2>Description<a name="2"></a></h2><p><tt>[U,V] = vxvy2uv(lat,lon,vx,vy)</tt> transforms polar stereographic vector components <tt>vx</tt>, <tt>vy</tt> referenced to the geographic locations in <tt>lat</tt> and <tt>lon</tt> to geographic zonal and meridional components.</p><p><tt>[U,V] = vxvy2uv(x,y,vx,vy)</tt> transforms polar stereographic vector components <tt>vx</tt>, <tt>vy</tt> referenced to the polar stereographic locations in <tt>x</tt> and <tt>y</tt> to geographic zonal and meridional components. Polar stereographic coordinates are automatically determined if any value in the first two inputs of <tt>vxvy2uv</tt> exceed normal geographic coordinate values.</p><h2>Example 1: Continental scale motion<a name="3"></a></h2><p>Consider a vector field depicting motion from left to right on a standard polar stereographic map projection.  Make its x component 1.5 magnitude everywhere, and we'll add a slight downward-dipping y component too, just to make things interesting.  To set up the grid, us <a href="psgrid_documentation.html"><tt>psgrid</tt></a> to create a 6000 km wide grid at 250 km resolution, centered on the South Pole:</p><pre class="codeinput">[x,y] = psgrid(<span class="string">'south pole'</span>,6000,250,<span class="string">'xy'</span>);
+vx = 1.5*ones(size(x));
+vy = -0.3*ones(size(x));
+</pre><p>In cartesian coordinates this is what the vector field looks like.  We'll overlay a Bedmap2 grounding line for context:</p><pre class="codeinput">quiver(x,y,vx,vy)
+hold <span class="string">on</span>
+bedmap2(<span class="string">'gl'</span>,<span class="string">'xy'</span>)
+</pre><img vspace="5" hspace="5" src="vxvy2uv_documentation_01.png" alt=""> <pre class="codeinput">close
+</pre><p>We can convert this vector field to zonal and meridional components like this:</p><pre class="codeinput">[u,v] = vxvy2uv(x,y,vx,vy);
+</pre><p>Let's show the zonal and meridional components on a map. We'll have to use <a href="ps2ll_documentation.html"><tt>ps2ll</tt></a> to get the georeferenced coordinates of our xy grid first.  Initialize a map with <a href="antmap_documentation.html"><tt>antmap</tt></a>, plot a filled coast line as a patch object for context, and plot the vector field with the AMT function <a href="quivermc_documentation.html"><tt>quivermc</tt></a>:</p><pre class="codeinput">[lat,lon] = ps2ll(x,y);
+
+antmap
+bedmap2 <span class="string">'patchcoast'</span>
+quivermc(lat,lon,u,v)
+</pre><img vspace="5" hspace="5" src="vxvy2uv_documentation_02.png" alt=""> <p>That looks about right.  There's one funny vector close to the South Pole because that's where small errors in angles go haywire.</p><pre class="codeinput">close
+</pre><h2>Example 2: Glacier motion<a name="9"></a></h2><p>Let's use the <a href="http://www.mathworks.com/matlabcentral/fileexchange/47329-measures/content/html/measures_interp_documentation.html">MEaSUREs toolbox</a> to look at ice motion around Recovery Glacier. Start by defining a 500 km wide grid centered on Recovery Glacier.  Make the grid 3 km resolution.</p><pre class="codeinput">[lat,lon] = psgrid(<span class="string">'recovery glacier'</span>,500,3);
+</pre><p>The <tt>measures_interp</tt> function can return ice velocity components for at each of our lat,lon grid points:</p><pre class="codeinput">vx = measures_interp(<span class="string">'vx'</span>,lat,lon);
+vy = measures_interp(<span class="string">'vy'</span>,lat,lon);
+</pre><p>In cartesian coordinates, the vector field looks like this:</p><pre class="codeinput">[x,y] = ll2ps(lat,lon);
+quiver(x,y,vx,vy)
+</pre><img vspace="5" hspace="5" src="vxvy2uv_documentation_03.png" alt=""> <p>That's a bit hard to parse using Matlab's <tt>quiver</tt> function, but if you zoom in the arrows are there.  For example,</p><pre class="codeinput">axis([-640322 -553225 758771 839473])
+</pre><img vspace="5" hspace="5" src="vxvy2uv_documentation_04.png" alt=""> <pre class="codeinput">close
+</pre><p>You might want zonal and meridional components of ice motion.  Let's do that and show vectors atop a <a href="http://www.mathworks.com/matlabcentral/fileexchange/52031-ramp-radarsat-antarctic-mapping-project/content/RAMP/html/ramp_documentation.html"><tt>ramp</tt></a> image.  When calling <a href="quivermc_documentation.html"><tt>quivermc</tt></a> below I'm color-scaling the arrows using one of my favorite colormap generators, <a href="http://www.mathworks.com/matlabcentral/fileexchange/45208"><tt>brewermap</tt></a>, and I don't want to show too many little arrows, so I'll downsample the field to 20% with the <tt>'density',20</tt> option:</p><pre class="codeinput">[u,v] = vxvy2uv(lat,lon,vx,vy);
+
+mapzoom(<span class="string">'recovery glacier'</span>)
+ramp
+quivermc(lat,lon,u,v,<span class="string">'colormap'</span>,brewermap(256,<span class="string">'reds'</span>),<span class="string">'density'</span>,20)
+</pre><img vspace="5" hspace="5" src="vxvy2uv_documentation_05.png" alt=""> <h2>Citing AMT<a name="15"></a></h2><p>If this function or any other part of Antarctic Mapping Tools is useful for you, please cite the paper that describes AMT.</p><p>Greene, C. A., Gwyther, D. E., &amp; Blankenship, D. D. Antarctic Mapping Tools for Matlab. <i>Computers &amp; Geosciences</i>. 104 (2017) pp.151-157. <a href="http://dx.doi.org/10.1016/j.cageo.2016.08.003">doi:10.1016/j.cageo.2016.08.003</a>.</p><h2>Author Info<a name="16"></a></h2><p>The <tt>vxvy2uv</tt> function and supporting documentation were written by Chad A. Greene of the University of Texas at Austin's Institute for Geophysics (UTIG), September 2015.</p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2012b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |vxvy2uv| documentation 
+% |vxvy2uv| is part of Antarctic Mapping Tools for Matlab (Greene et al., 2017).  <List_of_functions.html Click here
+% for a complete list of functions in AMT.>
+% 
+% This function transforms polar stereographic vector components to
+% georeferenced (zonal and meridional) vector components. 
+% 
+%% Syntax
+% 
+%  [U,V] = vxvy2uv(lat,lon,vx,vy)
+%  [U,V] = vxvy2uv(x,y,vx,vy)
+% 
+%% Description 
+% 
+% |[U,V] = vxvy2uv(lat,lon,vx,vy)| transforms polar stereographic vector
+% components |vx|, |vy| referenced to the geographic locations in |lat| and |lon| to
+% geographic zonal and meridional components. 
+% 
+% |[U,V] = vxvy2uv(x,y,vx,vy)| transforms polar stereographic vector
+% components |vx|, |vy| referenced to the polar stereographic locations in |x| and |y| to
+% geographic zonal and meridional components. Polar stereographic
+% coordinates are automatically determined if any value in the first two
+% inputs of |vxvy2uv| exceed normal geographic coordinate values. 
+% 
+%% Example 1: Continental scale motion
+% Consider a vector field depicting motion from left to right on a standard polar
+% stereographic map projection.  Make its x component 1.5 magnitude everywhere, and we'll
+% add a slight downward-dipping y component too, just to make things
+% interesting.  To set up the grid, us <psgrid_documentation.html |psgrid|> to 
+% create a 6000 km wide grid at 250 km resolution, centered on the South Pole: 
+
+[x,y] = psgrid('south pole',6000,250,'xy'); 
+vx = 1.5*ones(size(x)); 
+vy = -0.3*ones(size(x)); 
+
+%% 
+% In cartesian coordinates this is what the vector field looks like.  We'll
+% overlay a Bedmap2 grounding line for context: 
+
+quiver(x,y,vx,vy) 
+hold on
+bedmap2('gl','xy') 
+
+%% 
+close
+%% 
+% We can convert this vector field to zonal and meridional components like
+% this: 
+
+[u,v] = vxvy2uv(x,y,vx,vy); 
+
+%% 
+% Let's show the zonal and meridional components on a map. We'll have to use <ps2ll_documentation.html |ps2ll|> to 
+% get the georeferenced coordinates of our xy grid first.  Initialize a map
+% with <antmap_documentation.html |antmap|>, plot a filled coast line as a patch
+% object for context, and plot the vector field with the AMT function
+% <quivermc_documentation.html |quivermc|>: 
+
+[lat,lon] = ps2ll(x,y); 
+
+antmap
+bedmap2 'patchcoast'
+quivermc(lat,lon,u,v)
+
+%% 
+% That looks about right.  There's one funny vector close to the South Pole
+% because that's where small errors in angles go haywire. 
+close 
+%% Example 2: Glacier motion
+% Let's use the <http://www.mathworks.com/matlabcentral/fileexchange/47329-measures/content/html/measures_interp_documentation.html MEaSUREs toolbox>
+% to look at ice motion around Recovery Glacier. Start by defining a 500 km
+% wide grid centered on Recovery Glacier.  Make the grid 3 km resolution. 
+
+[lat,lon] = psgrid('recovery glacier',500,3); 
+
+%% 
+% The |measures_interp| function can return ice velocity components for at
+% each of our lat,lon grid points: 
+
+vx = measures_interp('vx',lat,lon); 
+vy = measures_interp('vy',lat,lon); 
+
+%% 
+% In cartesian coordinates, the vector field looks like this: 
+
+[x,y] = ll2ps(lat,lon); 
+quiver(x,y,vx,vy) 
+
+%% 
+% That's a bit hard to parse using Matlab's |quiver| function, but if you
+% zoom in the arrows are there.  For example, 
+
+axis([-640322 -553225 758771 839473])
+
+%% 
+close 
+%% 
+% You might want zonal and meridional components of ice motion.  Let's do
+% that and show vectors atop a <http://www.mathworks.com/matlabcentral/fileexchange/52031-ramp-radarsat-antarctic-mapping-project/content/RAMP/html/ramp_documentation.html
+% |ramp|> image.  When calling <quivermc_documentation.html |quivermc|> below I'm color-scaling
+% the arrows using one of my favorite colormap generators,
+% <http://www.mathworks.com/matlabcentral/fileexchange/45208 |brewermap|>,
+% and I don't want to show too many little arrows, so I'll downsample the
+% field to 20% with the |'density',20| option: 
+
+[u,v] = vxvy2uv(lat,lon,vx,vy); 
+
+mapzoom('recovery glacier')
+ramp
+quivermc(lat,lon,u,v,'colormap',brewermap(256,'reds'),'density',20)
+
+%% Citing AMT
+% If this function or any other part of Antarctic Mapping Tools is useful for you, please
+% cite the paper that describes AMT.  
+% 
+% Greene, C. A., Gwyther, D. E., & Blankenship, D. D. Antarctic Mapping Tools for Matlab. 
+% _Computers & Geosciences_. 104 (2017) pp.151-157. <http://dx.doi.org/10.1016/j.cageo.2016.08.003 doi:10.1016/j.cageo.2016.08.003>.
+% 
+%% Author Info
+% The |vxvy2uv| function and supporting documentation were written by Chad
+% A. Greene of the University of Texas at Austin's Institute for Geophysics
+% (UTIG), September 2015. 
+
+##### SOURCE END #####
+--></body></html>

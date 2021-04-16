@@ -1,0 +1,160 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>pathcrossingps71</title><meta name="generator" content="MATLAB 8.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-05-22"><meta name="DC.source" content="pathcrossingps71_documentation.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>pathcrossingps71</tt></h1><!--introduction--><p><tt>pathcrossingsps71</tt> is part of Antarctic Mapping Tools for Matlab (Greene et al., 2017). Click <a href="List_of_functions.html">here</a> for a complete list of functions in AMT.</p><p><tt>pathcrossingsps71</tt> returns crossing point(s) of two paths in or around Antarctica. Calculation is performed by converting input lat/lon arrays to polarstereo (-71) x,y coordinates, finding intersections, and then converting intersection point(s) back to georeferenced coordinates.</p><p>Before using this function, check to see whether <a href="crossovers_documentation.html"><tt>crossovers</tt></a> might better suit your needs. They do similar things, but <tt>crossovers</tt> finds all self intersections of within a single dataset, wherease <tt>pathcrossingsps71</tt> finds the intersection point(s) of two distinct datasets.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Example: Intersection of snowmobile track with grounding line</a></li><li><a href="#6">Citing AMT</a></li><li><a href="#7">Author Info</a></li></ul></div><h2>Syntax<a name="1"></a></h2><pre>[lati,loni] = pathcrossingps71(lat1,lon1,lat2,lon2)
+[lati,loni] = pathcrossingps71(lat1,lon1,lat2,lon2,ClipOption)</pre><h2>Description<a name="2"></a></h2><p><tt>[lati,loni] = pathcrossingps71(lat1,lon1,lat2,lon2)</tt> returns lat/lon pair(s) for intersection of paths given by lat1,lon1 and lat2,lon2.</p><p><tt>[lati,loni] = pathcrossingps71(lat1,lon1,lat2,lon2,ClipOption)</tt> allows turning off of automatic data clipping for large data sets. Use the string <tt>'noclip'</tt> to turn off clipping.  Clipping is on by default because calculating the intersection(s) of a million-point flight line with another multi-million point flight line would be very slow.</p><h2>Example: Intersection of snowmobile track with grounding line<a name="3"></a></h2><p>Here we'll grab (very approximate) grounding line data from <a href="https://www.mathworks.com/matlabcentral/fileexchange/60246">Mouginot et al</a> and see where it intersects a snowmobile track given by four waypoints:</p><pre class="codeinput">[glat,glon] = antbounds_data(<span class="string">'gl'</span>);
+tracklat = [-75.4491  -75.4657  -75.3771  -75.1145];
+tracklon = [-94.4371  -95.4879  -97.8617 -101.0862];
+</pre><p>For context, let's plot these data:</p><pre class="codeinput"><span class="comment">% Initialize a 350 km map centererd on PIG:</span>
+mapzoomps(<span class="string">'pine island glacier'</span>,<span class="string">'mapwidth'</span>,350,<span class="string">'inset'</span>,<span class="string">'northeast'</span>)
+
+<span class="comment">% Plot a MOA image:</span>
+modismoaps
+
+<span class="comment">% Plot Mouginot's grounding line:</span>
+antbounds(<span class="string">'gl'</span>,<span class="string">'color'</span>,<span class="string">'green'</span>,<span class="string">'linewidth'</span>,2)
+
+<span class="comment">% Plot the track:</span>
+plotps(tracklat,tracklon,<span class="string">'ro-'</span>,<span class="string">'linewidth'</span>,2)
+</pre><img vspace="5" hspace="5" src="pathcrossingps71_documentation_01.png" alt=""> <p>Now find the intersection and plot it as a big blue star:</p><pre class="codeinput">[intersectlat,intersectlon] = pathcrossingps71(glat,glon,tracklat,tracklon);
+plotps(intersectlat,intersectlon,<span class="string">'bp'</span>,<span class="string">'markersize'</span>,20,<span class="string">'markerfacecolor'</span>,<span class="string">'blue'</span>)
+</pre><img vspace="5" hspace="5" src="pathcrossingps71_documentation_02.png" alt=""> <h2>Citing AMT<a name="6"></a></h2><p>If this function or any other part of Antarctic Mapping Tools is useful for you, please cite the paper that describes AMT.</p><p>Greene, C. A., Gwyther, D. E., &amp; Blankenship, D. D. Antarctic Mapping Tools for Matlab. <i>Computers &amp; Geosciences</i>. 104 (2017) pp.151-157. <a href="http://dx.doi.org/10.1016/j.cageo.2016.08.003">doi:10.1016/j.cageo.2016.08.003</a>.</p><h2>Author Info<a name="7"></a></h2><p>Chad A. Greene of the University of Texas at Austin's Intitute for Geophysics (<a href="http://www.ig.utexas.edu/research/cryosphere/">UTIG</a>).  August 2014.  This function includes the <a href="http://www.mathworks.com/matlabcentral/fileexchange/22441">InterX</a> by NS.</p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2012b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |pathcrossingps71|
+% |pathcrossingsps71| is part of Antarctic Mapping Tools for Matlab (Greene et al., 2017). Click <List_of_functions.html here>
+% for a complete list of functions in AMT. 
+% 
+% |pathcrossingsps71| returns crossing point(s) of two paths in or around
+% Antarctica. Calculation is performed by converting input lat/lon arrays to
+% polarstereo (-71) x,y coordinates, finding intersections, and then
+% converting intersection point(s) back to georeferenced coordinates. 
+% 
+% Before using this function, check to see whether <crossovers_documentation.html |crossovers|> 
+% might better suit your needs. They do similar things, but |crossovers| finds all self intersections
+% of within a single dataset, wherease |pathcrossingsps71| finds the intersection point(s) of two 
+% distinct datasets. 
+%
+%% Syntax 
+% 
+%  [lati,loni] = pathcrossingps71(lat1,lon1,lat2,lon2)
+%  [lati,loni] = pathcrossingps71(lat1,lon1,lat2,lon2,ClipOption)
+% 
+%% Description 
+% 
+% |[lati,loni] = pathcrossingps71(lat1,lon1,lat2,lon2)| returns lat/lon pair(s) 
+% for intersection of paths given by lat1,lon1 and lat2,lon2.  
+% 
+% |[lati,loni] = pathcrossingps71(lat1,lon1,lat2,lon2,ClipOption)| allows
+% turning off of automatic data clipping for large data sets. Use the
+% string |'noclip'| to turn off clipping.  Clipping is on by default
+% because calculating the intersection(s) of a million-point flight line
+% with another multi-million point flight line would be very slow. 
+
+%% Example: Intersection of snowmobile track with grounding line
+% Here we'll grab (very approximate) grounding line data from <https://www.mathworks.com/matlabcentral/fileexchange/60246 Mouginot et al> and
+% see where it intersects a snowmobile track given by four waypoints: 
+
+[glat,glon] = antbounds_data('gl'); 
+tracklat = [-75.4491  -75.4657  -75.3771  -75.1145];
+tracklon = [-94.4371  -95.4879  -97.8617 -101.0862]; 
+
+%% 
+% For context, let's plot these data: 
+
+% Initialize a 350 km map centererd on PIG: 
+mapzoomps('pine island glacier','mapwidth',350,'inset','northeast')
+
+% Plot a MOA image: 
+modismoaps
+
+% Plot Mouginot's grounding line: 
+antbounds('gl','color','green','linewidth',2)
+
+% Plot the track: 
+plotps(tracklat,tracklon,'ro-','linewidth',2)
+
+%% 
+% Now find the intersection and plot it as a big blue star: 
+
+[intersectlat,intersectlon] = pathcrossingps71(glat,glon,tracklat,tracklon); 
+plotps(intersectlat,intersectlon,'bp','markersize',20,'markerfacecolor','blue')
+
+%% Citing AMT
+% If this function or any other part of Antarctic Mapping Tools is useful for you, please
+% cite the paper that describes AMT.  
+% 
+% Greene, C. A., Gwyther, D. E., & Blankenship, D. D. Antarctic Mapping Tools for Matlab. 
+% _Computers & Geosciences_. 104 (2017) pp.151-157. <http://dx.doi.org/10.1016/j.cageo.2016.08.003 doi:10.1016/j.cageo.2016.08.003>.
+% 
+%% Author Info
+%
+% Chad A. Greene of the University of Texas at Austin's Intitute for
+% Geophysics (<http://www.ig.utexas.edu/research/cryosphere/ UTIG>).  August 
+% 2014.  This function includes the <http://www.mathworks.com/matlabcentral/fileexchange/22441 
+% InterX> by NS.
+##### SOURCE END #####
+--></body></html>
