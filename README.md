@@ -3,6 +3,8 @@
 <p align="center"><img src="Documentation/amt_graphical_abstract.jpg" width="300"/></p>
 Functions for analyzing and mapping Antarctic geospatial datasets.
 
+View documentation online by clicking on the Examples tab in the [AMT File Exchange page](https://www.mathworks.com/matlabcentral/fileexchange/47638). 
+
 # Getting Started 
 If you install this toolbox directly through the Add-Ons menu in MATLAB, that should be the only step needed for installation. If, however, you're manually downloading the files, then be sure to add the AMT folder to your file path so MATLAB will know to find it. 
 
