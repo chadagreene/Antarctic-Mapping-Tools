@@ -109,7 +109,7 @@ assert(sum(tmp)==(nargin-2)/2,'There seems to be at least one invalid input stri
 tmp = strncmpi(varargin,'true',4)|strncmpi(varargin,'lat',3)|strncmpi(varargin,'ref',3); 
 if any(tmp)
     phi_c = varargin{find(tmp)+1}; 
-    assert(isscalar(phi_c)==1,'True lat must be a scalar.')
+    assert(isscalar(phi_c),'True lat must be a scalar.')
     if phi_c>0
         disp('I''m assuming you forgot the negative sign for the true latitude, and I am converting your northern hemisphere value to southern hemisphere.')
         phi_c = -phi_c; 
@@ -119,22 +119,22 @@ end
 tmp = strncmpi(varargin,'earthrad',8)|strncmpi(varargin,'rad',3); 
 if any(tmp)
     a = varargin{find(tmp)+1}; 
-    assert(isscalar(a)==1,'Earth radius must be a scalar.')
+    assert(isscalar(a),'Earth radius must be a scalar.')
     assert(a > 7e+3,'Earth radius should be something like 6378137 in meters.')
 end
 
 tmp = strncmpi(varargin,'ecc',3); 
 if any(tmp)
     e = varargin{find(tmp)+1}; 
-    assert(isscalar(e)==1,'Earth eccentricity must be a scalar.')
-    assert(e>0 & e<1,'Earth eccentricity does not seem like a logical value.')
+    assert(isscalar(e),'Earth eccentricity must be a scalar.')
+    assert(e>=0 & e<1,'Earth eccentricity does not seem like a reasonable value.')
 end
 
 tmp = strncmpi(varargin,'PosYLon',4)|strncmpi(varargin,'lon',3)|...
     strncmpi(varargin,'merid',5); 
 if any(tmp)
     lambda_0 = varargin{find(tmp)+1}; 
-    assert(isscalar(lambda_0)==1,'PosYLon must be a scalar.')
+    assert(isscalar(lambda_0),'PosYLon must be a scalar.')
     assert(lambda_0>=-180 & lambda_0<=360,'PsosYLon does not seem like a logical value.')
 end
 
