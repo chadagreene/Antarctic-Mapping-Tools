@@ -141,7 +141,7 @@ tmp = strncmpi(varargin,'PosYLon',4)|strncmpi(varargin,'lon',3)|...
 if any(tmp)
     lambda_0 = varargin{find(tmp)+1}; 
     assert(isscalar(lambda_0),'PosYLon must be a scalar.')
-    assert(lambda_0>=-180 & lambda_0<=360,'PsosYLon does not seem like a logical value.')
+    assert(lambda_0>=-180 & lambda_0<=360,'PosYLon does not seem like a reasonable value.')
 end
 
 %% Convert to radians:
