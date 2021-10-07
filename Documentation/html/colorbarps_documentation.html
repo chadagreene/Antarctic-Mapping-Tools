@@ -1,0 +1,151 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>colorbarps places a horizontal colorbar in the lower left corner of a</title><meta name="generator" content="MATLAB 9.10"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2021-10-07"><meta name="DC.source" content="colorbarps_documentation.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>colorbarps</tt> places a horizontal colorbar in the lower left corner of a</h1><!--introduction--><p>map of Antarctica.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Example 1</a></li><li><a href="#4">Example 2</a></li><li><a href="#7">Citing AMT</a></li><li><a href="#8">Author Info</a></li></ul></div><h2 id="1">Syntax</h2><pre>colorbarps
+colorbarps('PropertyName',PropertyValue,...)
+h = colorbarps(...)</pre><h2 id="2">Description</h2><p><tt>colorbarps</tt> places a horizontal colorbar in the lower left corner of the current axes. Its placement is intended to avoid covering any permanent ice in a standard map of Antarctica.</p><p><tt>colorbarps('PropertyName',PropertyValue,...)</tt> specifies any colorbar properties.</p><p><tt>h = colorbarps(...)</tt> returns a handle of the colorbar.</p><h2 id="3">Example 1</h2><p>Place a simple colorbar.</p><pre class="codeinput">figure
+antbounds <span class="comment">% draws an outline of the continent</span>
+colorbarps
+</pre><img vspace="5" hspace="5" src="colorbarps_documentation_01.png" alt=""> <h2 id="4">Example 2</h2><p>This example uses the ITS_LIVE velocity dataset and we'll do some fancy formatting.</p><pre class="codeinput">figure
+
+<span class="comment">% Plot velocity:</span>
+itslive_imagesc(<span class="string">'v'</span>)
+
+<span class="comment">% Place a colorbar:</span>
+h = colorbarps;
+</pre><img vspace="5" hspace="5" src="colorbarps_documentation_02.png" alt=""> <p>Remove the axes and set the color axis to a log scale.</p><pre class="codeinput">axis <span class="string">off</span>
+set(gca,<span class="string">'colorscale'</span>,<span class="string">'log'</span>)
+caxis([1 1000])
+</pre><img vspace="5" hspace="5" src="colorbarps_documentation_03.png" alt=""> <p>Label the colorbar and make its axes and text red:</p><pre class="codeinput">xlabel(h,<span class="string">'velocity (m/yr)'</span>)
+h.Color = <span class="string">'r'</span>;
+</pre><img vspace="5" hspace="5" src="colorbarps_documentation_04.png" alt=""> <h2 id="7">Citing AMT</h2><p>If this function or any other part of Antarctic Mapping Tools is useful for you, please cite the paper that describes AMT.</p><p>Greene, C. A., Gwyther, D. E., &amp; Blankenship, D. D. Antarctic Mapping Tools for Matlab. <i>Computers &amp; Geosciences</i>. 104 (2017) pp.151-157. <a href="http://dx.doi.org/10.1016/j.cageo.2016.08.003">doi:10.1016/j.cageo.2016.08.003</a>.</p><h2 id="8">Author Info</h2><p>This function and supporting documentation were written by <a href="http://www.chadagreene.com">Chad A. Greene</a> of the University of NASA Jet Propulsion Laboratory, October 2021.</p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |colorbarps| places a horizontal colorbar in the lower left corner of a
+% map of Antarctica. 
+% 
+%% Syntax
+% 
+%  colorbarps 
+%  colorbarps('PropertyName',PropertyValue,...)
+%  h = colorbarps(...) 
+% 
+%% Description
+% 
+% |colorbarps| places a horizontal colorbar in the lower left corner of the
+% current axes. Its placement is intended to avoid covering any permanent
+% ice in a standard map of Antarctica. 
+%
+% |colorbarps('PropertyName',PropertyValue,...)| specifies any colorbar
+% properties. 
+%
+% |h = colorbarps(...)| returns a handle of the colorbar. 
+% 
+%% Example 1
+% Place a simple colorbar.
+
+figure
+antbounds % draws an outline of the continent 
+colorbarps 
+
+%% Example 2
+% This example uses the ITS_LIVE velocity dataset and we'll do some fancy
+% formatting. 
+
+figure
+
+% Plot velocity: 
+itslive_imagesc('v') 
+
+% Place a colorbar: 
+h = colorbarps;
+
+%% 
+% Remove the axes and set the color axis to a log scale. 
+
+axis off
+set(gca,'colorscale','log')
+caxis([1 1000]) 
+
+%% 
+% Label the colorbar and make its axes and text red: 
+
+xlabel(h,'velocity (m/yr)')
+h.Color = 'r';
+%% Citing AMT
+% If this function or any other part of Antarctic Mapping Tools is useful for you, please
+% cite the paper that describes AMT.  
+% 
+% Greene, C. A., Gwyther, D. E., & Blankenship, D. D. Antarctic Mapping Tools for Matlab. 
+% _Computers & Geosciences_. 104 (2017) pp.151-157. <http://dx.doi.org/10.1016/j.cageo.2016.08.003 doi:10.1016/j.cageo.2016.08.003>.
+% 
+%% Author Info 
+% This function and supporting documentation were written by <http://www.chadagreene.com Chad A. Greene> of the University
+% of NASA Jet Propulsion Laboratory, October 2021. 
+##### SOURCE END #####
+--></body></html>

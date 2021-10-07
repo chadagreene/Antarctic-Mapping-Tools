@@ -79,6 +79,7 @@
 % * <geoquadps_documentation.html |geoquadps|> plots a box bound by geographic limits, on polar stereographic map. 
 % * <scalebarps_documentation.html |scalebarps|> places a graphical reference scale on polar stereographic coordinates. 
 % * <scarlabel_documentation.html |scarlabel|> labels features by looking up their locations in the SCAR database. 
+% * <colorbarps_documentation.html |colorbarps|> nicely positions a colorbar on a standard map of Antarctica. 
 % * <shadem_documentation.html |shadem|> applies topographic relief shading to DEM data. 
 % * <coord_documentation.html |coord|> returns geo- or polar stereographic coordinates from mouse clicks.  
 % * <clickz_documentation.html |clickz|> returns gridded z data such as elevation or velocity interpolated mouse click locations.    
