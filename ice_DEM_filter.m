@@ -58,7 +58,7 @@ assert(isscalar(H_bin),'Input H_bin must be a scalar.')
 mask = floor(H/H_bin); 
 
 % Find the unique values of regions to solve: 
-umask = unique(mask(:));
+umask = unique(mask(isfinite(mask(:))));
 umask = sort(umask,'descend'); % This will start filtering with longer wavelengths, because they're slower.   
 
 % Define the "wavelengths" of the gaussian filters:  
@@ -72,7 +72,6 @@ wb = waitbar(0,'Filtering...');
 waitbar(1./length(umask)) % update it because we've already filled the first region of Zf 
 
 for k = 1:(length(umask)-1) % Start with the longest wavelength bc it's the slowest. (It's good for the spirit if the waitbar speeds up.) Don't do the last one because k=1 corresponds to H=0.  
-   
    if lambda(k)>2*res
       % Filter the original Z to this wavelength: 
       tmp = filt2(Z,res,lambda(k),'lp'); % filt2 is provided as a subfunction below. 
