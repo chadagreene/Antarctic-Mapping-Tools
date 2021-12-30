@@ -1,0 +1,227 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>gridded_flux documentation</title><meta name="generator" content="MATLAB 9.10"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2021-12-29"><meta name="DC.source" content="gridded_flux_documentation.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>gridded_flux</tt> documentation</h1><!--introduction--><p><tt>gridded_flux</tt> calculates the annual ice flux out of a gridded mask.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Example 1: Antarctic grounding line flux.</a></li><li><a href="#4">Create a mask</a></li><li><a href="#5">Calculate grounding line flux</a></li><li><a href="#7">Example 2: Thwaites Glacier, with error</a></li><li><a href="#10">Citing AMT</a></li><li><a href="#11">Author Info</a></li></ul></div><h2 id="1">Syntax</h2><pre>flux = gridded_flux(mask,vx,vy,H,res)
+[flux,flux_err] = gridded_flux(mask,vx,vy,H,res,vx_err,vy_err,H_err)</pre><h2 id="2">Description</h2><p><tt>flux = gridded_flux(mask,vx,vy,H,res)</tt> calculates the ice <tt>flux</tt> in Gt/yr as it flows out of a binary mask that corresponds to velocity grids <tt>vx,vy</tt> (m/yr) and thickness <tt>H</tt> (m). The resolution of the grids <tt>res</tt> (m) must be specified as a scalar. Mass flux calculations assume the density of ice is 917 kg/m^3.</p><p><tt>[flux,flux_err] = gridded_flux(mask,vx,vy,H,res,vx_err,vy_err,H_err)</tt> estimates flux error using the error grids <tt>vx_err, vy_err,</tt> and <tt>H_err</tt>. Error estimates assume all thickness errors are fully correlated (errors due to thickness sum) and all velocity errors are fully correlated (errors due to velocity errors sum), but velocity and thickness errors are independent (we take the root-sum-square of errors due to thickness and velocity).</p><h2 id="3">Example 1: Antarctic grounding line flux.</h2><pre class="codeinput"><span class="comment">%Start by loading data:</span>
+
+[H,x,y] = bedmachine_data(<span class="string">'thickness'</span>);
+mask = bedmachine_data(<span class="string">'mask'</span>);
+
+<span class="comment">% Get velocity data corresponding to the bedmachine grid:</span>
+[X,Y] = meshgrid(x,y);
+vx = itslive_interp(<span class="string">'vx'</span>,X,Y);
+vy = itslive_interp(<span class="string">'vy'</span>,X,Y);
+
+<span class="comment">% Fill ITS_LIVE gaps with Measures v2:</span>
+isn = isnan(vx);
+vx(isn) = measures_interp(<span class="string">'vx'</span>,X(isn),Y(isn));
+vy(isn) = measures_interp(<span class="string">'vy'</span>,X(isn),Y(isn));
+</pre><h2 id="4">Create a mask</h2><p>To calculate grounding line flux, we'll define a mask as everywhere the BedMachine mask indicates land, grounded ice, or Lake Vostok, so anywhere the mask equals 1, 2 or 4. We also want to make sure we have valid velocity measurements along the boundary. Then we'll fill any remaining interior holes in the mask (although it really wouldn't matter either way) using imfill:</p><pre class="codeinput">grounded = ismember(mask,[1 2 4]) &amp; isfinite(vx);
+
+<span class="comment">% Optional buffer inland by 6 pixels (3 km on this 500 m resolution grid):</span>
+grounded = imerode(grounded,strel(<span class="string">'disk'</span>,6));
+
+grounded = imfill(grounded,<span class="string">'holes'</span>);
+
+figure
+imagesc(x,y,grounded)
+axis <span class="string">xy</span> <span class="string">image</span>
+</pre><img vspace="5" hspace="5" src="gridded_flux_documentation_01.png" alt=""> <h2 id="5">Calculate grounding line flux</h2><p>The mask above looks pretty good. Now we want to calculate the total mass of ice that goes into (positive value) or exits (negative value) the grounded mask. This grid is pretty big, so the calculation might take a few seconds:</p><pre class="codeinput">res = diff(x(1:2)); <span class="comment">% resolution of the grid in meters</span>
+GL_flux = gridded_flux(grounded,vx,vy,H,res)
+</pre><pre class="codeoutput">GL_flux =
+      -1890.88
+</pre><p>The value above looks about right. <a href="https://tc.copernicus.org/articles/12/521/2018/">Gardner et al</a> found 1920 Gt/yr for the year 2015. The mosaic we're using includes velocities from as far back as the 1980s, so our flux estimate is expected to be slightly lower, because our velocities are slighty lower than the 2015 values.</p><h2 id="7">Example 2: Thwaites Glacier, with error</h2><p>Now we build on example 1 by limiting the analysis to Thwaites Glacier and including error estimates. Start by loading the error estimates:</p><pre class="codeinput">H_err = bedmachine_data(<span class="string">'errbed'</span>);
+vx_err = itslive_interp(<span class="string">'vx_err'</span>,X,Y);
+vy_err = itslive_interp(<span class="string">'vy_err'</span>,X,Y);
+</pre><p>Now create a mask of the grounded portion (from Example 1) of Thwaites Glacier:</p><pre class="codeinput">thwaites = grounded &amp; inbasin(X,Y,<span class="string">'imbie refined'</span>,<span class="string">'thwaites'</span>);
+
+figure
+imagesc(x,y,thwaites)
+axis <span class="string">xy</span> <span class="string">image</span> <span class="string">off</span>
+</pre><img vspace="5" hspace="5" src="gridded_flux_documentation_02.png" alt=""> <p>Here's the estimated flux through the thwaites mask:</p><pre class="codeinput">[thwaites_flux,thwaites_flux_err] = gridded_flux(thwaites,vx,vy,H,res,vx_err,vy_err,H_err)
+</pre><pre class="codeoutput">thwaites_flux =
+       -126.64
+thwaites_flux_err =
+          3.61
+</pre><h2 id="10">Citing AMT</h2><p>If this function or any other part of Antarctic Mapping Tools is useful for you, please cite the paper that describes AMT.</p><p>Greene, C. A., Gwyther, D. E., &amp; Blankenship, D. D. Antarctic Mapping Tools for Matlab. <i>Computers &amp; Geosciences</i>. 104 (2017) pp.151-157. <a href="http://dx.doi.org/10.1016/j.cageo.2016.08.003">doi:10.1016/j.cageo.2016.08.003</a>.</p><h2 id="11">Author Info</h2><p>This function was written by Chad A. Greene of NASA's Jet Propulsion Laboratory, December 2021.</p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |gridded_flux| documentation
+% |gridded_flux| calculates the annual ice flux out of a gridded mask. 
+% 
+%% Syntax
+% 
+%  flux = gridded_flux(mask,vx,vy,H,res)
+%  [flux,flux_err] = gridded_flux(mask,vx,vy,H,res,vx_err,vy_err,H_err)
+% 
+%% Description 
+%
+% |flux = gridded_flux(mask,vx,vy,H,res)| calculates the ice |flux| in Gt/yr as 
+% it flows out of a binary mask that corresponds to velocity grids |vx,vy|
+% (m/yr) and thickness |H| (m). The resolution of the grids |res| (m) must be 
+% specified as a scalar. Mass flux calculations assume the density of ice
+% is 917 kg/m^3. 
+% 
+% |[flux,flux_err] = gridded_flux(mask,vx,vy,H,res,vx_err,vy_err,H_err)|
+% estimates flux error using the error grids |vx_err, vy_err,| and |H_err|. 
+% Error estimates assume all thickness errors are fully correlated (errors
+% due to thickness sum) and all velocity errors are fully correlated (errors due 
+% to velocity errors sum), but velocity and thickness errors are
+% independent (we take the root-sum-square of errors due to thickness and
+% velocity). 
+% 
+%% Example 1: Antarctic grounding line flux. 
+%Start by loading data: 
+
+[H,x,y] = bedmachine_data('thickness'); 
+mask = bedmachine_data('mask'); 
+
+% Get velocity data corresponding to the bedmachine grid: 
+[X,Y] = meshgrid(x,y); 
+vx = itslive_interp('vx',X,Y); 
+vy = itslive_interp('vy',X,Y); 
+
+% Fill ITS_LIVE gaps with Measures v2: 
+isn = isnan(vx); 
+vx(isn) = measures_interp('vx',X(isn),Y(isn)); 
+vy(isn) = measures_interp('vy',X(isn),Y(isn)); 
+
+%% Create a mask
+% To calculate grounding line flux, we'll define a mask as everywhere the
+% BedMachine mask indicates land, grounded ice, or Lake Vostok, so anywhere
+% the mask equals 1, 2 or 4. We also want to make sure we have valid
+% velocity measurements along the boundary. Then we'll fill any remaining
+% interior holes in the mask (although it really wouldn't matter either
+% way) using imfill: 
+
+grounded = ismember(mask,[1 2 4]) & isfinite(vx);
+
+% Optional buffer inland by 6 pixels (3 km on this 500 m resolution grid): 
+grounded = imerode(grounded,strel('disk',6)); 
+
+grounded = imfill(grounded,'holes'); 
+
+figure
+imagesc(x,y,grounded)
+axis xy image
+
+%% Calculate grounding line flux
+% The mask above looks pretty good. Now we want to calculate the total mass
+% of ice that goes into (positive value) or exits (negative value) the 
+% grounded mask. This grid is pretty big, so the calculation might take a
+% few seconds:
+
+res = diff(x(1:2)); % resolution of the grid in meters
+GL_flux = gridded_flux(grounded,vx,vy,H,res)
+
+%% 
+% The value above looks about right. <https://tc.copernicus.org/articles/12/521/2018/ Gardner et al>
+% found 1920 Gt/yr for the year 2015. The mosaic we're using includes velocities 
+% from as far back as the 1980s, so our flux estimate is expected to be slightly lower,
+% because our velocities are slighty lower than the 2015 values. 
+
+%% Example 2: Thwaites Glacier, with error
+% Now we build on example 1 by limiting the analysis to Thwaites Glacier
+% and including error estimates. Start by loading the error estimates: 
+
+H_err = bedmachine_data('errbed'); 
+vx_err = itslive_interp('vx_err',X,Y); 
+vy_err = itslive_interp('vy_err',X,Y); 
+
+%%
+% Now create a mask of the grounded portion (from Example 1) of Thwaites
+% Glacier: 
+
+thwaites = grounded & inbasin(X,Y,'imbie refined','thwaites'); 
+
+figure
+imagesc(x,y,thwaites)
+axis xy image off 
+
+%% 
+% Here's the estimated flux through the thwaites mask: 
+
+[thwaites_flux,thwaites_flux_err] = gridded_flux(thwaites,vx,vy,H,res,vx_err,vy_err,H_err)
+
+%% Citing AMT
+% If this function or any other part of Antarctic Mapping Tools is useful for you, please
+% cite the paper that describes AMT.  
+% 
+% Greene, C. A., Gwyther, D. E., & Blankenship, D. D. Antarctic Mapping Tools for Matlab. 
+% _Computers & Geosciences_. 104 (2017) pp.151-157. <http://dx.doi.org/10.1016/j.cageo.2016.08.003 doi:10.1016/j.cageo.2016.08.003>.
+% 
+%% Author Info
+% This function was written by Chad A. Greene of NASA's Jet Propulsion
+% Laboratory, December 2021. 
+
+
+
+
+
+##### SOURCE END #####
+--></body></html>

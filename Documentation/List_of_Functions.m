@@ -44,8 +44,9 @@
 % * <freeboard2thickness_documentation.html |freeboard2thickness|> assumes hydrostatic equilibrium to convert ice surface elevation to ice thickness. 
 % * <thickness2freeboard_documentation.html |thickness2freeboard|> assumes hydrostatic equilibrium to convert ice thickness to ice surface elevation. 
 % * <base2freeboard_documentation.html |base2freeboard|> assumes hydrostatic equilibrium to convert ice basal elevation to ice surface elevation. 
-% * <ice_profile_smoother.html |ice_profile_smoother|> smooths any variable along a glacier flowline, as a function of local ice thickness.
-% * <peclet.html |peclet|> calculates the Peclet number along a glacier flowline using the formulation by Felikson et al., 2017.
+% * <ice_profile_smoother_documentation.html |ice_profile_smoother|> smooths any variable along a glacier flowline, as a function of local ice thickness.
+% * <peclet_documentation.html |peclet|> calculates the Peclet number along a glacier flowline using the formulation by Felikson et al., 2017.
+% * <gridded_flux_documentation.html |gridded_flux|> calculates calculates ice flux into or out of a mask from gridded velocity and thickness.
 
 %% Mapping in polar stereographic coordinates
 % These functions plot georeferenced (lat,lon) data in polar stereographic meters or kilometers. They 
