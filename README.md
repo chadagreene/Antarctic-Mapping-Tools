@@ -39,8 +39,10 @@ A few AMT Plug-ins that I think are particularly useful across disciplines are
 - Want more datasets? [Here you'll find tools for 40+ Antarctic datasets on MATLAB File Exchange](https://www.mathworks.com/matlabcentral/fileexchange/?q=profileid:1062128).
 
 # No More Mapping Toolbox Dependency
-MATLAB offers a Mapping Toolbox of its own, which contains some very useful functions, but in general I find that MATLAB's Mapping Toolbox is expensive and not very user friendly. It's also much less computationally efficient than plotting in plain x,y coordinates. In the early years of AMT, most of the AMT functions were designed to create maps using MATLAB'S Mapping Toolbox. However, in recent years I have fully shifted away from 
+MATLAB offers a Mapping Toolbox of its own, which contains some very useful functions, but in general I find that MATLAB's Mapping Toolbox is expensive and not very user friendly. It's also much less computationally efficient than plotting in plain x,y coordinates. In the early years of AMT, most of the AMT functions were designed to create maps using MATLAB'S Mapping Toolbox. However, in recent years I have fully shifted toward plotting in simple projected (x and y in meters) coordinates, which tends to plot much faster and doesn't require any paid toolboxes. Use functions like `plotps()` to plot without Matlab's Mapping Toolbox. 
 
+# Arctic version 
+For a mostly Greenland centric version of this toolbox go [here](https://github.com/chadagreene/arctic-mapping-tools). 
 
 # Citing Antarctic Mapping Tools 
 If these functions are useful for you, please cite our paper as follows: 
