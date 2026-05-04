@@ -88,14 +88,14 @@
 scarloc 'taylor dome'
 
 %% 
-% That tells us that Taylor Dome is located at (77.67°S,157.67°E).  
+% That tells us that Taylor Dome is located at (77.67ï¿½S,157.67ï¿½E).  
 
 %% Coordinate transformations
 % Two functions you might end up using frequently are <ll2ps_documentation.html |ll2ps|> and <ps2ll_documentation.html |ps2ll|>, 
 % which allow seamless transition between geographic (lat,lon) coordinates and polar stereographic
-% (x,y) coordinates in meters. Polar stereographic coordinates are useful because they are equally spaced, 
-% meaning interpolation and regridding are best performed in polar stereographic coodinates.  On 
-% the other hand, we're more likely to know locations by their geographic coordinates, so sometimes it 
+% (x,y) coordinates in meters. Polar stereographic coordinates are useful because they are equally spaced,
+% meaning interpolation and regridding are best performed in polar stereographic coordinates.  On
+% the other hand, we're more likely to know locations by their geographic coordinates, so sometimes it
 % makes more sense to use latitude and longitude instead of _x_ and _y_. 
 % 
 % The |ll2ps| and |ps2ll| functions can be used for a single point, line, or 
@@ -139,7 +139,7 @@ pathdistps([0 510894],[0 -1243834],'km')
 % 
 % One simple mapmaking function in AMT is <plotps_documentation.html |plotps|>, which is designed to behave
 % just like Matlab's |plot| function, except that you'll give it geographic (lat,lon) input coordinates, and |plotps| 
-% performs a polar stereographic coordinate transformation before plotting.  We'll use Taylor Dome (77.67°S,157.67°E)
+% performs a polar stereographic coordinate transformation before plotting.  We'll use Taylor Dome (77.67ï¿½S,157.67ï¿½E)
 % again as an example, and place a blue circle on it:
 
 plotps(-77.67,157.67,'bo')

@@ -19,16 +19,16 @@
 %% Description 
 % 
 % |[lat,lon] = ps2ll(x,y)| transforms polar stereographic meters to
-% geo coordinates coordinates referenced to 71°S. Inputs |x| and |y|
+% geo coordinates coordinates referenced to 71ï¿½S. Inputs |x| and |y|
 % can be scalar, vecotor, or matrices of equal size. 
 % 
-% |[lat,lon] = ps2ll(x,y,'TrueLat',ReferenceLatitude)| secifies a reference
+% |[lat,lon] = ps2ll(x,y,'TrueLat',ReferenceLatitude)| specifies a reference
 % latitude of true scale in degrees; also known as the standard parallel.
 % Note that although Andy Bliss' |polarstereo_inv| function used |-70| as a
 % default, this function uses |-71| as the default. NSIDC has been trying to
 % standardize this, but take a close look at their reference latitudes for
-% any data you put through this function--NSIDC sometimes uses 70°S, and
-% sometimes uses 71°S. Again, the default in this function is |-71|, which matches
+% any data you put through this function--NSIDC sometimes uses 70ï¿½S, and
+% sometimes uses 71ï¿½S. Again, the default in this function is |-71|, which matches
 % many (not all) NSIDC Antarctic datasets as well as the <http://www.mathworks.com/matlabcentral/fileexchange/42353-bedmap2-toolbox-for-matlab/content//bedmap2_toolbox_v3.0/Bedmap2_documentation/html/bedmap2_documentation.html
 % Bedmap2> grid. 
 % 
@@ -43,7 +43,7 @@
 % 
 %% Example 1: Gridded data
 % These functions were designed to make going back and forth between polar
-% stereographic coordinates and geographic coodinates as smooth and
+% stereographic coordinates and geographic coordinates as smooth and
 % streamlined as possible. If you have a gridded data set, say the <http://www.mathworks.com/matlabcentral/fileexchange/42353-bedmap2-toolbox-for-matlab/content//bedmap2_toolbox_v3.0/Bedmap2_documentation/html/bedmap2_documentation.html
 % Bedmap2> data set, 
 

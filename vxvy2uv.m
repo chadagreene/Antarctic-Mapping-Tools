@@ -23,7 +23,7 @@ function [u,v] = vxvy2uv(lat_or_x,lon_or_y,vx,vy)
 % Consider a vector field depicting motion from left to right on a standard polar
 % stereographic map projection.  Make its x component 1.5 magnitude everywhere, and we'll
 % add a slight downward-dipping y component too, just to make things
-% interesting.  To set up the grid, us psgrid to create a 6000 km wide grid at 
+% interesting.  To set up the grid, use psgrid to create a 6000 km wide grid at 
 % 250 km resolution, centered on the South Pole: 
 % 
 %   [x,y] = psgrid('south pole',6000,250,'xy'); 
@@ -69,7 +69,7 @@ assert(isnumeric(lat_or_x)==1,'All inputs for vxvy2uv must be numeric.')
 assert(isnumeric(lon_or_y)==1,'All inputs for vxvy2uv must be numeric.') 
 assert(isnumeric(vx)==1,'All inputs for vxvy2uv must be numeric.') 
 assert(isnumeric(vy)==1,'All inputs for vxvy2uv must be numeric.') 
-assert(isequal(size(lat_or_x),size(lon_or_y),size(vx),size(vy))==1,'All inputs to vxvy2uv must be of equal dimensions.') 
+assert(isequal(size(lat_or_x),size(lon_or_y),size(vx),size(vy)),'All inputs to vxvy2uv must be of equal dimensions.') 
 
 %% Parse inputs: 
 

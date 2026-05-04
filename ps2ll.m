@@ -14,11 +14,11 @@ function [lat,lon] = ps2ll(x,y,varargin)
 % 
 %% Description 
 % 
-% [lat,lon] = ps2ll(x,y) transforms polar stereographic x,y coordinates (re: 
-% 71 S) to geographic lat/lon. Inputs x and y  can be scalar, vecotr, or
+% [lat,lon] = ps2ll(x,y) transforms polar stereographic x,y coordinates (re:
+% 71 S) to geographic lat/lon. Inputs x and y  can be scalar, vector, or
 % matrices of equal size. 
 % 
-% [lat,lon] = ps2ll(x,y,'TrueLat',ReferenceLatitude) secifies a reference
+% [lat,lon] = ps2ll(x,y,'TrueLat',ReferenceLatitude) specifies a reference
 % latitude of true scale in degrees; also known as the standard parallel.
 % Note that although Andy Bliss' polarstereo_inv function used -70 as a
 % default, this function uses -71 as the default. NSIDC has been trying to

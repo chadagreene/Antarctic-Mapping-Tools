@@ -17,7 +17,7 @@ function [h,featurelat,featurelon] = scarlabel(featurename,varargin)
 % 
 % scarlabel('FeatureName') labels Antarctic features core location if a map
 % is current. Multiple FeatureNames may be entered as a cell array (e.g.,
-% {'McMurdo Station','Palmer Station','Casey Station'}.If the current axes are not map axes, polar stereographic cartesian
+% {'McMurdo Station','Palmer Station','Casey Station'}. If the current axes are not map axes, polar stereographic cartesian
 % coordinates are assumed.  
 % 
 % scarlabel('FeatureName','TextProperty',PropertyValue) formats the label with
@@ -165,7 +165,13 @@ elseif strcmpi(featurename,'ice shelves')
     ind = strcmpi(featureType,'ice shelf'); 
     featurelat = lat(ind); 
     featurelon = lon(ind); 
-    featurename = names(ind);    
+    featurename = names(ind);  
+elseif strcmpi(featurename,'all')
+    load scarnames.mat lat lon names featureType;  
+    featurelat = lat; 
+    featurelon = lon; 
+    featurename = names;  
+
 else
    [featurelat,featurelon] = scarloc(featurename); 
 end

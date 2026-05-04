@@ -20,8 +20,8 @@
 % 
 % |geoquadps(...,'meridian',meridian)| specifies a meridian longitude along
 % which the polar stereographic projection is centered. Default meridian
-% is 0, which puts Fimbul Ice Shelf at the top of the map. To center the 
-% map on your quandrangle, try |mean(lonlim)| as the meridian value. 
+% is 0, which puts Fimbul Ice Shelf at the top of the map. To center the
+% map on your quadrangle, try |mean(lonlim)| as the meridian value. 
 % 
 % |h = geoquadps(...)| returns a handle |h| of the plotted object. 
 % 

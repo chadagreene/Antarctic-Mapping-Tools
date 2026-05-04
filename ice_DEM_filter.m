@@ -256,7 +256,7 @@ function [Y,W] = ndnanfilter(X,HWIN,F,DIM,WINOPT,PADOPT,WNAN)
 %       are leaved untouched.
 %     * When WNAN=2, the programs acts like an NAN-interpolat/GAP-filling,
 %       leaving untouched the no-NaNs elements but the filtering is
-%       perfomed anyway. I recomend the default behaviour (WNAN=0) in order
+%       performed anyway. I recommend the default behaviour (WNAN=0) in order
 %       to keep the filtered data in the workspace, and then use the code
 %       at the end of this function to get/remove the interpolated NaNs
 %       (see the example).

@@ -18,7 +18,7 @@
 %% Description 
 % 
 % |[x,y] = ll2ps(lat,lon)| transforms georeferenced coordinates to
-% polar stereographic |x,y| coordinates referenced to 71°S. Inputs |lat| and |lon|
+% polar stereographic |x,y| coordinates referenced to 71ï¿½S. Inputs |lat| and |lon|
 % can be scalar, vecotor, or matrices of equal size. 
 % 
 % |[x,y] = ll2ps(lat,lon,'TrueLat',ReferenceLatitude)| specifies a reference
@@ -26,8 +26,8 @@
 % Note that although Andy Bliss' |polarstereo_fwd| function used |-70| as a
 % default, this function uses |-71| as the default. NSIDC has been trying to
 % standardize this, but take a close look at their reference latitudes for
-% any data you put through this function--NSIDC sometimes uses 70°S, and
-% sometimes uses 71°S. Again, the default in this function is |-71|, which matches
+% any data you put through this function--NSIDC sometimes uses 70ï¿½S, and
+% sometimes uses 71ï¿½S. Again, the default in this function is |-71|, which matches
 % many (not all) NSIDC Antarctic datasets as well as the <http://www.mathworks.com/matlabcentral/fileexchange/42353-bedmap2-toolbox-for-matlab/content//bedmap2_toolbox_v3.0/Bedmap2_documentation/html/bedmap2_documentation.html
 % Bedmap2> grid. 
 % 
@@ -42,7 +42,7 @@
 % 
 %% Example 1: Gridded data
 % These functions were designed to make going back and forth between polar
-% stereographic coordinates and geographic coodinates as smooth and
+% stereographic coordinates and geographic coordinates as smooth and
 % streamlined as possible. If you have a gridded data set, say the <http://www.mathworks.com/matlabcentral/fileexchange/42353-bedmap2-toolbox-for-matlab/content//bedmap2_toolbox_v3.0/Bedmap2_documentation/html/bedmap2_documentation.html
 % Bedmap2> data set, 
 
@@ -84,8 +84,8 @@ load asaid_gl
 
 %% 
 % To compare projections, convert the georeferenced grounding line to polar
-% stereographic coordinates referenced to the default 71°S and convert
-% again for 70°S:
+% stereographic coordinates referenced to the default 71ï¿½S and convert
+% again for 70ï¿½S:
 
 [x71,y71] = ll2ps(lat,lon); 
 [x70,y70] = ll2ps(lat,lon,'TrueLat',-70); 

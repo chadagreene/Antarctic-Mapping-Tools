@@ -36,9 +36,9 @@ function [x,y]=ll2ps(lat,lon,varargin)
 % 
 % [x,y] = ll2ps(lat,lon) transforms georeferenced coordinates to
 % polarstereographic x,y coordinates referenced to 71 S. Inputs lat and lon
-% can be scalar, vecotr, or matrices of equal size. 
+% can be scalar, vector, or matrices of equal size. 
 % 
-% [x,y] = ll2ps(lat,lon,'TrueLat',ReferenceLatitude) secifies a reference
+% [x,y] = ll2ps(lat,lon,'TrueLat',ReferenceLatitude) specifies a reference
 % latitude of true scale in degrees; also known as the standard parallel.
 % Note that although Andy Bliss' polarstereo_fwd function used -70 as a
 % default, this function uses -71 as the default. NSIDC has been trying to

@@ -16,11 +16,11 @@
 % 
 % |[lati,loni] = pspath(lat,lon,spacing)| connects the geographic points |lat,lon| 
 % by a path whose points |lati,loni| are separated by spacing meters. If input
-% coordinates are geo coordinates, output coodinates are also geo coordinates. 
+% coordinates are geo coordinates, output coordinates are also geo coordinates. 
 % 
 % |[xi,yi] = pspath(x,y,spacing)| connects the polar stereographic points |x,y| 
 % by a path whose points xi,yi are separated by spacing meters. If input
-% coordinates are polar stereographic coordinates, output coodinates are also 
+% coordinates are polar stereographic coordinates, output coordinates are also 
 % polar stereographic coordinates. 
 % 
 % |[...] = pspath(...,'method',InterpolationMethod)| specifies an interpolation 

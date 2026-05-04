@@ -1,6 +1,6 @@
-function F = thickness2freeboard(T,varargin) 
-% thickness2freeboard estimates freeboard height above sea level, from ice thickneess
-% assuming hyrostatic equilibrium. 
+function F = thickness2freeboard(T,varargin)
+% thickness2freeboard estimates freeboard height above sea level, from ice thickness
+% assuming hydrostatic equilibrium. 
 % 
 %% Syntax 
 % 
@@ -12,10 +12,10 @@ function F = thickness2freeboard(T,varargin)
 %  
 %% Description 
 % 
-% F = thickness2freeboard(T) estimatesfreeboard height height above sea level F in
+% F = thickness2freeboard(T) estimates freeboard height above sea level F in
 % meters above the geoid from ice thickness T in meters. 
 % 
-% F = thickness2freeboard(...,'rhoi',iceDensity) speccifies ice density in kg/m^3. 
+% F = thickness2freeboard(...,'rhoi',iceDensity) specifies ice density in kg/m^3. 
 % Default ice density is 917 kg/m^3. 
 % 
 % F = thickness2freeboard(...,'rhow',waterDensity) specifies water density in kg/m^3. 
@@ -36,7 +36,6 @@ function F = thickness2freeboard(T,varargin)
 %    F = 
 %         0.54
 %
-% 
 %% Example 2: 
 % An iceberg is 4.83 m thick, including 40 cm of snow which has a density of 300 kg/m^3.  
 % How high is the iceberg's surface above sea level?
